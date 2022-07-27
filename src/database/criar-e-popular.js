@@ -108,3 +108,12 @@ function criaTabelaEstoque() {
         if (error) console.log("Erro ao criar tabela de estoque");
     });
 }
+
+db.serialize( ()=> {
+    criaTabelaLivros()
+    criaTabelaClientes()
+    criaTabelaFuncionarios()
+    criaTabelaFornecedores()
+    criaTabelaPagamentos()
+    criaTabelaEstoque()
+})
