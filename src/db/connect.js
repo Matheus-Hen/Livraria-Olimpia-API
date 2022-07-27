@@ -1,11 +1,19 @@
-import {open} from "sqlite";
-import sql from 'sqlite3'
+import sqlite from 'sqlite3'
+sqlite.verbose()
 
-export default function connect() {
-   
-    sql.verbose()
-    const db = new sql.Database('olimpia.db',(err)=>{
-        console.log("Acessou");
-    });
-    
-}
+const db = new sqlite3.Database('olimpia.db', (err)=> {
+    if (err) {
+        console.log(`Erro: ${err.message}`)
+    } else {
+        console.log("Banco de dados conectado")
+    }
+});
+
+process.on('SIGINT', () =>
+    db.close(() => {
+        console.log('Banco de dados encerrado!');
+        process.exit(0);
+    })
+);
+
+export default db
