@@ -15,6 +15,12 @@ CREATE TABLE IF NOT EXISTS "LIVROS" (
   );
 `
 
+function criaTabelaLivros() {
+    db.run(LIVROS_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de livros");
+    });
+}
+
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
     "id" int PRIMARY KEY AUTO_INCREMENT,
@@ -26,6 +32,12 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
     "cep" text
   );
 `
+
+function criaTabelaClientes() {
+    db.run(CLIENTES_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de clientes");
+    });
+}
 
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
@@ -39,6 +51,13 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
   );
 `
 
+function criaTabelaFuncionarios() {
+    db.run(FUNCIONARIOS_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de funcionários");
+    });
+}
+
+
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
     "id" int PRIMARY KEY AUTO_INCREMENT,
@@ -48,6 +67,12 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
     "telefone" text
   );
 `
+function criaTabelaFornecedores() {
+    db.run(FORNECEDORES_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de fornecedores");
+    });
+}
+
 
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
@@ -62,6 +87,13 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
   
 `
 
+function criaTabelaPagamentos() {
+    db.run(PAGAMENTOS_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de pagamentos");
+    });
+}
+
+
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "id" int PRIMARY KEY AUTO_INCREMENT,
@@ -70,3 +102,9 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "fornecedor" int
   );
 `
+
+function criaTabelaEstoque() {
+    db.run(ESTOQUE_SCHEMA, (error)=> {
+        if (error) console.log("Erro ao criar tabela de estoque");
+    });
+}
