@@ -25,13 +25,13 @@ Este projeto de código aberto é um sistema de implementação para uma livrari
 Funcionalidades e Demonstração da Aplicação
 
 
-##Acesso ao Projeto: 
+## Acesso ao Projeto: 
 
-##Tecnologias utilizadas:
+## Tecnologias utilizadas:
 
-##Pessoas Desenvolvedoras do Projeto:
+## Pessoas Desenvolvedoras do Projeto:
 
-##Licença.
+## Licença.
 
 
 
