@@ -38,3 +38,35 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "cargo" text
   );
 `
+
+const FORNECEDORES_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
+    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "nome" text,
+    "email" text,
+    "cnpj" text,
+    "telefone" text
+  );
+`
+
+const PAGAMENTOS_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
+    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "cliente" int,
+    "forma_pagamento" text,
+    "valor" real,
+    "parcelamento" text,
+    "status" text,
+    "data" text
+  );
+  
+`
+
+const ESTOQUE_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "ESTOQUE" (
+    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "produto" int,
+    "quantidade" int,
+    "fornecedor" int
+  );
+`
