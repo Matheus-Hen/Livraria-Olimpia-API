@@ -1,7 +1,7 @@
 import sqlite from 'sqlite3'
 sqlite.verbose()
 
-const db = new sqlite3.Database('olimpia.db', (err)=> {
+const db = new sqlite.Database('olimpia.db', (err)=> {
     if (err) {
         console.log(`Erro: ${err.message}`)
     } else {
