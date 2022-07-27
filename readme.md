@@ -31,7 +31,7 @@ Funcionalidades e Demonstração da Aplicação
 
 ##Pessoas Desenvolvedoras do Projeto:
 
-##Licença
+##Licença.
 
 
 
