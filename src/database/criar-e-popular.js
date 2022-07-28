@@ -75,7 +75,11 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
 const populando_fornecedores = `
     INSERT INTO PAGAMENTOS (id, nome, cnpj, produto, email, telefone, endereço)
 VALUES 
- 
+    (001, 'PAPERSHIFT', '03.546.726/0001-11', 'Papel', 'compras@papershift.com.br', '+55 19 2376-8254', 'Avenida Barcelona, 1405 - Agua Branca, Campinas - SP, 03945080'),
+
+    (002, 'A Página', '01.795.809/0001-10', 'Livros', 'compras@apagina.com.br', '+55 41 3213-5643', 'Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR, 81630260'),
+
+
     `;
 
 function criaTabelaFornecedores() {
