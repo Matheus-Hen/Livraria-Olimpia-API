@@ -33,11 +33,28 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
   );
 `
 
+const CLIENTES_ADD_DATA = `
+INSERT INTO CLIENTES (id, nome, email, cpf, telefone, senha, cep)
+VALUES 
+(1, 'Adriano Silva', 'adrianosilva@gmail.com', '244.566.344-05', '64 3538-0744', 'adrianinho123', '61948-530'),
+(2, 'Olivia Rogéria', 'good4u@yahoo.com', '485.760.882-07', '87 2114-8532', 'traitor', '59025-100'),
+(3, 'Taylor Swift', 'folkloreaoty@gmail.com', '447.278.941-81', '99 2876-3448', 'amomeusgatinhos', '69304-410'),
+(4, 'Pera Pereira', 'perapereira@yahoo.com', '012.432.970-50', '83 2541-2343', 'pear123', '79002-914'),
+(5, 'Kanye West', 'uniaokanyetaylor@gmail.com', '994.219.908-03', '79 3757-5524', 'thecollegedropout', '65057-807')
+`
+
 function criaTabelaClientes() {
     db.run(CLIENTES_SCHEMA, (error)=> {
         if (error) console.log(`Erro na criação da tabela clientes: ${error.message}`);
     });
 }
+
+
+function populaTabelaClientes() {
+    db.run(CLIENTES_ADD_DATA, (error) => {
+      if (error) console.log("Erro ao popular a tabela de clientes")
+    })
+  }  
 
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
@@ -112,6 +129,7 @@ function criaTabelaEstoque() {
 db.serialize( ()=> {
     criaTabelaLivros()
     criaTabelaClientes()
+    populaTabelaClientes()
     criaTabelaFuncionarios()
     criaTabelaFornecedores()
     criaTabelaPagamentos()
