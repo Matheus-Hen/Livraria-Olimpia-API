@@ -4,7 +4,7 @@ const db = new sqlite3.Database('olimpia.db');
 
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id_livro" int PRIMARY KEY AUTO_INCREMENT,
     "titulo" text,
     "autor" text,
     "genero" text,
@@ -20,6 +20,24 @@ function criaTabelaLivros() {
         if (error) console.log("Erro ao criar tabela de livros");
     });
 }
+
+const LIVROS_ADD_DATA = `
+INSERT INTO LIVROS (id_livro, título, autor, genero, formato, valor, idioma, numeroPaginas)
+VALUES 
+    (100001, 'O Pequeno Principe', 'Antoine de Saint-Exupéry', 'Literatura Infanto-juvenil', 'Físico', 20.00, 'Português', 96),
+    (100002, 'A Máquina de Fazer Espanhóis', 'Valter Hugo Mãe', 'Romance', 'Físico', 56.00, 'Português', 248),
+    (100004, 'As Brumas de Avalon', 'Marion Zimmer Bradley', 'Romance; Literatura Fantástica', 'Físico', 42.00, 'Português', 320),
+    (100005, 'The Shining', 'Stephen King', 'Terror; Romance; Ficção', 'Digital',  30.00, 'Inglês', 324),
+    (100006, 'Contact', 'Carl Sagan','Romance','Físico', 35.00, 'Inglês', 432),
+    (100007, 'O Lado Feio do Amor', 'Colleen Hover', 'Romance','Físico', 33.00, 'Português', 256),
+    (100008, 'Vulgo Grace','Margaret Atwood', 'Ficção Policial','Digital',  89.00, 'Português'	512),
+    (100009, 'O Homem do Castelo Alto',	'Philip K. Dick', 'Literatura; Ficção', 'Físico', 47.00, 'Português', 288),
+    (100010, 'The Book Thief', 'Markus Zusak', 'Romance; Ficção', 'Físico', 45.00, 'Alemão', 480),
+    (100011, 'Verity', 'Colleen Hoover', 'Romance; Suspense; Ficção', 'Digital', 84.00, 'Inglês', 270),
+    (100012, 'The Miracle Morning', 'Hal Elrod', 'Autoajuda', 'Físico', 57.00, 'Inglês', 196),
+    (100013, 'A Invenção de Morel', 'Adolfo Bioy Casares', 'Romance; Ficção Científica', 'Físico', 43.00, 'Português', 160),
+    (100014, 'Duna', 'Frank Herbert', 'Literatura; Ficção Científica', 'Digital', 77.00, 'Inglês', 544)
+`
 
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
