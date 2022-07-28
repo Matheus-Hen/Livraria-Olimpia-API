@@ -132,11 +132,11 @@ function criaTabelaEstoque() {
 const dadosEstoque = `
 INSERT INTO ESTOQUE (id_pagamentos, produto, quantidade, fornecedor)
 VALUES 
-    (101, 'Livro um', 202,  20/08/2022),
-    (102, 'Livro dois', 502, 15/08/2022),
-    (103, 'Livro tres', 102, 02/08/2022),
-    (104, 'Livro quatro', 303, 17/06/2022),
-    (105, 'Livro cincto', 507, 17/06/2022)
+    (101, 'Livro um', 202,  "Editora Insitrica"),
+    (102, 'Livro dois', 502, "Catavento"),
+    (103, 'Livro tres', 102, "Porta de Trás"),
+    (104, 'Livro quatro', 303, "Editora Devinho"),
+    (105, 'Livro cincto', 507, "Editora Perry")
 `
 
 function popularDados() {
