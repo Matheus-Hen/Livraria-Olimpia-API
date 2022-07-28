@@ -1,3 +1,5 @@
+import dao from '../DAO/clienteDAO.js'
+
 class Cliente {
     constructor(id, nome, email, cpf, telefone, cep, senha) {
         this.id = id
@@ -17,16 +19,20 @@ class Cliente {
 
     }
 
-    buscarClientesTodos = () => {
-        
+    buscarClientesTodos = async () => {
+    return await dao.buscarClientesTodos()
     }
 
-    buscarClienteNome = (nome) => {
+    buscarClienteNome =  async (nome) => {
+    return await dao.buscarClienteNome(nome)
+    }   
 
-}
+    buscarClienteEmail = (email) => {
+    return await dao.buscarClienteEmail(email)
+    }
 
-    buscarClienteCPF = (CPF) => {
-
+    buscarClienteCPF = (cpf) => {
+    return await dao.buscarClienteCPF(cpf)
     }
 
     atualizarCliente = () => {
