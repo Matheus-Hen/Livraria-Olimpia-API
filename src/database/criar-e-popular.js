@@ -4,7 +4,7 @@ const db = new sqlite3.Database('olimpia.db');
 
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "titulo" text,
     "autor" text,
     "genero" text,
@@ -17,13 +17,13 @@ CREATE TABLE IF NOT EXISTS "LIVROS" (
 
 function criaTabelaLivros() {
     db.run(LIVROS_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de livros");
+        if (error) console.log(`Erro na criação da tabela livros: ${error.message}`);
     });
 }
 
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cpf" text,
@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
 
 function criaTabelaClientes() {
     db.run(CLIENTES_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de clientes");
+        if (error) console.log(`Erro na criação da tabela clientes: ${error.message}`);
     });
 }
 
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cpf" text,
@@ -53,14 +53,14 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
 
 function criaTabelaFuncionarios() {
     db.run(FUNCIONARIOS_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de funcionários");
+        if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
     });
 }
 
 
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cnpj" text,
@@ -69,15 +69,15 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
 `
 function criaTabelaFornecedores() {
     db.run(FORNECEDORES_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de fornecedores");
+        if (error) console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
     });
 }
 
 
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
-    "cliente" int,
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "cliente" integer,
     "forma_pagamento" text,
     "valor" real,
     "parcelamento" text,
@@ -89,23 +89,23 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
 
 function criaTabelaPagamentos() {
     db.run(PAGAMENTOS_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de pagamentos");
+        if (error) console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
     });
 }
 
 
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
-    "produto" int,
-    "quantidade" int,
-    "fornecedor" int
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "produto" integer,
+    "quantidade" integer,
+    "fornecedor" integer
   );
 `
 
 function criaTabelaEstoque() {
     db.run(ESTOQUE_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de estoque");
+        if (error) console.log(`Erro na criação da tabela estoque: ${error.message}`);
     });
 }
 
