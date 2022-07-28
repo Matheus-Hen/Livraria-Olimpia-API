@@ -1,0 +1,89 @@
+import db from '../database/connect.js'
+
+const daoCliente = {
+
+    pegaTodosClientes : ()=> {
+        const PEGA_CLIENTES_TODOS = `
+        SELECT * FROM CLIENTES
+        `
+
+        return new Promise((resolve, reject)=> {
+            db.all(PEGA_CLIENTES_TODOS, (error, row)=> {
+                if (error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    pegaClientePeloNome : (nome)=> {
+        const PEGA_CLIENTE_NOME = `
+        SELECT * FROM CLIENTES 
+        WHERE nome = ?
+        `
+
+        return new Promise((resolve, reject)=> {
+            db.all(PEGA_CLIENTE_NOME, nome, (error, row)=> {
+                if (error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    pegaClientePeloCPF : (cpf)=> {
+        const PEGA_CLIENTE_CPF = `
+        SELECT * FROM CLIENTES
+        WHERE cpf = ?
+        `
+
+        return new Promise((resolve, reject)=> {
+            db.all(PEGA_CLIENTE_CPF, cpf, (error, row)=> {
+                if (error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    pegaClientePeloEmail : (email)=> {
+        const PEGA_CLIENTE_EMAIL = `
+        SELECT * FROM CLIENTES
+        WHERE email = ?
+        `
+        return new Promise((resolve, reject)=> {
+            db.all(PEGA_CLIENTE_EMAIL, email, (error, row)=> {
+                if (error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    atualizarCliente : (id, novoCliente)=> {
+        const ATUALIZA_CLIENTE = `
+        UPDATE CLIENTES
+        SET nome = ?, email = ?, cpf = ?, telefone = ?, cep = ?, senha = ?
+        WHERE id = ?
+        `
+
+        return new Promise((resolve, reject)=> {
+            db.run(ATUALIZA_CLIENTE, 
+                novoCliente.nome, novoCliente.email, novoCliente.cpf, 
+                novoCliente.telefone, novoCliente.cep, novoCliente.senha,
+                id,
+                (error)=>{
+                    if (error)
+                        reject(error)
+                    else
+                        resolve(novoCliennte)
+                })
+        })
+    }
+}
+
+export default daoCliente
