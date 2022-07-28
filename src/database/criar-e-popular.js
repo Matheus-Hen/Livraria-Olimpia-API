@@ -30,7 +30,7 @@ VALUES
     (100005, 'The Shining', 'Stephen King', 'Terror; Romance; Ficção', 'Digital',  30.00, 'Inglês', 324),
     (100006, 'Contact', 'Carl Sagan','Romance','Físico', 35.00, 'Inglês', 432),
     (100007, 'O Lado Feio do Amor', 'Colleen Hover', 'Romance','Físico', 33.00, 'Português', 256),
-    (100008, 'Vulgo Grace','Margaret Atwood', 'Ficção Policial','Digital',  89.00, 'Português'	512),
+    (100008, 'Vulgo Grace','Margaret Atwood', 'Ficção Policial','Digital',  89.00, 'Português',	512),
     (100009, 'O Homem do Castelo Alto',	'Philip K. Dick', 'Literatura; Ficção', 'Físico', 47.00, 'Português', 288),
     (100010, 'The Book Thief', 'Markus Zusak', 'Romance; Ficção', 'Físico', 45.00, 'Alemão', 480),
     (100011, 'Verity', 'Colleen Hoover', 'Romance; Suspense; Ficção', 'Digital', 84.00, 'Inglês', 270),
