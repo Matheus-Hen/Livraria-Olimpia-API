@@ -9,12 +9,11 @@
 
 ## Pré-requisitos:
 
-- Node.js v.16.15.1
-- NPM v.8.11.0
-
-
-## Packages:
-- SQLite
+- Node.js (v.16.15.1)
+- NPM (v.8.11.0)
+- Express (4.18.1)
+- sqlite3 (v5.0.10)
+- Nodemon (v2.0.19)
 
 ## O projeto:
 
