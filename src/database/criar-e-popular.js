@@ -62,11 +62,13 @@ function criaTabelaFuncionarios() {
 
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "nome" text,
-    "email" text,
-    "cnpj" text,
-    "telefone" text
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "nome" text,
+  "cnpj" text,
+  "produto" text,
+  "email" text,
+  "telefone" text,
+  "endereço" text
   );
 `;
 function criaTabelaFornecedores() {
