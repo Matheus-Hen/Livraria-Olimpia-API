@@ -1,6 +1,6 @@
-import sqlite3 from 'sqlite3'
-sqlite3.verbose()
-const db = new sqlite3.Database('olimpia.db');
+import sqlite3 from "sqlite3";
+sqlite3.verbose();
+const db = new sqlite3.Database("olimpia.db");
 
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
@@ -13,12 +13,13 @@ CREATE TABLE IF NOT EXISTS "LIVROS" (
     "idioma" text,
     "numeroPaginas" int
   );
-`
+`;
 
 function criaTabelaLivros() {
-    db.run(LIVROS_SCHEMA, (error)=> {
-        if (error) console.log(`Erro na criação da tabela livros: ${error.message}`);
-    });
+  db.run(LIVROS_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela livros: ${error.message}`);
+  });
 }
 
 const CLIENTES_SCHEMA = `
@@ -31,12 +32,13 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
     "senha" text,
     "cep" text
   );
-`
+`;
 
 function criaTabelaClientes() {
-    db.run(CLIENTES_SCHEMA, (error)=> {
-        if (error) console.log(`Erro na criação da tabela clientes: ${error.message}`);
-    });
+  db.run(CLIENTES_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela clientes: ${error.message}`);
+  });
 }
 
 const FUNCIONARIOS_SCHEMA = `
@@ -49,14 +51,14 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "senha" text,
     "cargo" text
   );
-`
+`;
 
 function criaTabelaFuncionarios() {
-    db.run(FUNCIONARIOS_SCHEMA, (error)=> {
-        if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
-    });
+  db.run(FUNCIONARIOS_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
+  });
 }
-
 
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
@@ -66,13 +68,13 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
     "cnpj" text,
     "telefone" text
   );
-`
+`;
 function criaTabelaFornecedores() {
-    db.run(FORNECEDORES_SCHEMA, (error)=> {
-        if (error) console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
-    });
+  db.run(FORNECEDORES_SCHEMA, (error) => {
+    if (error)
+      console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
+  });
 }
-
 
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
@@ -85,14 +87,14 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "data" text
   );
   
-`
+`;
 
 function criaTabelaPagamentos() {
-    db.run(PAGAMENTOS_SCHEMA, (error)=> {
-        if (error) console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
-    });
+  db.run(PAGAMENTOS_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
+  });
 }
-
 
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
@@ -101,19 +103,20 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "quantidade" integer,
     "fornecedor" integer
   );
-`
+`;
 
 function criaTabelaEstoque() {
-    db.run(ESTOQUE_SCHEMA, (error)=> {
-        if (error) console.log(`Erro na criação da tabela estoque: ${error.message}`);
-    });
+  db.run(ESTOQUE_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela estoque: ${error.message}`);
+  });
 }
 
-db.serialize( ()=> {
-    criaTabelaLivros()
-    criaTabelaClientes()
-    criaTabelaFuncionarios()
-    criaTabelaFornecedores()
-    criaTabelaPagamentos()
-    criaTabelaEstoque()
-})
+db.serialize(() => {
+  criaTabelaLivros();
+  criaTabelaClientes();
+  criaTabelaFuncionarios();
+  criaTabelaFornecedores();
+  criaTabelaPagamentos();
+  criaTabelaEstoque();
+});
