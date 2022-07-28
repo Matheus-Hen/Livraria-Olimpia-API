@@ -5,33 +5,34 @@ const db = new sqlite3.Database('olimpia.db');
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "id_estoque" int PRIMARY KEY AUTO_INCREMENT,
-    "livro" varchar (64)
-    "quantidade" varchar (64)
-    "entrada" varchar (64)
-    "cod_barras" varchar (64)
-    "status" varchar (64)
+    "id_produto" varchar (64),
+    "quantidade" int,
+    "id_fornecedor" varchar(64)
   );
 `
 
-const popularEstoque = `
-INSERT INTO ESTOQUE (id_estoque, livro, quantidade, entrada, cod_barras, status)
+const ADD_ESTOQUE_SCHEMA = `
+INSERT INTO ESTOQUE (id_estoque, id_produto, quantidade, id_fornecedor)
 VALUES 
-    (101, 'Atirei o pau no gato', '54', '23/05/2002', '03242789734', 'ativo'),
+    (101, 'A Divina Comédia', '100', 'Catavento'),
+    (102, 'O Rei Leão', '200', 'Editora Intriseca'),
+    (103, 'O nome do Vento', '50', 'Editora Máximo')
 `
 
 function criaTabelaEstoque() {
     db.run(ESTOQUE_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de livros");
+        if (error) console.log("Erro ao criar tabela de estoque");
     });
 }
 
-function popularTabelaEstoque() {
-    db.run(popularEstoque, (error)=> {
-       if (error) console.log("Erro ao popular tabela de usuários");
-    })
+function popularEstoque() {
+    db.run(ADD_ESTOQUE_SCHEMA, (error)=> {
+        if (error) console.log(error)
+    });
 }
 
 db.serialize( ()=> {
     criaTabelaEstoque()
-    popularTabelaEstoque()
+    popularEstoque()
 })
+
