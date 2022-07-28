@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
 `;
 
 const populando_fornecedores = `
-    INSERT INTO PAGAMENTOS (id, nome, cnpj, produto, email, telefone, endereço)
+    INSERT INTO FORNECEDORES (id, nome, cnpj, produto, email, telefone, endereço)
 VALUES 
     (001, 'PAPERSHIFT', '03.546.726/0001-11', 'Papel', 'compras@papershift.com.br', '+55 19 2376-8254', 'Avenida Barcelona, 1405 - Agua Branca, Campinas - SP, 03945080'),
 
@@ -86,6 +86,13 @@ function criaTabelaFornecedores() {
   db.run(FORNECEDORES_SCHEMA, (error) => {
     if (error)
       console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
+  });
+}
+
+function popularTabelaFornecedores() {
+  db.run(populando_fornecedores, (error) => {
+    if (error)
+      console.log(`Erro ao popular tabela Fornecedores: ${error.message}`);
   });
 }
 
