@@ -1,4 +1,4 @@
-class pagamentos {
+export default class pagamentos {
     constructor(idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data) {
         this.idPagamentos = idPagamentos;
         this.cliente = cliente;
@@ -9,4 +9,3 @@ class pagamentos {
         this.data = data;
     }
 }
-export default pagamentos
