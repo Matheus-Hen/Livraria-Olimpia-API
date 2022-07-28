@@ -71,6 +71,13 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
   "endereço" text
   );
 `;
+
+const populando_fornecedores = `
+    INSERT INTO PAGAMENTOS (id, nome, cnpj, produto, email, telefone, endereço)
+VALUES 
+ 
+    `;
+
 function criaTabelaFornecedores() {
   db.run(FORNECEDORES_SCHEMA, (error) => {
     if (error)
