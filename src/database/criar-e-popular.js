@@ -130,7 +130,7 @@ function criaTabelaEstoque() {
 }
 
 const dadosEstoque = `
-INSERT INTO ESTOQUE (id_estoque, produto, quantidade, fornecedor)
+INSERT INTO ESTOQUE (idEstoque, produto, quantidade, fornecedor)
 VALUES 
     (101, 'Livro um', 202,  "Editora Insitrica"),
     (102, 'Livro dois', 502, "Catavento"),
