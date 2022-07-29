@@ -2,6 +2,23 @@ import db from '../database/connect.js'
 
 const daoCliente = {
 
+    insereCliente : (cliente)=> {
+    const INSERE_CLIENTE = `
+    INSERT INTO CLIENTES (nome, email, cpf, telefone, cep, senha)
+    VALUES (?, ?, ?, ?, ?, ?)
+    `
+    return new Promise((resolve, reject)=> {
+        db.run(INSERE_CLIENTE, cliente.nome, cliente.email, cliente.cpf,
+            cliente.telefone, cliente.cep, cliente.senha,
+            (error)=>{
+                if (error)
+                    reject (error)
+                else 
+                    resolve (cliente)
+            })
+    })
+    },
+
     pegaTodosClientes : ()=> {
         const PEGA_CLIENTES_TODOS = `
         SELECT * FROM CLIENTES
