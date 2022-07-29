@@ -16,8 +16,8 @@ class Cliente {
     return await dao.insereCliente(cliente)
     }
 
-    removerCliente = () => {
-
+    removerCliente = async (id) => {
+    return await dao.removeCliente(id)
     }
 
     buscarClientesTodos = async () => {
