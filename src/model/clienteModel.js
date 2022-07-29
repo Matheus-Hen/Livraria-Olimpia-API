@@ -1,4 +1,5 @@
 import dao from '../DAO/clienteDAO.js'
+import db from '../database/connect.js'
 
 class Cliente {
     constructor(id, nome, email, cpf, telefone, cep, senha) {
@@ -11,8 +12,8 @@ class Cliente {
         this.senha = senha
     }
 
-    inserirCliente = () => {
-
+    inserirCliente = async (cliente) => {
+    return await dao.insereCliente(cliente)
     }
 
     removerCliente = () => {
@@ -35,8 +36,8 @@ class Cliente {
     return await dao.buscarClienteCPF(cpf)
     }
 
-    atualizarCliente = () => {
-
+    atualizarCliente = (id, novoCliennte) => {
+    
     }
 }
 
