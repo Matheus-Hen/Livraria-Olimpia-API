@@ -81,6 +81,21 @@ const daoCliente = {
         })
     },
 
+    removeCliente : (id)=> {
+    const DELETA_CLIENTE = `
+    DELETE FROM CLIENTES
+    WHERE id = ?
+    `
+    return new Promise((resolve, reject)=> {
+        db.get(DELETA_CLIENTE, id, (error, row)=> {
+            if(error)
+                reject(error)
+            else
+                resolve(row)
+        })
+    })
+    },
+
     atualizarCliente : (id, novoCliente)=> {
         const ATUALIZA_CLIENTE = `
         UPDATE CLIENTES
