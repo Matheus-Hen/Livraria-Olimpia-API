@@ -162,7 +162,7 @@ const daoPagamentos = {
         })
     },
 
-    atualizarPagamento : (idPagamentos, novoPagamento)=> {
+    atualizarPagamento : (idPagamentos, novasInformacoes)=> {
         const ATUALIZA_PAGAMENTO = `
         UPDATE PAGAMENTOS
         cliente = ?, formaDePagamento = ?, valor = ?, parcelamento = ?, status = ?, data = ?
@@ -171,13 +171,13 @@ const daoPagamentos = {
 
         return new Promise((resolve, reject)=> {
             db.run(ATUALIZA_PAGAMENTO, 
-                novoPagamento.cliente, novoPagamento.formaDePagamento, 
-                novoPagamento.valor, novoPagamento.parcelamento, novoPagamento.status, idPagamentos,
+                novasInformacoes.cliente, novasInformacoes.formaDePagamento, 
+                novasInformacoes.valor, novasInformacoes.parcelamento, novasInformacoes.status, idPagamentos,
                 (error)=>{
                     if (error)
                         reject(error)
                     else
-                        resolve(novoPagamento)
+                        resolve(novasInformacoes)
                 })
         })
     }
