@@ -1,3 +1,5 @@
+//import dao from '../DAO/pagamentosDAO.js'
+
 export default class pagamentos {
     constructor(idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data) {
         this.idPagamentos = idPagamentos;
