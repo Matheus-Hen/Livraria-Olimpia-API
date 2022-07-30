@@ -11,6 +11,8 @@ const routerCliente = (app)=> {
     app.post('/clientes', clienteController.criarNovoCliente)
 
     app.delete('/clientes/id/:id', clienteController.deletaCliente)
+
+    app.put('/clientes/id/:id', clienteController.atualizaCliente)
 }
 
 export default routerCliente
