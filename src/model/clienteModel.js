@@ -40,8 +40,21 @@ class Cliente {
     return await dao.pegaClientePeloCPF(cpf)
     }
 
-    atualizarCliente = (id, novoCliennte) => {
-    
+    atualizarCliente = async (id, novoCliente) => {
+    const clienteAtual = await this.buscarClienteId(id)
+    if (clienteAtual) {
+        const clienteAtualizado = {
+            "nome": novoCliente.nome || clienteAtual.nome,
+            "email": novoCliente.email || clienteAtual.email,
+            "cpf": novoCliente.cpf || clienteAtual.cpf,
+            "telefone": novoCliente.telefone || clienteAtual.telefone,
+            "cep": novoCliente.cep || clienteAtual.cep,
+            "senha": novoCliente.senha || clienteAtual.senha
+        }
+        return await dao.atualizarCliente(id, clienteAtualizado)
+    } else {
+        throw new Error("Cliente não encontrado")
+    }
     }
 }
 
