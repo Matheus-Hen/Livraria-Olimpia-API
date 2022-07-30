@@ -24,6 +24,10 @@ class Cliente {
     return await dao.pegaTodosClientes()
     }
 
+    buscarClienteId = async (id) => {
+    return await dao.pegaClientePeloId(id)
+    }
+
     buscarClienteNome =  async (nome) => {
     return await dao.pegaClientePeloNome(nome)
     }   

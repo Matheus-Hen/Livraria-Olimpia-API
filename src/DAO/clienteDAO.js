@@ -58,14 +58,11 @@ const daoCliente = {
 
         return new Promise((resolve, reject)=> {
             db.get(PEGA_CLIENTE_CPF, cpf, (error, row)=> {
-                if (error) { 
-                console.log(error)
+                if (error) 
                     reject(error)
-                } 
-                else {
-                console.log(row)
+                else 
                     resolve(row)
-                }
+                
             })
         })
     },
@@ -77,6 +74,21 @@ const daoCliente = {
         `
         return new Promise((resolve, reject)=> {
             db.get(PEGA_CLIENTE_EMAIL, email, (error, row)=> {
+                if (error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    pegaClientePeloId : (id)=> {
+        const PEGA_CLIENTE_ID = `
+        SELECT * FROM CLIENTES
+        WHERE id = ?
+        `
+        return new Promise((resolve, reject)=> {
+            db.get(PEGA_CLIENTE_ID, id, (error, row)=> {
                 if (error)
                     reject(error)
                 else

@@ -44,6 +44,17 @@ const clienteController = {
             "cliente": resultadoBusca,
             "erro": false
         })
+    },
+
+    buscarClientePeloID: async (req, res)=> {
+        const id = req.params.id
+        const modelCliente = new Cliente()
+        const resultadoBusca = await modelCliente.buscarClienteId(id)
+
+        res.json({
+            "cliente": resultadoBusca,
+            "erro": false
+        })
     }
 }
 
