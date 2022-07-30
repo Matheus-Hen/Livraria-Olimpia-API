@@ -78,6 +78,24 @@ const clienteController = {
                 "erro": true}
             )
         }
+    },
+
+    deletaCliente: async (req, res)=> {
+    const modelCliente = new Cliente()
+    const id = req.params.id
+    try { 
+        await modelCliente.removerCliente(id)
+
+        res.json(
+            {"msg": "Cliente deletado com sucesso",
+            "erro": false}
+        )
+    } catch (error) {
+        res.json(
+            { "msg": error.message,
+            "erro": true}
+        )
+    }
     }
 }
 
