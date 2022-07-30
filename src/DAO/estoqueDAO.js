@@ -1,49 +1,30 @@
 import db from '../database/connect'
 
-// pegas os dados completos de quantidade ativa no estoque
 
-const totalEstoque = {
-    quantidadeEstoque: () => {
-        const PEGA_QUANTIDADE_GERAL = `
-        SELECT * FROM QUANTIDADE
-        `
+const daoCliente = {
 
-        return new Promise((resolve, reject) => {
-            db.all(PEGA_QUANTIDADE_GERAL, (error, row) => {
-                if (error) 
-                reject(error)
-                else
-                    resolve(row)
-            })
-        })
-    }
-}
-
-// inserindo produtos no estoque
-
-insereEstoque: (produtos) => {
-    const INSERE_PRODUTO = `
-    INSERT INTO PAGAMENTOS (id, produto, quantidade, fornecedor)
-    VALUES (?,?,?,?)
+    insereCliente : (estoque)=> {
+    const INSERE_ESTOQUE = `
+    INSERT INTO ESTOQUE (idProduto, produto, quantidade, fornecedor)
+    VALUES (?, ?, ?, ?)
     `
-    return new Promise((resolve, reject) => {
-        db.run(INSERE_PRODUTO,
-            produtos.id, produtos.produto, produtos.quantidade, produtos.fornecedor,
-            (error) => {
+    return new Promise((resolve, reject)=> {
+        db.run(INSERE_CLIENTE, estoque.idProduto, estoque.produto, cliente.quantidade,
+            cliente.fornecedor,
+            (error)=>{
                 if (error)
                     reject (error)
-                else
-                    resolve (produtos)
-                }
-                )
+                else 
+                    resolve (cliente)
             })
-        }
+    })
+    },
 
 
-// conferindo fornecedor no estoque 
+    // buscando fornecedor no estoque 
 
-const fornecedorEstoque = {
-    produtosAtivosEstoque: () => {
+
+    buscarFornecedorEstoque: () => {
         const PEGA_FORNECEDOR = `
         SELECT * FROM FORNECEDOR
         `
@@ -56,13 +37,12 @@ const fornecedorEstoque = {
                     resolve(row)
             })
         })
-    }
-}
+    },
 
-// consultando produtos no estoque
 
-const produtoEstoque = {
-    produtosEstoque: () => {
+    // buscando produtos no estoque
+
+    buscarEstoque: () => {
         const PEGA_PRODUTO = `
         SELECT * FROM PRODUTO
         `
@@ -75,5 +55,6 @@ const produtoEstoque = {
                     resolve(row)
             })
         })
-    }
+    },
+
 }
