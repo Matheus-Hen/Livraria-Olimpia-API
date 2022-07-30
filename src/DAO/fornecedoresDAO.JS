@@ -84,8 +84,21 @@ const daoFornecedores = {
     })
   },
 
-//GET (DELETE) - -------------------------------------------------
-  
+//RUN (DELETE) - -------------------------------------------------
+deletaFornecedores : (id)=>{
+  const DELETA_FORNECEDORES = `
+  DELETE FROM FORNECEDORES
+  WHERE id = ?
+  `
+  return new Promise((resolve, reject)=>{
+      db.run(DELETA_FORNECEDORES, id, (error, row)=>{
+          if(error)
+              reject(error)
+          else
+              resolve(row)
+      })
+  })
+},
   
 //RUN (UPDATE)---------------------------------------------------
   
