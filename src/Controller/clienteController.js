@@ -60,17 +60,18 @@ const clienteController = {
 
     criarNovoCliente: async (req, res)=> {
         const body = req.body
+        const modelCliente = new Cliente()
         try {
             const novoCliente = criaCliente(body.nome, body.email, body.cpf, 
                 body.telefone, body.cep, body.senha)
-            await modelClient.inserirCliente(novoCliente)
+            await modelCliente.inserirCliente(novoCliente)
 
             res.json(
                 {"msg": "Cliente inserido com sucesso",
                 "cliente": novoCliente,
                 "erro": false}
             )
-            
+
         } catch (error) {
             res.json(
                 {"msg": error.message,
