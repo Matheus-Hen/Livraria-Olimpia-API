@@ -41,7 +41,7 @@ const daoCliente = {
         `
 
         return new Promise((resolve, reject)=> {
-            db.all(PEGA_CLIENTE_NOME, nome, (error, row)=> {
+            db.get(PEGA_CLIENTE_NOME, nome, (error, row)=> {
                 if (error)
                     reject(error)
                 else
@@ -57,11 +57,15 @@ const daoCliente = {
         `
 
         return new Promise((resolve, reject)=> {
-            db.all(PEGA_CLIENTE_CPF, cpf, (error, row)=> {
-                if (error)
+            db.get(PEGA_CLIENTE_CPF, cpf, (error, row)=> {
+                if (error) { 
+                console.log(error)
                     reject(error)
-                else
+                } 
+                else {
+                console.log(row)
                     resolve(row)
+                }
             })
         })
     },
@@ -72,7 +76,7 @@ const daoCliente = {
         WHERE email = ?
         `
         return new Promise((resolve, reject)=> {
-            db.all(PEGA_CLIENTE_EMAIL, email, (error, row)=> {
+            db.get(PEGA_CLIENTE_EMAIL, email, (error, row)=> {
                 if (error)
                     reject(error)
                 else
@@ -87,7 +91,7 @@ const daoCliente = {
     WHERE id = ?
     `
     return new Promise((resolve, reject)=> {
-        db.get(DELETA_CLIENTE, id, (error, row)=> {
+        db.run(DELETA_CLIENTE, id, (error, row)=> {
             if(error)
                 reject(error)
             else
