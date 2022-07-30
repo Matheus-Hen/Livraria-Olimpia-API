@@ -16,46 +16,54 @@ class Livro {
     }
 
     cadastroDoLivro = async (livro) =>{
-        return await dao.cadastroDoLivro(livro)
+        return await dao.cadastarLivro(livro)
     }
 
-
-    listarLivros = async () => {
-        return await dao.listaDeLivros()
+    listaDeLivros = async () => {
+        return await dao.listarLivros()
     }
-
-    buscarLivro =  async (titulo) =>{
+    
+    buscaLivro =  async (titulo) =>{
         return await dao.buscarTituloLivro(titulo)
         // Adicionar um tratamento de erro para título não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
 
     }
 
-    buscarGenero =  async (genero) =>{
+    buscaGenero =  async (genero) =>{
         return await dao.buscarGeneroLivro(genero)
         // Adicionar um tratamento de erro para genero não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
         // Pesquisar como colocar uma lista de opções existentes para a pessoa selecionar tipo: 1. Romance, 2. Terror, 3. Literatura....(mas pode ser que fique complexo.)
     }
 
-    buscarAutor =  async (autor) =>{
+    buscaAutor =  async (autor) =>{
         return await dao.buscarAutorLivro(autor)
-        // Adicionar um tratamento de erro para genero não encontrado.
+        // Adicionar um tratamento de erro para autor não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
         // Pesquisar como colocar uma lista de opções existentes para a pessoa selecionar tipo: 1. Romance, 2. Terror, 3. Literatura....(mas pode ser que fique complexo.)
     }
 
-    buscarIdioma =  async (idioma) =>{
+    buscaIdioma =  async (idioma) =>{
         return await dao.buscarIdiomaLivro(idioma)
-        // Adicionar um tratamento de erro para genero não encontrado.
+        // Adicionar um tratamento de erro para idioma não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
         // Pesquisar como colocar uma lista de opções existentes para a pessoa selecionar tipo: 1. Romance, 2. Terror, 3. Literatura....(mas pode ser que fique complexo.)
     }
 
     removeLivro = async (idLivro) =>{
-        return await dao.removeLivro(idLivro)
+        return await dao.removerLivro(idLivro)
         // Adionar tratamento caso o livro já não exista na lista. 
     }
+
+    atualizaValorLivro = async(valor) => {
+        return await dao.atualizarValorLivro(valor)
+    }
+
+    /*verificaEstoqueLivro = async(estoque) => {
+        return await dao.atualizarEstoque(estoque)
+    }
+    */
 
 }
 
