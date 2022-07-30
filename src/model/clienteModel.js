@@ -21,19 +21,19 @@ class Cliente {
     }
 
     buscarClientesTodos = async () => {
-    return await dao.buscarClientesTodos()
+    return await dao.pegaTodosClientes()
     }
 
     buscarClienteNome =  async (nome) => {
-    return await dao.buscarClienteNome(nome)
+    return await dao.pegaClientePeloNome(nome)
     }   
 
-    buscarClienteEmail = (email) => {
-    return await dao.buscarClienteEmail(email)
+    buscarClienteEmail = async (email) => {
+    return await dao.pegaClientePeloEmail(email)
     }
 
-    buscarClienteCPF = (cpf) => {
-    return await dao.buscarClienteCPF(cpf)
+    buscarClienteCPF = async (cpf) => {
+    return await dao.pegaClientePeloCPF(cpf)
     }
 
     atualizarCliente = (id, novoCliennte) => {
