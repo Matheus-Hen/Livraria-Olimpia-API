@@ -15,12 +15,6 @@ CREATE TABLE IF NOT EXISTS "LIVROS" (
   );
 `
 
-function criaTabelaLivros() {
-    db.run(LIVROS_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de livros");
-    });
-}
-
 const LIVROS_ADD_DATA = `
 INSERT INTO LIVROS (id_livro, título, autor, genero, formato, valor, idioma, numeroPaginas)
 VALUES 
@@ -38,6 +32,18 @@ VALUES
     (100013, 'A Invenção de Morel', 'Adolfo Bioy Casares', 'Romance; Ficção Científica', 'Físico', 43.00, 'Português', 160),
     (100014, 'Duna', 'Frank Herbert', 'Literatura; Ficção Científica', 'Digital', 77.00, 'Inglês', 544)
 `
+function criaTabelaLivros() {
+    db.run(LIVROS_SCHEMA, (error)=> {
+        if (error) console.log(`Erro ao criar tabela de livros: ${error.message}`);
+    });
+}
+
+function populaTabelaLivros() {
+    db.run(LIVROS_ADD_DATA, (error) => {
+      if (error) console.log("Erro ao popular a tabela de clientes")
+    })
+}  
+
 
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
@@ -129,6 +135,7 @@ function criaTabelaEstoque() {
 
 db.serialize( ()=> {
     criaTabelaLivros()
+    populaTabelaLivros()
     criaTabelaClientes()
     criaTabelaFuncionarios()
     criaTabelaFornecedores()
