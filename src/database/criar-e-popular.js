@@ -4,7 +4,7 @@ const db = new sqlite3.Database('olimpia.db');
 
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
-    "id_livro" int PRIMARY KEY AUTO_INCREMENT,
+    "id_livro" int PRIMARY KEY AUTOINCREMENT,
     "titulo" text,
     "autor" text,
     "genero" text,
@@ -47,7 +47,7 @@ function populaTabelaLivros() {
 
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" int PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cpf" text,
@@ -65,7 +65,7 @@ function criaTabelaClientes() {
 
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" int PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cpf" text,
@@ -84,7 +84,7 @@ function criaTabelaFuncionarios() {
 
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" int PRIMARY KEY AUTOINCREMENT,
     "nome" text,
     "email" text,
     "cnpj" text,
@@ -100,7 +100,7 @@ function criaTabelaFornecedores() {
 
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" int PRIMARY KEY AUTOINCREMENT,
     "cliente" int,
     "forma_pagamento" text,
     "valor" real,
@@ -120,7 +120,7 @@ function criaTabelaPagamentos() {
 
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
-    "id" int PRIMARY KEY AUTO_INCREMENT,
+    "id" int PRIMARY KEY AUTOINCREMENT,
     "produto" int,
     "quantidade" int,
     "fornecedor" int
