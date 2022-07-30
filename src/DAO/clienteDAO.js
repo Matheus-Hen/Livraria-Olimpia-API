@@ -128,7 +128,7 @@ const daoCliente = {
                     if (error)
                         reject(error)
                     else
-                        resolve(novoCliennte)
+                        resolve(novoCliente)
                 })
         })
     }
