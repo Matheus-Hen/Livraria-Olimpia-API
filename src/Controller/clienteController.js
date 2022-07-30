@@ -1,4 +1,5 @@
 import Cliente from "../model/clienteModel.js";
+import { criaCliente } from "../services/validacoesCliente.js";
 
 
 const clienteController = {
@@ -55,6 +56,27 @@ const clienteController = {
             "cliente": resultadoBusca,
             "erro": false
         })
+    },
+
+    criarNovoCliente: async (req, res)=> {
+        const body = req.body
+        try {
+            const novoCliente = criaCliente(body.nome, body.email, body.cpf, 
+                body.telefone, body.cep, body.senha)
+            await modelClient.inserirCliente(novoCliente)
+
+            res.json(
+                {"msg": "Cliente inserido com sucesso",
+                "cliente": novoCliente,
+                "erro": false}
+            )
+            
+        } catch (error) {
+            res.json(
+                {"msg": error.message,
+                "erro": true}
+            )
+        }
     }
 }
 
