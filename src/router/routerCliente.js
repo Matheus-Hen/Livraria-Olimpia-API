@@ -9,6 +9,8 @@ const routerCliente = (app)=> {
     app.get('/clientes/id/:id', clienteController.buscarClientePeloID)
 
     app.post('/clientes', clienteController.criarNovoCliente)
+
+    app.delete('/clientes/id/:id', clienteController.deletaCliente)
 }
 
 export default routerCliente
