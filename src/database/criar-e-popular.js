@@ -36,11 +36,11 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
 const CLIENTES_ADD_DATA = `
 INSERT INTO CLIENTES (id, nome, email, cpf, telefone, senha, cep)
 VALUES 
-(1, 'Adriano Silva', 'adrianosilva@gmail.com', '244.566.344-05', '64 3538-0744', 'adrianinho123', '61948-530'),
-(2, 'Olivia Rogéria', 'good4u@yahoo.com', '485.760.882-07', '87 2114-8532', 'traitor', '59025-100'),
-(3, 'Taylor Swift', 'folkloreaoty@gmail.com', '447.278.941-81', '99 2876-3448', 'amomeusgatinhos', '69304-410'),
-(4, 'Pera Pereira', 'perapereira@yahoo.com', '012.432.970-50', '83 2541-2343', 'pear123', '79002-914'),
-(5, 'Kanye West', 'uniaokanyetaylor@gmail.com', '994.219.908-03', '79 3757-5524', 'thecollegedropout', '65057-807')
+(1, 'Adriano Silva', 'adrianosilva@gmail.com', '24456634405', '6435380744', 'adrianinho123', '61948530'),
+(2, 'Olivia Rogéria', 'good4u@yahoo.com', '48576088207', '8721148532', 'traitor', '59025100'),
+(3, 'Taylor Swift', 'folkloreaoty@gmail.com', '44727894181', '9928763448', 'amomeusgatinhos', '69304410'),
+(4, 'Pera Pereira', 'perapereira@yahoo.com', '01243297050', '8325412343', 'pear123', '79002914'),
+(5, 'Kanye West', 'uniaokanyetaylor@gmail.com', '99421990803', '7937575524', 'thecollegedropout', '65057807')
 `
 
 function criaTabelaClientes() {
