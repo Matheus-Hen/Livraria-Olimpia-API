@@ -1,7 +1,7 @@
-import db from '../database/connect'
+import db from '../database/connect.js'
 
 
-const daoCliente = {
+const daoEstoque = {
 
     insereCliente : (estoque)=> {
     const INSERE_ESTOQUE = `
@@ -40,15 +40,30 @@ const daoCliente = {
     },
 
 
-    // buscando produtos no estoque
+    // buscando todos os produtos do estoque
 
     buscarEstoque: () => {
-        const PEGA_PRODUTO = `
-        SELECT * FROM PRODUTO
+        const PEGA_ESTOQUE = `
+        SELECT * FROM ESTOQUE
         `
 
         return new Promise((resolve, reject) => {
-            db.all(PEGA_PRODUTO, (error, row) => {
+            db.all(PEGA_ESTOQUE, (error, row) => {
+                if (error) 
+                reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    buscarQuantidade: () => {
+        const PEGA_QUANTIDADE = `
+        SELECT * FROM QUANTIDADE
+        `
+
+        return new Promise((resolve, reject) => {
+            db.all(PEGA_QUANTIDADE, (error, row) => {
                 if (error) 
                 reject(error)
                 else
@@ -58,3 +73,5 @@ const daoCliente = {
     },
 
 }
+
+export default daoEstoque

@@ -1,6 +1,8 @@
 import estoqueController from "../controller/estoqueController.js";
 
-const routerCliente = (app)=> {
+const routerEstoque = (app)=> {
 
     app.get('/estoque', estoqueController.buscarEstoque)
 }
+
+export default routerEstoque
