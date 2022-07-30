@@ -116,7 +116,7 @@ function popularTabelaPagamentos() {
 
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
-    "id_pagamentos" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "idEstoque" INTEGER PRIMARY KEY AUTOINCREMENT,
     "produto" integer,
     "quantidade" integer,
     "fornecedor" integer

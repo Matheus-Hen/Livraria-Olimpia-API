@@ -40,7 +40,7 @@ insereEstoque: (produtos) => {
         }
 
 
-// conferindo fornecedor ativos no estoque 
+// conferindo fornecedor no estoque 
 
 const fornecedorEstoque = {
     produtosAtivosEstoque: () => {
