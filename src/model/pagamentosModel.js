@@ -1,13 +1,9 @@
 import dao from '../DAO/pagamentosDAO.js'
 
-const pagamentosModel = {
+const pagamentos = {
 
     pegaPagamentosTodos: async () => {
         return await dao.pegaPagamentosTodos()
-    },
-
-    inserePagamento: async (pagamentos) => {
-        return await dao.inserePagamento(pagamentos)
     },
 
     pegaPagamentosId: async (idPagamentos) => {
@@ -42,6 +38,10 @@ const pagamentosModel = {
         return await dao.deletaUsuario(idPagamentos)
     },
 
+    inserePagamento: async (pagamentos) => {
+        return await dao.inserePagamento(pagamentos)
+    },
+
     atualizaPagamento: async (idPagamentos, novasInformacoes) => {
         const informacaoAtual = await pagamentosModel.pegaUmUsuarioId(idPagamentos)
         console.log(informacaoAtual)
@@ -63,4 +63,4 @@ const pagamentosModel = {
     },
 }
 
-export default usuarioModel
+export default pagamentosModel
