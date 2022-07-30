@@ -1,3 +1,6 @@
+import db from '../database/connect.js'
+import dao from '../DAO/fornecedoresDAO.js'
+
 class Fornecedores {
   constructor(id, nome, cnpj, produto, email, telefone, endereco) {
     this.id = id;
