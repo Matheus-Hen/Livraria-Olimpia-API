@@ -5,13 +5,13 @@ const daoFornecedores = {
   //inserindo
   insereFornecedor : (fornecedor)=> {
     const INSERE_FORNECEDORES = `
-    INSERT INTO FORNECEDORES (id, nome, cnpj, produto, email, telefone, endereco)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO FORNECEDORES (id, nome, cnpj, produto, email, telefone, endereco, cep)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `
       return new Promise((resolve, reject)=> {
         db.run(INSERE_FORNECEDORES, fornecedor.id, fornecedor.nome,
         fornecedor.cnpj, fornecedor.produto, fornecedor.email,
-        fornecedor.telefone, fornecedor.endereco, (error)=>{
+        fornecedor.telefone, fornecedor.endereco, fornecedor.cep, (error)=>{
             if (error)
               reject (error)
             else 
@@ -56,7 +56,7 @@ const daoFornecedores = {
   produtosFornecedores: (produtos)=>{
     const PEGA_PRODUTOS_FORNECEDORES =`
     SELECT * FROM FORNECEDORES
-    WHERE produtos = ?
+    WHERE produto = ?
     `
     return new Promise((resolve, reject)=>{
       db.all(PEGA_PRODUTOS_FORNECEDORES, produtos, (error, row)=>{
@@ -68,14 +68,14 @@ const daoFornecedores = {
     })
   },
 
-  //ALL ENDEREÇOS
-  enderecosFornecedores: (enderecos)=>{
-    const PEGA_ENDERECOS_FORNECEDORES =`
+  //ALL CEP
+ CEPfornecedores: (cep)=>{
+    const PEGA_CEP_FORNECEDORES =`
     SELECT * FROM FORNECEDORES
-    WHERE produtos = ?
+    WHERE cep = ?
     `
     return new Promise((resolve, reject)=>{
-      db.all(PEGA_ENDERECOS_FORNECEDORES, enderecos, (error, row)=>{
+      db.all(PEGA_CEP_FORNECEDORES, cep, (error, row)=>{
         if(error)
           reject(error)
         else
@@ -100,24 +100,7 @@ deletaFornecedores : (id)=>{
   })
 },
   
-//RUN (UPDATE)---------------------------------------------------
-atualizaFornecedores : (id, newFornecedor)=> {
-  const ATT_FORNECEDORES = `
-  UPDATE FORNECEDORES
-  SET nome = ?, cnpj = ?, produto = ?, email = ?, telefone = ?, endereco = ?
-  WHERE id = ?
-  `
-
- return new Promise((resolve, reject)=> {
-   db.run(ATT_FORNECEDORES, 
-      newFornecedor.id, newFornecedor.nome, newFornecedor.cnpj, newFornecedor.produto, newFornecedor.email, newFornecedor.telefone, newFornecedor.endereco, id, (error)=>{
-          if (error)
-            reject(error)
-          else
-            resolve(newFornecedor)
-     })
-  })
-}  
+//RUN (UPDATE)--------------------------------------------------- 
 
 }
 
