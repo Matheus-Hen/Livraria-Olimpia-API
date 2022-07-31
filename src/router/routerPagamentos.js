@@ -11,6 +11,7 @@ const Pagamentos = (app) => {
     app.get('/pagamentos/parcelamento/:parcelamento', pagamentosController.pegaPagamentosParcelamento)
     app.get('/pagamentos/cliente/:cliente', pagamentosController.pegaPagamentosCliente)
     app.post('/pagamentos', pagamentosController.inserePagamentos)
+    app.put('/pagamentos/idPagamentos/:idPagamentos', pagamentosController.atualizarPagamento)
     app.delete('/pagamentos/idPagamentos/:idPagamentos', pagamentosController.deletaPagamento)
 }
 
