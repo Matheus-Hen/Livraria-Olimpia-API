@@ -89,14 +89,14 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
   );
   
 `
-const popularPagamentos = `
+const POPULAR_PAGAMENTOS = `
 INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
 VALUES 
-    (002022, 'luana silva de alencar', 'pix', 120, 0, 'pago', '20/08/2022'),
-    (002023, 'pedro josé Barros', 'cartao', 89, 2, 'pago', '15/08/2022'),
-    (002024, 'marcos santos', 'boleto', 180, 1, 'pago', '02/08/2022'),
-    (002025, 'amanda tainá Rosa', 'pix', 59, 0, 'pago', '17/06/2022'),
-    (002026, 'ana Julia maria', 'cartao', 59, 0, 'pago', '17/06/2022')
+    (002022, 'luana silva de alencar', 'pix', 120, 0, 'pago', '20-08-2022'),
+    (002023, 'pedro josé Barros', 'cartao', 89, 2, 'pago', '15-08-2022'),
+    (002024, 'marcos santos', 'boleto', 180, 1, 'pago', '02-08-2022'),
+    (002025, 'amanda tainá Rosa', 'pix', 59, 0, 'pago', '17-06-2022'),
+    (002026, 'ana Julia maria', 'cartao', 59, 0, 'pago', '17-06-2022')
 `
 
 function criaTabelaPagamentos() {
@@ -106,7 +106,7 @@ function criaTabelaPagamentos() {
 }
 
 function popularTabelaPagamentos() {
-    db.run(popularPagamentos, (error)=> {
+    db.run(POPULAR_PAGAMENTOS, (error)=> {
         if (error) console.log(`Erro ao popular tabela pagamentos: ${error.message}`);
     })
 }

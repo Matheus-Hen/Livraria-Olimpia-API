@@ -11,8 +11,8 @@ class pagamentos {
         this.data = data;
     }
 
-    pegaPagamentosTodos = async () => {
-        return await dao.pegaPagamentosTodos()
+    pegaPagamentosTodos = async (Pagamentos) => {
+        return await dao.pegaPagamentosTodos(Pagamentos)
     }
 
     pegaPagamentosId = async (idPagamentos) => {

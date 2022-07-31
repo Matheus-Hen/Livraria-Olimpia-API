@@ -116,10 +116,10 @@ const pagamentosController = {
 
     atualizarPagamento: async (req, res) => {
         const modelPagamentos = new pagamentos()
-        const id = req.params.idPagamentos
+        const idPagamentos = req.params.idPagamentos
         const body = req.body
         try {
-            const pagamentoAtualizado = criaPagamento(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
+            const pagamentoAtualizado = criaPagamento(body.cliente, body.formaDePagamento, body.valor,
                 body.parcelamento, body.status, body.data)
             await modelPagamentos.atualizarPagamento(idPagamentos, pagamentoAtualizado)
             res.json(
