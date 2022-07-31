@@ -1,7 +1,7 @@
 import pagamentos from "../model/pagamentosModel.js"
 
 const pagamentosController = {
-    pegaPagamentosTodos : async (req, res)=> {
+    pegaPagamentosTodos: async (req, res) => {
         const modelPagamentos = new pagamentos()
         const todosPagamentos = await modelPagamentos.pegaPagamentosTodos()
 
@@ -11,7 +11,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosId: async (req, res)=> {
+    pegaPagamentosId: async (req, res) => {
         const idPagamentos = req.params.idPagamentos
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosId(idPagamentos)
@@ -22,7 +22,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosStatus: async (req, res)=> {
+    pegaPagamentosStatus: async (req, res) => {
         const status = req.params.status
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosStatus(status)
@@ -33,7 +33,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosForma: async (req, res)=> {
+    pegaPagamentosForma: async (req, res) => {
         const formaDePagamento = req.params.formaDePagamento
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosForma(formaDePagamento)
@@ -44,7 +44,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosData: async (req, res)=> {
+    pegaPagamentosData: async (req, res) => {
         const data = req.params.data
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosData(data)
@@ -55,7 +55,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosValor: async (req, res)=> {
+    pegaPagamentosValor: async (req, res) => {
         const valor = req.params.valor
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosValor(valor)
@@ -66,7 +66,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentosParcelamento: async (req, res)=> {
+    pegaPagamentosParcelamento: async (req, res) => {
         const parcelamento = req.params.parcelamento
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosParcelamento(parcelamento)
@@ -76,8 +76,8 @@ const pagamentosController = {
             "erro": false
         })
     },
-    
-    pegaPagamentosCliente: async (req, res)=> {
+
+    pegaPagamentosCliente: async (req, res) => {
         const cliente = req.params.cliente
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosCliente(cliente)
@@ -88,28 +88,55 @@ const pagamentosController = {
         })
     },
 
-    inserePagamentos: async (req, res)=> {
+    inserePagamentos: async (req, res) => {
         const body = req.body
         const modelPagamentos = new pagamentos()
         try {
-            const novoPagamento = criaCliente(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor, 
+            const novoPagamento = criaCliente(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
                 body.parcelamento, body.status, body.data)
-                await modelPagamentos.inserePagamentos(novoPagamento)
-                
-                res.json(
-                    {"msg": "Pagamento inserido com sucesso",
+            await modelPagamentos.inserePagamentos(novoPagamento)
+
+            res.json(
+                {
+                    "msg": "Pagamento inserido com sucesso",
                     "pagamentos": novoPagamento,
-                    "erro": false}
-                    )
-                    
-                } catch (error) {
-                    res.json(
-                        {"msg": error.message,
-                        "erro": true}
-                        )
-                    }
-                },
-    
+                    "erro": false
+                }
+            )
+
+        } catch (error) {
+            res.json(
+                {
+                    "msg": error.message,
+                    "erro": true
+                }
+            )
+        }
+    },
+
+
+    deletaPagamento: async (req, res) => {
+        const modelPagamentos = new pagamentos()
+        const idPagamentos = req.params.idPagamentos
+        try {
+            await modelPagamentos.removerCliente(idPagamentos)
+
+            res.json(
+                {
+                    "msg": "Pagamento deletado com sucesso",
+                    "erro": false
+                }
+            )
+        } catch (error) {
+            res.json(
+                {
+                    "msg": error.message,
+                    "erro": true
+                }
+            )
+        }
+    },
+
 }
 
 export default pagamentosController
