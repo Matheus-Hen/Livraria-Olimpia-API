@@ -57,21 +57,54 @@ const daoEstoque = {
         })
     },
 
-    buscarQuantidade: () => {
-        const PEGA_QUANTIDADE = `
-        SELECT * FROM QUANTIDADE
-        `
 
-        return new Promise((resolve, reject) => {
-            db.all(PEGA_QUANTIDADE, (error, row) => {
-                if (error) 
-                reject(error)
+     buscarQuantidadeporId: (id) => {
+            const PEGA_QUANTIDADE = `
+            SELECT * FROM ESTOQUE
+            WHERE idEstoque = ?
+            `
+    
+            return new Promise((resolve, reject) => {
+                db.all(PEGA_QUANTIDADE, id, (error, row) => {
+                    if (error) 
+                    reject(error)
+                    else
+                        resolve(row)
+                })
+            })
+     },
+     
+     atualizarEstoque: (id, novoProdutoEstoque) => {
+        const ATUALIZA_ESTOQUE = `
+        UPDATE ESTOQUE
+        SET produto = ?, quantidade = ?, fornecedor = ?
+        WHERE idEstoque = ?
+        `
+            return new Promise((resolve, reject) => {
+                db.run(ATUALIZA_ESTOQUE, novoProdutoEstoque.id , novoProdutoEstoque.produto, novoProdutoEstoque.quantidade, id,
+                    (error, row) => {
+                    if (error) 
+                    reject(error)
+                    else
+                        resolve(row)
+                })
+            })
+     },
+
+     removeProduto : (id)=> {
+        const DELETA_PRODUTO = `
+        DELETE FROM ESTOQUE
+        WHERE idEstoque = ?
+        `
+        return new Promise((resolve, reject)=> {
+            db.run(DELETA_PRODUTO, id, (error, row)=> {
+                if(error)
+                    reject(error)
                 else
                     resolve(row)
             })
         })
-    },
-
+        },
 }
 
 export default daoEstoque

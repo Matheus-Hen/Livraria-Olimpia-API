@@ -34,6 +34,71 @@ const estoqueController = {
                 "erro": true}
             )
         }
+    },
+
+    buscarQuantidadePorId: async (req, res)=> {
+        const id = req.params.id
+        const estoqueModel = new Estoque()
+        const todosProdutos = await estoqueModel.buscarQuantidadePorId(id)
+
+        res.json({
+            "produtos": todosProdutos,
+            "erro": false
+        })
+    },
+
+    atualizaEstoque: async (req, res)=> {
+        const modelEstoque = new Estoque()
+        const id = req.params.idEstoque
+        const body= await req.body
+
+        try {
+            const informacaoAtualizada = criaEstoque(
+                body.idEstoque,
+                body.produto,
+                body.quantidade,
+                body.fornecedor
+            )
+
+            await modelEstoque.atualizarEstoque(id, informacaoAtualizada)
+            res.json(
+                {"msg": "Produto atualizado com éxito",
+                "produto": informacaoAtualizada,
+                "erro": false}
+            )
+            
+            
+        } catch (error) {
+
+         res.json(
+          {"msg": error.message,
+          "erro": true}
+          )
+       }
+   },
+
+    deletaProdutoEstoque: async (req,res) =>{
+        const modelEstoque = new Estoque()
+        const id = req.params.id
+
+        try{
+            await modelEstoque.removeProduto(id)
+
+            res.json(
+                {"msg": "O produto foi removido do estoque",
+                "erro": false}
+            )
+
+        } catch (error) {
+
+            res.json(
+                {"msg": error.message,
+                "error": true}
+            )
+            
+        }
+        
     }
 }
+        
 export default estoqueController
