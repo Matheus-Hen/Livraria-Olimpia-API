@@ -92,7 +92,7 @@ const pagamentosController = {
         const body = req.body
         const modelPagamentos = new pagamentos()
         try {
-            const novoPagamento = criaCliente(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
+            const novoPagamento = criaPagamento(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
                 body.parcelamento, body.status, body.data)
             await modelPagamentos.inserePagamentos(novoPagamento)
 
@@ -114,12 +114,36 @@ const pagamentosController = {
         }
     },
 
+    atualizarPagamento: async (req, res) => {
+        const modelPagamentos = new pagamentos()
+        const id = req.params.idPagamentos
+        const body = req.body
+        try {
+            const pagamentoAtualizado = criaPagamento(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
+                body.parcelamento, body.status, body.data)
+            await modelPagamentos.atualizarPagamento(idPagamentos, pagamentoAtualizado)
+            res.json(
+                {
+                    "msg": "Pagamento atualizado com sucesso",
+                    "cliente": pagamentoAtualizado,
+                    "erro": false
+                }
+            )
+        } catch (error) {
+            res.json(
+                {
+                    "msg": error.message,
+                    "erro": true
+                }
+            )
+        }
+    },
 
     deletaPagamento: async (req, res) => {
         const modelPagamentos = new pagamentos()
         const idPagamentos = req.params.idPagamentos
         try {
-            await modelPagamentos.removerCliente(idPagamentos)
+            await modelPagamentos.deletaPagamento(idPagamentos)
 
             res.json(
                 {
@@ -135,7 +159,7 @@ const pagamentosController = {
                 }
             )
         }
-    },
+    }
 
 }
 
