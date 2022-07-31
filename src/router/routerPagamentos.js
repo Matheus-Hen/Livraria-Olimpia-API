@@ -10,7 +10,8 @@ const Pagamentos = (app) => {
     app.get('/pagamentos/valor/:valor', pagamentosController.pegaPagamentosValor)
     app.get('/pagamentos/parcelamento/:parcelamento', pagamentosController.pegaPagamentosParcelamento)
     app.get('/pagamentos/cliente/:cliente', pagamentosController.pegaPagamentosCliente)
-    app.post('/clientes', pagamentosController.inserePagamentos)
+    app.post('/pagamentos', pagamentosController.inserePagamentos)
+    app.delete('/pagamentos/idPagamentos/:idPagamentos', pagamentosController.deletaPagamento)
 }
 
 export default Pagamentos
