@@ -10,6 +10,11 @@ class Fornecedores {
     this.produto = produto;
     this.telefone = telefone;
     this.endereco = endereco;
+    this.cep = cep
+  }
+
+  totalDeFornecedores = async()=>{
+    return await dao.totalFornecedores()
   }
 }
 
