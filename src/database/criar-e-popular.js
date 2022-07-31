@@ -68,12 +68,12 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
   "produto" text,
   "email" text,
   "telefone" text,
-  "endereço" text
+  "endereco" text
   );
 `;
 
 const populando_fornecedores = `
-    INSERT INTO FORNECEDORES (id, nome, cnpj, produto, email, telefone, endereço)
+    INSERT INTO FORNECEDORES (id, nome, cnpj, produto, email, telefone, endereco)
 VALUES 
     (001, 'PAPERSHIFT', '03.546.726/0001-11', 'Papel', 'compras@papershift.com.br', '+55 19 2376-8254', 'Avenida Barcelona, 1405 - Agua Branca, Campinas - SP, 03945080'),
 
