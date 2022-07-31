@@ -96,4 +96,26 @@ const fornecedoresController = {
           )
         }
       },
+
+    //ATUALIZA
+    atualizaFornecedor: async (req, res)=> {
+      const modelFornecedor = new Fornecedores()
+      const id = req.params.id
+      const body = req.body
+      try { 
+         const fornecedorAtualizado = criaFornecedor(body.nome, body.cnpj,
+            body.produto, body.email, body.telefone, body.endereco, body.cep)
+            await modelFornecedor.atualizaFornecedor(id, fornecedorAtualizado)
+            res.json(
+              {"msg": "Fornecedor atualizado",
+                "fornecedor": fornecedorAtualizado,
+                "erro": false}
+            )
+          } catch (error) {
+            res.json(
+            {"msg": error.message,
+              "erro": true}
+            )
+          }
+    }
 }
