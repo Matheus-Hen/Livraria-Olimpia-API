@@ -52,6 +52,22 @@ const daoFornecedores = {
     })
   },
 
+  //ALL CNPJ
+  CNPJfornecedores: (cnpj)=>{
+    const PEGA_CNPJ_FORNECEDORES =`
+    SELECT * FROM FORNECEDORES
+    WHERE cnpj = ?
+    `
+    return new Promise((resolve, reject)=>{
+      db.all(PEGA_CNPJ_FORNECEDORES, cnpj, (error, row)=>{
+        if(error)
+          reject(error)
+        else
+          resolve(row)
+      })
+    })
+  },
+
   //ALL PRODUTOS
   produtosFornecedores: (produtos)=>{
     const PEGA_PRODUTOS_FORNECEDORES =`
