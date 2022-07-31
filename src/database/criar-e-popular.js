@@ -1,6 +1,22 @@
-import sqlite3 from 'sqlite3'
-sqlite3.verbose()
-const db = new sqlite3.Database('olimpia.db');
+import sqlite from 'sqlite3'
+sqlite.verbose()
+
+
+const db = new sqlite.Database('olimpia.db', (err)=> {
+    if (err) {
+        console.log(`Erro: ${err.message}`)
+    } else {
+        console.log("Banco de dados conectado")
+    }
+});
+
+process.on('SIGINT', () =>
+    db.close(() => {
+        console.log('Banco de dados encerrado!');
+        process.exit(0);
+    })
+);
+
 
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
@@ -16,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "LIVROS" (
 `
 
 function criaTabelaLivros() {
-    db.run(LIVROS_SCHEMA, (error)=> {
+    db.run(LIVROS_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela livros: ${error.message}`);
     });
 }
@@ -34,7 +50,7 @@ CREATE TABLE IF NOT EXISTS "CLIENTES" (
 `
 
 function criaTabelaClientes() {
-    db.run(CLIENTES_SCHEMA, (error)=> {
+    db.run(CLIENTES_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela clientes: ${error.message}`);
     });
 }
@@ -52,7 +68,7 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
 `
 
 function criaTabelaFuncionarios() {
-    db.run(FUNCIONARIOS_SCHEMA, (error)=> {
+    db.run(FUNCIONARIOS_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
     });
 }
@@ -68,7 +84,7 @@ CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
   );
 `
 function criaTabelaFornecedores() {
-    db.run(FORNECEDORES_SCHEMA, (error)=> {
+    db.run(FORNECEDORES_SCHEMA, (error) => {
         if (error) console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
     });
 }
@@ -88,7 +104,7 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
 `
 
 function criaTabelaPagamentos() {
-    db.run(PAGAMENTOS_SCHEMA, (error)=> {
+    db.run(PAGAMENTOS_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
     });
 }
@@ -104,12 +120,12 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
 `
 
 function criaTabelaEstoque() {
-    db.run(ESTOQUE_SCHEMA, (error)=> {
+    db.run(ESTOQUE_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela estoque: ${error.message}`);
     });
 }
 
-db.serialize( ()=> {
+db.serialize(() => {
     criaTabelaLivros()
     criaTabelaClientes()
     criaTabelaFuncionarios()
@@ -117,3 +133,5 @@ db.serialize( ()=> {
     criaTabelaPagamentos()
     criaTabelaEstoque()
 })
+
+export default db

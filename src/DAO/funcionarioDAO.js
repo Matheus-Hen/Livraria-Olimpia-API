@@ -1,4 +1,4 @@
-import db from "../database/connect.js"
+import db from "../database/criar-e-popular.js"
 
 
 const daoFuncionario = {
