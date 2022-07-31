@@ -16,14 +16,21 @@ const daoLivros = {
         })
     },
 
-    cadastroLivro : (livro)=>{
+    cadastrarLivro : (livro)=>{
         const ADD_LIVRO = `
         INSERT INTO LIVROS (id_livro, titulo, autor, genero, formato, valor, idioma, numeroPagina)
-        VALUES (?,?,?)
+        VALUES (?,?,?,?,?,?,?,?)
         `
         return new Promise((resolve, reject)=>{
             db.run(ADD_LIVRO,
-                livro.idLivro, livro.titulo, livro.autor, livro.genero, livro.formato, livro.valor, livro.idioma, livro.numeroPaginas,
+                livro.idLivro, 
+                livro.titulo, 
+                livro.autor, 
+                livro.genero, 
+                livro.formato, 
+                livro.valor, 
+                livro.idioma, 
+                livro.numeroPaginas,
                 (error)=>{
                     if(error)
                         reject(error)
