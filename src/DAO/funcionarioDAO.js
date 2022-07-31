@@ -115,14 +115,14 @@ const daoFuncionario = {
     updateFunc : (id, newFunc)=> {
         const updateFuncionario = `
         UPDATE FUNCIONARIOS
-        SET nome = ?, email = ?, cpf = ?, telefone = ?, cep = ?, senha = ?
+        SET nome = ?, email = ?, cpf = ?, telefone = ?, cargo = ?, senha = ?
         WHERE id = ?
         `
 
         return new Promise((resolve, reject)=> {
             db.run(updateFuncionario, 
                 newFunc.nome, newFunc.email, newFunc.cpf, 
-                newFunc.telefone, newFunc.cep, newFunc.senha,
+                newFunc.telefone, newFunc.cargo, newFunc.senha,
                 id,
                 (error)=>{
                     if (error)
