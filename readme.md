@@ -56,7 +56,9 @@ npm start
 ### Estoque
  * __GET  /estoque__ 
 
-    Esquema da resposta
+    _Conferindo os livros disponíveis no estoque_
+    
+    Esquema de resposta:
     ```json
     {
         "produtos": [
