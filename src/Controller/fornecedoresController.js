@@ -79,5 +79,21 @@ const fornecedoresController = {
       })
     },
 
-    
+     //DELETA
+    deletaFornecedor: async (req, res)=> {
+      const modelFornecedor = new Fornecedores()
+      const id = req.params.id
+      try { 
+        await modelFornecedor.deletaFornecedor(id)
+        res.json(
+          {"msg": "Fornecedor deletado",
+            "erro": false}
+        )
+        } catch (error) {
+          res.json(
+            { "msg": error.message,
+              "erro": true}
+          )
+        }
+      },
 }
