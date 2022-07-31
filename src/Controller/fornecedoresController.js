@@ -34,4 +34,50 @@ const fornecedoresController = {
           "erro": false
       })
     },
+
+    //especificos
+    procurarIDfornecedores : async (req, res)=> {
+      const id = req.params.id
+      const modelFornecedor = new Fornecedores()
+      const result = await modelFornecedor.IDfornecedor(id)
+      
+      res.json({
+          "fornecedores": result,
+          "erro": false
+      })
+    },
+
+    procurarProdutosFornecedores : async (req, res)=> {
+      const produtos = req.params.produtos
+      const modelFornecedor = new Fornecedores()
+      const result = await modelFornecedor.produtosFornecedor(produtos)
+      
+      res.json({
+          "fornecedores": result,
+          "erro": false
+      })
+    },
+  
+    procurarCEPfornecedores : async (req, res)=> {
+      const cep = req.params.cep
+      const modelFornecedor = new Fornecedores()
+      const result = await modelFornecedor.CEPfornecedor(cep)
+      
+      res.json({
+          "fornecedores": result,
+          "erro": false
+      })
+    },
+  
+    procurarCNPJfornecedores : async (req, res)=> {
+      const cnpj = req.params.cnpj
+      const modelFornecedor = new Fornecedores()
+      const result = await modelFornecedor.CNPJfornecedor(cnpj)
+      res.json({
+          "fornecedores": result,
+          "erro": false
+      })
+    },
+
+    
 }
