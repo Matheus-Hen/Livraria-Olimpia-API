@@ -1,4 +1,4 @@
-import dao from '../DAO/funcionarioDAO'
+import dao from '../DAO/funcionarioDAO.js'
 import db from '../database/connect.js'
 
 class Funcionario {

@@ -1,5 +1,5 @@
-import Funcionario from "../model/FuncionarioModel";
-import { newFunc } from "../services/ValidacaoFunc";
+import Funcionario from "../model/FuncionarioModel.js";
+import { newFunc } from "../services/ValidacaoFunc.js";
 
 
 const FuncionarioController = {
@@ -64,16 +64,16 @@ const FuncionarioController = {
         try {
             const newFuncionario = newFunc(body.nome, body.email, body.cpf, 
                 body.telefone, body.cargo, body.senha)
-                await modelFuncionario.insertFunc(novoCliente)
+                await modelFuncionario.insertFunc(newFuncionario)
                 
-                res.json(
+                res.status(200).json(
                     {"msg": "Funcionario inserido com sucesso",
                     "funcionario": newFuncionario,
                     "erro": false}
                     )
                     
                 } catch (error) {
-                    res.json(
+                    res.status(400).json(
                         {"msg": error.message,
                         "erro": true}
                         )
@@ -86,33 +86,33 @@ const FuncionarioController = {
                     try { 
                         await modelFuncionario.deleteFunc(id)
                         
-                        res.json(
+                        res.status(200).json(
                             {"msg": "Funcionario deletado com sucesso",
                             "erro": false}
                             )
                         } catch (error) {
-                            res.json(
+                            res.status(400).json(
                                 { "msg": error.message,
                                 "erro": true}
                                 )
                             }
                         },
                         
-                        updateCliente: async (req, res)=> {
+                        updateFuncionario: async (req, res)=> {
                             const modelFuncionario = new Funcionario()
                             const id = req.params.id
                             const body = req.body
                             try { 
-                                const funcionarioAtualizado = criaCliente(body.nome, body.email, body.cpf,
+                                const funcionarioAtualizado = newFunc(body.nome, body.email, body.cpf,
                                     body.telefone, body.cargo, body.senha)
                                     await modelFuncionario.newFunc(id, funcionarioAtualizado)
-                                    res.json(
+                                    res.status(200).json(
                                         {"msg": "Funcionario atualizado com sucesso",
                                         "cliente": funcionarioAtualizado,
                                         "erro": false}
                                         )
                                     } catch (error) {
-                                        res.json(
+                                        res.status(400).json(
                                             {"msg": error.message,
                                             "erro": true}
                                             )
