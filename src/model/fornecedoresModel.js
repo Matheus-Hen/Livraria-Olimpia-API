@@ -12,6 +12,10 @@ class Fornecedores {
     this.endereco = endereco;
     this.cep = cep
   }
+  
+  insereFornecedores = async(fornecedor) => {
+    return await dao.insereFornecedor(fornecedor)
+  }
 
   totalDeFornecedores = async()=>{
     return await dao.totalFornecedores()
