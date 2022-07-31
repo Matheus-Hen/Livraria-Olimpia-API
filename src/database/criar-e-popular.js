@@ -79,9 +79,9 @@ function criaTabelaFornecedores() {
 // ******************PAGAMENTOS*************************
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
-    "id_pagamentos" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "idPagamentos" INTEGER PRIMARY KEY AUTOINCREMENT,
     "cliente" integer,
-    "forma_pagamento" text,
+    "formaDePagamento" text,
     "valor" real,
     "parcelamento" text,
     "status" text,
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
   
 `
 const popularPagamentos = `
-INSERT INTO PAGAMENTOS (id_pagamentos, cliente, forma_pagamento, valor, parcelamento, status, data)
+INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
 VALUES 
     (002022, 'luana silva de alencar', 'pix', 120, 0, 'pago', '20/08/2022'),
     (002023, 'pedro josé Barros', 'cartao', 89, 2, 'pago', '15/08/2022'),
