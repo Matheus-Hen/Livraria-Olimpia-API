@@ -1,7 +1,7 @@
 import pagamentos from "../model/pagamentosModel.js"
 
 const pagamentosController = {
-    pegaPagamentos : async (req, res)=> {
+    pegaPagamentosTodos : async (req, res)=> {
         const modelPagamentos = new pagamentos()
         const todosPagamentos = await modelPagamentos.pegaPagamentosTodos()
 
@@ -11,7 +11,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPeloId: async (req, res)=> {
+    pegaPagamentosId: async (req, res)=> {
         const idPagamentos = req.params.idPagamentos
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosId(idPagamentos)
@@ -22,7 +22,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPeloStatus: async (req, res)=> {
+    pegaPagamentosStatus: async (req, res)=> {
         const status = req.params.status
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosStatus(status)
@@ -33,7 +33,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPelaFormaDePagamento: async (req, res)=> {
+    pegaPagamentosForma: async (req, res)=> {
         const formaDePagamento = req.params.formaDePagamento
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosForma(formaDePagamento)
@@ -44,7 +44,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPelaData: async (req, res)=> {
+    pegaPagamentosData: async (req, res)=> {
         const data = req.params.data
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosData(data)
@@ -55,7 +55,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPeloValor: async (req, res)=> {
+    pegaPagamentosValor: async (req, res)=> {
         const valor = req.params.valor
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosValor(valor)
@@ -66,7 +66,7 @@ const pagamentosController = {
         })
     },
 
-    pegaPagamentoPeloValor: async (req, res)=> {
+    pegaPagamentosParcelamento: async (req, res)=> {
         const parcelamento = req.params.parcelamento
         const modelPagamentos = new pagamentos()
         const pegaresultado = await modelPagamentos.pegaPagamentosParcelamento(parcelamento)
@@ -76,6 +76,18 @@ const pagamentosController = {
             "erro": false
         })
     },
+    
+    pegaPagamentosCliente: async (req, res)=> {
+        const cliente = req.params.cliente
+        const modelPagamentos = new pagamentos()
+        const pegaresultado = await modelPagamentos.pegaPagamentosCliente(cliente)
+
+        res.json({
+            "pagamentos": pegaresultado,
+            "erro": false
+        })
+    },
+    
 }
 
 export default pagamentosController
