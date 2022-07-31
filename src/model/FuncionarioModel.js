@@ -58,4 +58,4 @@ class Funcionario {
     }
 }
 
-export default Cliente
+export default Funcionario
