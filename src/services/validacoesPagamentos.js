@@ -1,11 +1,11 @@
-export const criaPagamento = (status, formaDePagamento, data, valor, parcelamento, cliente)=> {
+export const criaPagamento = (cliente, formaDePagamento, valor, parcelamento, status, data)=> {
     
     return {
-        "status": status,
+        "cliente": cliente,
         "formaDePagamento": formaDePagamento,
-        "data": data,
         "valor": valor,
         "parcelamento": parcelamento,
-        "cliente": cliente
+        "status": status,
+        "data": data
     }
     }

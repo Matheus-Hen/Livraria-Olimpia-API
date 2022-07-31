@@ -48,7 +48,7 @@ class pagamentos {
     }
 
     atualizarPagamento = async (idPagamentos, novoPagamento) => {
-        const pagamentoAtual = await this.buscarClienteId(idPagamentos)
+        const pagamentoAtual = await this.pegaPagamentosId(idPagamentos)
         if (pagamentoAtual) {
             const pagamentoAtualizado = {
                 "cliente": novoPagamento.cliente || pagamentoAtual.cliente,

@@ -1,4 +1,5 @@
 import pagamentos from "../model/pagamentosModel.js"
+import {criaPagamento} from "../services/validacoesPagamentos.js"
 
 const pagamentosController = {
     pegaPagamentosTodos: async (req, res) => {

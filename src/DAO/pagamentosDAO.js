@@ -17,7 +17,7 @@ const daoPagamentos = {
         })
     },
 
-    inserePagamento : (pagamentos)=>{
+    inserePagamentos : (pagamentos)=>{
         const INSERE_PAGAMENTO = `
         INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
         VALUES (?,?,?,?,?,?,?)
@@ -165,6 +165,7 @@ const daoPagamentos = {
     atualizarPagamento : (idPagamentos, novasInformacoes)=> {
         const ATUALIZA_PAGAMENTO = `
         UPDATE PAGAMENTOS
+        SET
         cliente = ?, formaDePagamento = ?, valor = ?, parcelamento = ?, status = ?, data = ?
         WHERE idPagamentos = ?
         `
@@ -172,7 +173,7 @@ const daoPagamentos = {
         return new Promise((resolve, reject)=> {
             db.run(ATUALIZA_PAGAMENTO, 
                 novasInformacoes.cliente, novasInformacoes.formaDePagamento, 
-                novasInformacoes.valor, novasInformacoes.parcelamento, novasInformacoes.status, idPagamentos,
+                novasInformacoes.valor, novasInformacoes.parcelamento, novasInformacoes.status, novasInformacoes.data, idPagamentos,
                 (error)=>{
                     if (error)
                         reject(error)
