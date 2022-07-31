@@ -119,3 +119,5 @@ const fornecedoresController = {
           }
     }
 }
+
+export default fornecedoresController
