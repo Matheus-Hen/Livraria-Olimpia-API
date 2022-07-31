@@ -1,15 +1,15 @@
 import dao from '../DAO/pagamentosDAO.js'
 
-    class pagamentos {
-        constructor(idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data) {
-            this.idPagamentos = idPagamentos;
-            this.cliente = cliente;
-            this.formaDePagamento = formaDePagamento;
-            this.valor = valor;
-            this.parcelamento = parcelamento;
-            this.status = status;
-            this.data = data;
-        }
+class pagamentos {
+    constructor(idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data) {
+        this.idPagamentos = idPagamentos;
+        this.cliente = cliente;
+        this.formaDePagamento = formaDePagamento;
+        this.valor = valor;
+        this.parcelamento = parcelamento;
+        this.status = status;
+        this.data = data;
+    }
 
     pegaPagamentosTodos = async () => {
         return await dao.pegaPagamentosTodos()
@@ -45,7 +45,11 @@ import dao from '../DAO/pagamentosDAO.js'
 
     inserePagamentos = async (pagamentos) => {
         return await dao.inserePagamentos(pagamentos)
-        }
+    }
+
+    deletaPagamento = async (idPagamentos) => {
+        return await dao.deletaPagamento(idPagamentos)
+    }
 }
 
 export default pagamentos
