@@ -2,7 +2,7 @@ import db from '../database/connect.js'
 import dao from '../DAO/fornecedoresDAO.js'
 
 class Fornecedores {
-  constructor(id, nome, cnpj, produto, email, telefone, endereco) {
+  constructor(id, nome, cnpj, produto, email, telefone, endereco, cep) {
     this.id = id;
     this.nome = nome;
     this.email = email;
@@ -10,7 +10,7 @@ class Fornecedores {
     this.produto = produto;
     this.telefone = telefone;
     this.endereco = endereco;
-    this.cep = cep
+    this.cep = cep;
   }
 
   insereFornecedores = async(fornecedor) => {
