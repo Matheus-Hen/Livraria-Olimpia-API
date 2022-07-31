@@ -87,6 +87,28 @@ const pagamentosController = {
             "erro": false
         })
     },
+
+    inserePagamentos: async (req, res)=> {
+        const body = req.body
+        const modelPagamentos = new pagamentos()
+        try {
+            const novoPagamento = criaCliente(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor, 
+                body.parcelamento, body.status, body.data)
+                await modelPagamentos.inserePagamentos(novoPagamento)
+                
+                res.json(
+                    {"msg": "Pagamento inserido com sucesso",
+                    "pagamentos": novoPagamento,
+                    "erro": false}
+                    )
+                    
+                } catch (error) {
+                    res.json(
+                        {"msg": error.message,
+                        "erro": true}
+                        )
+                    }
+                },
     
 }
 

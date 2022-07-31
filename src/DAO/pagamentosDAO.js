@@ -24,7 +24,7 @@ const daoPagamentos = {
         `
         return new Promise((resolve, reject)=>{
             db.run(INSERE_PAGAMENTO,
-                pagamentos.nome, pagamentos.email, pagamentos.senha,
+                pagamentos.idPagamentos, pagamentos.cliente, pagamentos.formaDePagamento, pagamentos.valor, pagamentos.parcelamento, pagamentos.status, pagamentos.data,
                 (error)=>{
                     if(error)
                         reject(error)
