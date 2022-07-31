@@ -36,6 +36,10 @@ class Fornecedores {
   CEPfornecedor = async(cep)=>{
     return await dao.CEPfornecedores(cep)
   }
+
+  deletaFornecedor = async(id)=>{
+    return await dao.deletaFornecedores(id)
+  }
 }
 
 export default Fornecedores;
