@@ -23,11 +23,17 @@
 
 A "OlimpiaAPI" é um sistema de gerenciamento de livrarias e pode ser utilizada para armazenador dados de livros, fornecedores, pagamentos, clientes, bem como estoque para gerenciamento de entrada e saída de produtos. Para armazenamento dos dados, a OlimpiaAPI utiliza o Sqlite3 a qual possui infraestrutura para receber cerca de 128TB de dados. 
 
-## Status:
 
-Em desenvolvimento
+### 🔧 Instalação:
 
-**Funcionalidades e Demonstração da Aplicação:
+Para utilizar este projeto de código aberto, é necessário fazer um `git clone` em sua máquina para ter acesso ao ambiente de desenvolvimento. Lembre-se de conferir se você possui instalado o `Node.js` e o gereciador de arquivos `NPM` nas versões citadas em `pré-requisitos`.
+
+No seu terminal, digite `git clone` + o link do repositório desta API:
+
+```
+git clone https://github.com/Matheus-Hen/Livraria-Olimpia-API
+```
+
 
 
 ## Acesso ao Projeto: 
