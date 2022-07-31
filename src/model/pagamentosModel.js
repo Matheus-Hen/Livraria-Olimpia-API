@@ -47,6 +47,23 @@ class pagamentos {
         return await dao.inserePagamentos(pagamentos)
     }
 
+    atualizarPagamento = async (idPagamentos, novoPagamento) => {
+        const pagamentoAtual = await this.buscarClienteId(idPagamentos)
+        if (pagamentoAtual) {
+            const pagamentoAtualizado = {
+                "cliente": novoPagamento.cliente || pagamentoAtual.cliente,
+                "formaDePagamento": novoPagamento.formaDePagamento || pagamentoAtual.formaDePagamento,
+                "valor": novoPagamento.valor || pagamentoAtual.valor,
+                "status": novoPagamento.status || pagamentoAtual.status,
+                "parcelamento": novoPagamento.parcelamento || pagamentoAtual.parcelamento,
+                "data": novoPagamento.data || pagamentoAtual.data,
+            }
+            return await dao.atualizarPagamento(idPagamentos, pagamentoAtualizado)
+        } else {
+            throw new Error("Pagamento não encontrado")
+        }
+    }
+
     deletaPagamento = async (idPagamentos) => {
         return await dao.deletaPagamento(idPagamentos)
     }
