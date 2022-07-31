@@ -3,19 +3,19 @@ import db from '../database/connect.js'
 
 const daoEstoque = {
 
-    insereCliente : (estoque)=> {
+    insereEstoque : (estoque)=> {
     const INSERE_ESTOQUE = `
-    INSERT INTO ESTOQUE (idProduto, produto, quantidade, fornecedor)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO ESTOQUE (produto, quantidade, fornecedor)
+    VALUES (?, ?, ?)
     `
     return new Promise((resolve, reject)=> {
-        db.run(INSERE_CLIENTE, estoque.idProduto, estoque.produto, cliente.quantidade,
-            cliente.fornecedor,
+        db.get(INSERE_ESTOQUE, estoque.produto, estoque.quantidade,
+            estoque.fornecedor,
             (error)=>{
                 if (error)
                     reject (error)
                 else 
-                    resolve (cliente)
+                    resolve (estoque)
             })
     })
     },

@@ -13,13 +13,10 @@ class Estoque {
         return await dao.buscarEstoque(produtos)
     }
 
-    buscarFornecedorEstoque =  async (produtos) => {
-        return await dao.FornecedorEstoque(produtos)
-    }   
-
-    buscarQuantidadeEstoque = async (produtos) => {
-    return await dao.buscarQuantidadeEstoque(produtos)
+    inserirEstoque = async (produto) => {
+        return await dao.insereEstoque(produto)
     }
+
 
 }
 
