@@ -15,8 +15,8 @@ class Livro {
         this.numeroPaginas = numeroPaginas
     }
 
-    cadastroDoLivro = async (livro) =>{
-        return await dao.cadastarLivro(livro)
+    cadastroLivro = async (livro) =>{
+        return await dao.cadastrarLivro(livro)
     }
 
     listaDeLivros = async () => {
@@ -48,22 +48,32 @@ class Livro {
         return await dao.buscarIdiomaLivro(idioma)
         // Adicionar um tratamento de erro para idioma não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
-        // Pesquisar como colocar uma lista de opções existentes para a pessoa selecionar tipo: 1. Romance, 2. Terror, 3. Literatura....(mas pode ser que fique complexo.)
     }
+
+    /*buscaEditora =  async (idioma) =>{
+        return await dao.buscarEditora(idioma)
+        // Adicionar um tratamento de erro para idioma não encontrado.
+        // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
+    }*/
 
     removeLivro = async (idLivro) =>{
         return await dao.removerLivro(idLivro)
         // Adionar tratamento caso o livro já não exista na lista. 
     }
 
-    atualizaValorLivro = async(valor) => {
-        return await dao.atualizarValorLivro(valor)
-    }
+    atualizaValorLivro = async(idlivro, novoValor) => {
+        const valorAtual = await this.buscaLivro(idlivro)
 
-    /*verificaEstoqueLivro = async(estoque) => {
-        return await dao.atualizarEstoque(estoque)
+        if (valorAtual) {
+            const valorAtualizado = {
+                "valor": novoValor.valor || valorAtual.valor
+            }
+            return await dao. atualizaValorLivro(idLivro, valorAtualizado)
+        } else {
+            throw new Error("O Id do livro não foi encontrado")
+        }
+
     }
-    */
 
 }
 
