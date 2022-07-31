@@ -34,6 +34,23 @@ No seu terminal, digite `git clone` + o link do repositório desta API:
 git clone https://github.com/Matheus-Hen/Livraria-Olimpia-API
 ```
 
+Acessando a pasta:
+
+```
+cd Livraria-Olimpia-API
+```
+
+Instalandos os pacotes:
+
+```
+npm install
+```
+
+Rodando o projeto:
+
+```
+npm start
+```
 
 
 ## Acesso ao Projeto: 
