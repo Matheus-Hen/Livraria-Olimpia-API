@@ -53,7 +53,21 @@ npm start
 ```
 
 
-## Acesso ao Projeto: 
+### Estoque
+ * __GET  /estoque__ 
+
+    Esquema da resposta
+    ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
 
 ## Tecnologias utilizadas:
 
