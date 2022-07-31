@@ -101,6 +101,23 @@ deletaFornecedores : (id)=>{
 },
   
 //RUN (UPDATE)--------------------------------------------------- 
+atualizaFornecedor : (id, newFornecedor)=> {
+  const ATT_FORNECEDORES = `
+  UPDATE FORNECEDORES
+  SET nome = ?, cnpj = ?, produto = ?, email = ?, telefone = ?, endereco = ?, cep = ?
+  WHERE id = ?
+  `
+
+ return new Promise((resolve, reject)=> {
+   db.run(ATT_FORNECEDORES, 
+      newFornecedor.nome, newFornecedor.cnpj, newFornecedor.produto, newFornecedor.email, newFornecedor.telefone, newFornecedor.endereco, newFornecedor.cep, id, (error)=>{
+          if (error)
+            reject(error)
+          else
+            resolve(newFornecedor)
+     })
+  })
+}  
 
 }
 
