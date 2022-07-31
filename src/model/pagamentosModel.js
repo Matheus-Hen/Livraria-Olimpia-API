@@ -42,6 +42,10 @@ import dao from '../DAO/pagamentosDAO.js'
     pegaPagamentosCliente = async (cliente) => {
         return await dao.pegaPagamentosCliente(cliente)
     }
+
+    inserePagamentos = async (pagamentos) => {
+        return await dao.inserePagamentos(pagamentos)
+        }
 }
 
 export default pagamentos
