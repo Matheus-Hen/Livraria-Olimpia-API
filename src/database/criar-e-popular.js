@@ -138,6 +138,7 @@ db.serialize(() => {
   criaTabelaClientes();
   criaTabelaFuncionarios();
   criaTabelaFornecedores();
+  popularTabelaFornecedores();
   criaTabelaPagamentos();
   criaTabelaEstoque();
 });
