@@ -1,4 +1,4 @@
-export const criaCliente = (nome, email, cpf, telefone, cargo, senha)=> {
+export const newFunc = (nome, email, cpf, telefone, cargo, senha)=> {
     
     return {
         "nome": nome,
