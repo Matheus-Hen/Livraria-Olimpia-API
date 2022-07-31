@@ -24,4 +24,14 @@ const fornecedoresController = {
             }
     },
     
+     //geral
+    procurarFornecedores : async (req, res)=> {
+      const modelFornecedor = new Fornecedores()
+      const todosFornecedores = await modelFornecedor.totalDeFornecedores()
+      
+      res.json({
+          "fornecedores": todosFornecedores,
+          "erro": false
+      })
+    },
 }
