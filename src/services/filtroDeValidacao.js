@@ -8,7 +8,7 @@ export const verificaArroba = (email)=> {
 }
 
 //filtro de cpf
-export default function validaCPF(cpf) {
+export function validaCPF(cpf) {
     var Soma = 0
     var Resto
   
@@ -62,4 +62,4 @@ export default function validaCPF(cpf) {
       return false
   
     return true
-  }
+}
