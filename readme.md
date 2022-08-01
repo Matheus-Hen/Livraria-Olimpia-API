@@ -4,11 +4,9 @@
 ![capaolimpiaapi](https://user-images.githubusercontent.com/83258570/182043643-85058033-482e-49d3-9e27-2617b702d698.jpg)
 
 
-<div align="center">
+## Tecnologias utilizadas:
 
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/> 
-</div>
-
 
   ## Pré-requisitos:
 
