@@ -1,12 +1,26 @@
-export const criaCliente = (nome, email, cpf, telefone, cep, senha)=> {
-// TODO: Funções de validação
+import seteDigitos, { verificaArroba } from "./filtroDeValidacao"
 
-return {
-    "nome": nome,
-    "email": email,
-    "cpf": cpf,
-    "telefone": telefone,
-    "cep": cep,
-    "senha": senha
+//valida senha
+const validaSenha = (senha)=>{
+    if(!seteDigitos(senha)){
+        throw new Error("A senha precisa ter 7 ou mais caracteres")
+    }
 }
+
+//valida email 
+const validaEmail = (email)=>{
+    if(!verificaArroba(email)){
+        return email
+    }else{
+        throw new Error("Algo está faltando em seu email, digite corretamente.")
+    }
+}
+
+//valida cpf
+const ValidaCPF = (cpf) => {
+    if(!filtroCPF, (cpf)){
+        return cpf
+    }else{
+        throw new Error("Verifique o campo do cpf")
+    }
 }
