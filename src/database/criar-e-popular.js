@@ -90,7 +90,7 @@ VALUES
 function criaTabelaFornecedores() {
   db.run(FORNECEDORES_SCHEMA, (error) => {
     if (error)
-      console.log("`Erro na criação da tabela fornecedores: ${error.message}`");
+      console.log(`Erro na criação da tabela fornecedores: ${error.message}`);
   });
 }
 
