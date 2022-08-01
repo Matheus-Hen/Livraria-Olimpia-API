@@ -1,6 +1,6 @@
 // import  bd from '../database/bd.js'
 
-import dao from "../DAO/livrosDAO"
+import dao from "../DAO/livrosDAO.js"
 
 
 class Livro {
