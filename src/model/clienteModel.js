@@ -2,14 +2,14 @@ import dao from '../DAO/clienteDAO.js'
 import db from '../database/connect.js'
 
 class Cliente {
-    constructor(id, nome, email, cpf, telefone, cep, senha) {
+    constructor(id, nome, email, cpf, telefone, senha, cep) {
         this.id = id
         this.nome = nome
         this.email = email
         this.cpf = cpf
         this.telefone = telefone
-        this.cep = cep
         this.senha = senha
+        this.cep = cep
     }
 
     inserirCliente = async (cliente) => {
