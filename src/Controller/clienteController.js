@@ -104,7 +104,7 @@ const clienteController = {
                             const body = req.body
                             try { 
                                 const clienteAtualizado = criaCliente(body.nome, body.email, body.cpf,
-                                    body.telefone, body.cep, body.senha)
+                                    body.telefone, body.senha, body.cep)
                                     await modelCliente.atualizarCliente(id, clienteAtualizado)
                                     res.json(
                                         {"msg": "Cliente atualizado com sucesso",
