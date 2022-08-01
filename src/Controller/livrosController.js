@@ -1,4 +1,5 @@
 import Livro from "../model/livrosModels.js";
+import { criaLivro } from "../services/validacoesLivro.js";
 
 const modelLivros = new Livro();
 
@@ -7,7 +8,7 @@ const livroController = {
     const body = req.body;
 
     try {
-      const novoLivro = cadastraLivro(
+      const novoLivro = criaLivro(
         body.idLivro,
         body.titulo,
         body.autor,
@@ -35,7 +36,6 @@ const livroController = {
   },
 
   listarLivros: async (req, res) => {
-    const listaDeLivros = req.body()
     const todosLivros = await modelLivros.listaDeLivros();
 
     res.json({
