@@ -18,7 +18,7 @@ const daoLivros = {
 
     cadastrarLivro : (livro)=>{
         const ADD_LIVRO = `
-        INSERT INTO LIVROS (id_livro, titulo, autor, genero, formato, valor, idioma, numeroPagina)
+        INSERT INTO LIVROS (idLivro, titulo, autor, genero, formato, valor, idioma, numeroPaginas)
         VALUES (?,?,?,?,?,?,?,?)
         `
         return new Promise((resolve, reject)=>{
