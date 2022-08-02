@@ -72,14 +72,27 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "senha" text,
     "cargo" text
   );
-`;
+`
+const FUNCIONARIOS_ADD_DATA = `
+INSERT INTO FUNCIONARIOS (id, nome, email, cpf, telefone, senha, cargo)
+VALUES 
+(1, 'Marcos Henrique', 'marquinho@gmail.com', '14458658405', '3436954712', 'zmarquinho100', 'CEO'),
+(2, 'Maria Eduarda', 'dudinha@yahoo.com', '15736428425', '34995142687', 'lovemylife', 'gerente'),
+(3, 'Taylor Swift', 'folkloreaoty@gmail.com', '44727894181', '9928763448', 'amomeusgatinhos', 'Vendedora'),
+(4, 'Selena Gomez', 'seleninha@yahoo.com', '01243297050', '3125412343', 'gomez321   ', 'Chefe de Departamento'),
+(5, 'Emma Watson', 'EmmaW@gmail.com', '75238428425', '1237575524', 'hermione123', 'Consultora')
+`
 
+function populaTabelaFuncionarios() {
+    db.run(FUNCIONARIOS_ADD_DATA, (error) => {
+      if (error) console.log("Erro ao popular a tabela de Funcionarios")
+    })
+  }  
 
 function criaTabelaFuncionarios() {
-  db.run(FUNCIONARIOS_SCHEMA, (error) => {
-    if (error)
-      console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
-  });
+    db.run(FUNCIONARIOS_SCHEMA, (error) => {
+        if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
+    });
 }
 
 // ******************FORNECEDORES*************************
@@ -153,7 +166,7 @@ VALUES
 
 
 function criaTabelaPagamentos() {
-    db.run(PAGAMENTOS_SCHEMA, (error)=> {
+    db.run(PAGAMENTOS_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
     });
 }
@@ -177,7 +190,7 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
 `;
 
 function criaTabelaEstoque() {
-    db.run(ESTOQUE_SCHEMA, (error)=> {
+    db.run(ESTOQUE_SCHEMA, (error) => {
         if (error) console.log(`Erro na criação da tabela estoque: ${error.message}`);
     });
 }
@@ -203,6 +216,7 @@ db.serialize( ()=> {
     criaTabelaClientes()
     populaTabelaClientes()
     criaTabelaFuncionarios()
+    populaTabelaFuncionarios()
     criaTabelaFornecedores()
     popularTabelaFornecedores()
     criaTabelaEstoque()
