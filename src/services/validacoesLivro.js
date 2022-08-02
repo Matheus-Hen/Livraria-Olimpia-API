@@ -1,7 +1,6 @@
-export const criaLivro = (idLivro, titulo, autor, genero, formato, valor, idioma, numeroPaginas) => {
+export const criaLivro = (titulo, autor, genero, formato, valor, idioma, numeroPaginas) => {
 
     return {
-        "idLivro": idLivro,
         "titulo": titulo,
         "autor": autor,
         "genero": genero,
