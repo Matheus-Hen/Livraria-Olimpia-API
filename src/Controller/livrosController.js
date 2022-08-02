@@ -67,7 +67,7 @@ const livroController = {
 
 
   buscaGenero: async (req, res) => {
-    const genero = req.params.cpf;
+    const genero = req.params.genero;
     const resultadoBusca = await modelLivros.buscaGenero(genero);
 
     res.json({
@@ -77,8 +77,8 @@ const livroController = {
   },
 
   buscaAutor: async (req, res) => {
-    const autor = req.params.email;
-    const resultadoBusca = await modelLivros.buscarAutorLivro(autor);
+    const autor = req.params.autor;
+    const resultadoBusca = await modelLivros.buscaAutor(autor);
 
     res.json({
       autor: resultadoBusca,
@@ -88,7 +88,7 @@ const livroController = {
 
   buscaIdioma: async (req, res) => {
     const idioma = req.params.idioma;
-    const resultadoBusca = await modelLivros.buscarIdiomaLivro(idioma);
+    const resultadoBusca = await modelLivros.buscaIdioma(idioma);
 
     res.json({
       idioma: resultadoBusca,

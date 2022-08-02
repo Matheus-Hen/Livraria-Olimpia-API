@@ -70,6 +70,50 @@ const daoLivros = {
         })
     },
 
+    buscaGenero : (genero)=>{
+        const BUSCA_LIVRO = `
+        SELECT * FROM LIVROS 
+        WHERE genero = ?
+        `
+        return new Promise((resolve, reject)=>{
+            db.all(BUSCA_LIVRO, genero, (error, row)=>{
+                if(error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    buscaAutor : (autor)=>{
+        const BUSCA_LIVRO = `
+        SELECT * FROM LIVROS 
+        WHERE autor = ?
+        `
+        return new Promise((resolve, reject)=>{
+            db.all(BUSCA_LIVRO, autor, (error, row)=>{
+                if(error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    buscaIdioma : (idioma)=>{
+        const BUSCA_LIVRO = `
+        SELECT * FROM LIVROS 
+        WHERE idioma = ?
+        `
+        return new Promise((resolve, reject)=>{
+            db.all(BUSCA_LIVRO, idioma, (error, row)=>{
+                if(error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
 
     removeLivro : (idLivro) => {
         const DELETA_LIVRO = `
