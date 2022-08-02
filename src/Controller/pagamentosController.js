@@ -94,7 +94,7 @@ const pagamentosController = {
         const modelPagamentos = new pagamentos()
         try {
             const novoPagamento = criaPagamento(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
-                body.parcelamento, body.status, body.data)
+                body.parcelamento, body.status, body.data, body.idLivro, body.QuantLivro)
             await modelPagamentos.inserePagamentos(novoPagamento)
 
             res.json(

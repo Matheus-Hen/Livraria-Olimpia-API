@@ -85,9 +85,11 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "valor" real,
     "parcelamento" text,
     "status" text,
-    "data" text
+    "data" text,
+   
   );
-  
+ALTER TABLE "PAGAMENTOS" 
+ADD CONSTRAINT "idLivro" FOREIGN KEY ("id")  REFERENCES "LIVROS" ("id"") 
 `
 const POPULAR_PAGAMENTOS = `
 INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)

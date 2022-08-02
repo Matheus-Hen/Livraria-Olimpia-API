@@ -19,7 +19,7 @@ const daoPagamentos = {
 
     inserePagamentos : (pagamentos)=>{
         const INSERE_PAGAMENTO = `
-        INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
+        INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data, idLivro)
         VALUES (?,?,?,?,?,?,?)
         `
         return new Promise((resolve, reject)=>{
