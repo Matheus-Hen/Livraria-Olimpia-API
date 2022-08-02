@@ -56,12 +56,12 @@ const daoLivros = {
     },
 
     buscaLivroId : (idLivro)=>{
-        const BUSCA_LIVRO = `
+        const BUSCA_LIVROID = `
         SELECT * FROM LIVROS 
         WHERE idLivro = ?
         `
         return new Promise((resolve, reject)=>{
-            db.get(BUSCA_LIVRO, idLivro, (error, row)=>{
+            db.get(BUSCA_LIVROID, idLivro, (error, row)=>{
                 if(error)
                     reject(error)
                 else
@@ -69,6 +69,7 @@ const daoLivros = {
             })
         })
     },
+
 
     removeLivro : (idLivro) => {
         const DELETA_LIVRO = `
@@ -87,21 +88,20 @@ const daoLivros = {
 
     },
 
-    atualizaValorLivro : (idLivro, novoValor)=> {
-        const ATUALIZA_VALOR = `
-        UPDATE LIVROS
-        SET valor = ?
+    atualizaLivro : (idLivro, novoDado)=> {
+        const ATUALIZA_LIVRO = `
+        UPDATE LIVROS 
+        SET titulo = ?, autor = ?, genero = ?, formato = ?, valor = ?, idioma = ?, numeroPaginas = ?
         WHERE idLivro = ?
         `
         return new Promise((resolve, reject)=> {
-            db.run(ATUALIZA_VALOR, 
-                novoValor.valor, idLivro,
-                (error)=>{
-                    if (error)
-                        reject(error)
-                    else
-                        resolve(novoValor)
-                })
+            db.run(ATUALIZA_LIVRO, novoDado.titulo, novoDado.autor, novoDado.genero, novoDado.formato, novoDado.valor, novoDado.idioma, novoDado.numeroPaginas,
+            idLivro, (error)=>{
+                if (error)
+                    reject(error)
+                else
+                    resolve(novoDado)
+            })
         })
     }
 
