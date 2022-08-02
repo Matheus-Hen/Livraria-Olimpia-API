@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import routerCliente from "./router/routerCliente.js";
 import fornecedores from "./router/fornecedoresRouter.js"
+import routerEstoque from "./router/routerEstoque.js";
 
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(express.json())
 
 fornecedores(app)
 routerCliente(app)
+routerEstoque(app)
 
 const port = 3000;
 
