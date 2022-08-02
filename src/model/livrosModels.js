@@ -22,16 +22,19 @@ class Livro {
     listaDeLivros = async () => {
         return await dao.listarLivros()
     }
+
+    buscaLivroId =  async (titulo) =>{
+        return await dao.buscaLivroId(titulo)
+    }
     
     buscaLivro =  async (titulo) =>{
-        return await dao.buscarTituloLivro(titulo)
+        return await dao.buscaLivro(titulo)
         // Adicionar um tratamento de erro para título não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
-
     }
 
     buscaGenero =  async (genero) =>{
-        return await dao.buscarGeneroLivro(genero)
+        return await dao.buscaGenero(genero)
         // Adicionar um tratamento de erro para genero não encontrado.
         // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
         // Pesquisar como colocar uma lista de opções existentes para a pessoa selecionar tipo: 1. Romance, 2. Terror, 3. Literatura....(mas pode ser que fique complexo.)
@@ -57,18 +60,18 @@ class Livro {
     }*/
 
     removeLivro = async (idLivro) =>{
-        return await dao.removerLivro(idLivro)
+        return await dao.removeLivro(idLivro)
         // Adionar tratamento caso o livro já não exista na lista. 
     }
 
     atualizaValorLivro = async(idlivro, novoValor) => {
-        const valorAtual = await this.buscaLivro(idlivro)
+        const valorAtual = await this.buscaLivroId(idlivro)
 
         if (valorAtual) {
             const valorAtualizado = {
                 "valor": novoValor.valor || valorAtual.valor
             }
-            return await dao. atualizaValorLivro(idLivro, valorAtualizado)
+            return await dao.atualizaValorLivro(idLivro, valorAtualizado)
         } else {
             throw new Error("O Id do livro não foi encontrado")
         }
