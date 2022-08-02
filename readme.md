@@ -58,6 +58,14 @@ Rodando o projeto:
 npm start
 ```
 
+###  Reinicialização do banco de dados:
+
+Por padrão, o banco de dados da OlimpiaAPI possui dados populados de forma simulada e está representado como `olimpia.db` nos arquivos do projeto. Dessa forma, você pode realizar consultas de rotas sem a necessidade de inicializar o banco. Mas, se caso deseja reiniciar por algum motivo o banco, utilize o comando abaixo no terminal após os passos anteriores. 
+
+```
+npm run db
+```
+
 # Rotas
 
 ### Estoque
