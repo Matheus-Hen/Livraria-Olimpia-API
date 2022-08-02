@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
   );
 `
 
+
 function criaTabelaFuncionarios() {
     db.run(FUNCIONARIOS_SCHEMA, (error)=> {
         if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
@@ -102,10 +103,8 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "parcelamento" text,
     "status" text,
     "data" text,
-   
-  );
-ALTER TABLE "PAGAMENTOS" 
-ADD CONSTRAINT "idLivro" FOREIGN KEY ("id")  REFERENCES "LIVROS" ("id"") 
+    "idLivros" integer,
+    FOREIGN KEY ("idLivros")  REFERENCES LIVROS (id));
 `
 const POPULAR_PAGAMENTOS = `
 INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
