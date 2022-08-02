@@ -1,35 +1,48 @@
 import Estoque from "../model/estoqueModel.js";
 import { criaEstoque } from "../services/validacoesEstoque.js";
 
+const estoqueModel = new Estoque()
 
 const estoqueController = {
 
     buscarEstoque: async (req, res)=> {
-        const estoqueModel = new Estoque()
-        const todosProdutos = await estoqueModel.buscarEstoque()
+        try {
+            const resposta = await estoqueModel.buscarEstoque()
+    
+            if (resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "produtos": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json({
+                    "mensagem": resposta.mensagem,
+                    "erro": true
+                })
+            }
 
-        res.json({
-            "produtos": todosProdutos,
-            "erro": false
-        })
+        } catch (error) {
+            res.status(500).json({
+                "msg": error.message,
+                "erro": true
+            })
+        }
     },
 
     InsereEstoque: async (req, res)=> {
         const body = req.body
-        const modelEstoque = new Estoque()
         try {
             const novoEstoque = criaEstoque(body.idEstoque, body.produto, body.quantidade, body.fornecedor)
-            await modelEstoque.inserirEstoque(novoEstoque)
-            console.log(novoEstoque)
+            const resposta = await estoqueModel.inserirEstoque(novoEstoque)
             
-            res.json(
+            res.status(resposta.status).json(
                 {"msg": "Um novo produto foi inserido com sucesso",
-                "estoque": novoEstoque,
+                "estoque": resposta.dados,
                 "erro": false}
             )
 
         } catch (error) {
-            res.json(
+            res.status(resposta.status).json(
                 {"msg": error.message,
                 "erro": true}
             )
@@ -38,17 +51,23 @@ const estoqueController = {
 
     buscarQuantidadePorId: async (req, res)=> {
         const id = req.params.id
-        const estoqueModel = new Estoque()
-        const todosProdutos = await estoqueModel.buscarQuantidadePorId(id)
 
-        res.json({
-            "produtos": todosProdutos,
-            "erro": false
-        })
+        try {
+            const todosProdutos = await estoqueModel.buscarQuantidadePorId(id)
+    
+            res.status(resposta.status).json({
+                "produtos": todosProdutos,
+                "erro": false
+            })
+        } catch (error) {
+            res.status(500).json({
+                "mensagem": error.message,
+                "erro": true
+            })
+        }
     },
 
     atualizaEstoque: async (req, res)=> {
-        const modelEstoque = new Estoque()
         const id = req.params.idEstoque
         const body= await req.body
 
@@ -60,17 +79,16 @@ const estoqueController = {
                 body.fornecedor
             )
 
-            await modelEstoque.atualizarEstoque(id, informacaoAtualizada)
-            res.json(
+            const resposta = await estoqueModel.atualizarEstoque(id, informacaoAtualizada)
+            res.status(resposta.status).json(
                 {"msg": "Produto atualizado com éxito",
-                "produto": informacaoAtualizada,
+                "produto": resposta.dados,
                 "erro": false}
             )
             
-            
         } catch (error) {
 
-         res.json(
+         res.status(500).json(
           {"msg": error.message,
           "erro": true}
           )
@@ -78,27 +96,26 @@ const estoqueController = {
    },
 
     deletaProdutoEstoque: async (req,res) =>{
-        const modelEstoque = new Estoque()
         const id = req.params.id
 
         try{
-            await modelEstoque.removeProduto(id)
+            const resposta = await estoqueModel.removeProduto(id)
 
-            res.json(
+            res.status(resposta.status).json(
                 {"msg": "O produto foi removido do estoque",
                 "erro": false}
             )
 
         } catch (error) {
 
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "error": true}
             )
             
-        }
-        
+        } 
     }
+
 }
         
 export default estoqueController
