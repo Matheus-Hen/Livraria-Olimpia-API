@@ -8,7 +8,6 @@ app.use(express.json())
 
 routerLivros(app)
 
-app.use(router)
 app.listen(3000, ()=> {
     console.log('Servidor inicializado')
 })
