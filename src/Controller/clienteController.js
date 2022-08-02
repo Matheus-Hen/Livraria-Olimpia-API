@@ -7,14 +7,21 @@ const clienteController = {
     
     buscarClientes : async (req, res)=> {
         try {
-            const todosClientes = await modelCliente.buscarClientesTodos()
+            const resposta = await modelCliente.buscarClientesTodos()
             
-            res.json({
-                "clientes": todosClientes,
-                "erro": false
-            })
+            if(resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "clientes": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json({
+                    "msg": resposta.mensagem,
+                    "erro": true
+                })
+            }
         } catch (error) {
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "erro": true}
                 )
@@ -24,14 +31,21 @@ const clienteController = {
     buscarClientePeloNome: async (req, res)=> {
         const nome = req.params.nome
         try { 
-            const resultadoBusca = await modelCliente.buscarClienteNome(nome)
+            const resposta = await modelCliente.buscarClienteNome(nome)
             
-            res.json({
-                "cliente": resultadoBusca,
-                "erro": false
-            })
+            if (resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "cliente": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json({
+                    "msg": resposta.mensagem,
+                    "erro": true
+                })
+            }
         } catch (error) {
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "erro": true}
                 )
@@ -42,14 +56,21 @@ const clienteController = {
         const cpf = req.params.cpf
 
         try {
-            const resultadoBusca = await modelCliente.buscarClienteCPF(cpf) 
+            const resposta = await modelCliente.buscarClienteCPF(cpf) 
             
-            res.json({
-                "cliente": resultadoBusca,
-                "erro": false
-            })
+            if (resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "cliente": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json(
+                    {"msg": resposta.mensagem,
+                    "erro": true}
+                )
+            }
         } catch (error) {
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "erro": true}
                 )
@@ -60,14 +81,21 @@ const clienteController = {
         const email = req.params.email
 
         try {
-            const resultadoBusca = await modelCliente.buscarClienteEmail(email)
+            const resposta = await modelCliente.buscarClienteEmail(email)
             
-            res.json({
-                "cliente": resultadoBusca,
-                "erro": false
-            })
+            if (resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "cliente": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json(
+                    {"msg": resposta.mensagem,
+                    "erro": true}
+                )
+            }
         } catch (error) {
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "erro": true}
                 )
@@ -78,14 +106,21 @@ const clienteController = {
         const id = req.params.id
 
         try {
-            const resultadoBusca = await modelCliente.buscarClienteId(id)
+            const resposta = await modelCliente.buscarClienteId(id)
             
-            res.json({
-                "cliente": resultadoBusca,
-                "erro": false
-            })
+            if (resposta.status === 200) {
+                res.status(resposta.status).json({
+                    "cliente": resposta.dados,
+                    "erro": false
+                })
+            } else {
+                res.status(resposta.status).json(
+                    {"msg": resposta.mensagem,
+                    "erro": true}
+                    )
+            }
         } catch (error) {
-            res.json(
+            res.status(500).json(
                 {"msg": error.message,
                 "erro": true}
                 )
@@ -98,16 +133,16 @@ const clienteController = {
         try {
             const novoCliente = criaCliente(body.nome, body.email, body.cpf, 
                 body.telefone, body.cep, body.senha)
-                await modelCliente.inserirCliente(novoCliente)
+                const resposta = await modelCliente.inserirCliente(novoCliente)
                 
                 res.json(
                     {"msg": "Cliente inserido com sucesso",
-                    "cliente": novoCliente,
+                    "cliente": resposta.dados,
                     "erro": false}
                     )
                     
                 } catch (error) {
-                    res.json(
+                    res.status(500).json(
                         {"msg": error.message,
                         "erro": true}
                         )
@@ -125,7 +160,7 @@ const clienteController = {
                  "erro": false}
                 )
             } catch (error) {
-                res.json(
+                res.status(500).json(
                     { "msg": error.message,
                     "erro": true}
                      )
@@ -146,7 +181,7 @@ const clienteController = {
                   "erro": false}
                 )
             } catch (error) {
-                res.json(
+                res.status(500).json(
                      {"msg": error.message,
                       "erro": true}
                     )
