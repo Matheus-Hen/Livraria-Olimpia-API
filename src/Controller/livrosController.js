@@ -8,8 +8,7 @@ const livroController = {
     const body = req.body;
 
     try {
-      const novoLivro = criaLivro(
-        body.idLivro,
+      const novoLivro = await criaLivro(
         body.titulo,
         body.autor,
         body.genero,
@@ -18,6 +17,8 @@ const livroController = {
         body.idioma,
         body.numeroPaginas
       );
+
+      console.log(novoLivro)
 
       await modelLivros.cadastroLivro(novoLivro);
 
@@ -46,7 +47,7 @@ const livroController = {
 
   buscaLivro: async (req, res) => {
     const titulo = req.params.titulo;
-    const resultadoBusca = await modelLivros.buscarTituloLivro(titulo);
+    const resultadoBusca = await modelLivros.buscaLivro(titulo);
 
     res.json({
       titulo: resultadoBusca,
@@ -54,9 +55,20 @@ const livroController = {
     });
   },
 
+  buscaLivroId: async (req, res) => {
+    const idLivro = req.params.idLivro;
+    const resultadoBusca = await modelLivros.buscaLivroId(idLivro);
+
+    res.json({
+      idLivro: resultadoBusca,
+      erro: false,
+    });
+  },
+
+
   buscaGenero: async (req, res) => {
     const genero = req.params.cpf;
-    const resultadoBusca = await modelLivros.buscarGenero(genero);
+    const resultadoBusca = await modelLivros.buscaGenero(genero);
 
     res.json({
       genero: resultadoBusca,
@@ -84,15 +96,16 @@ const livroController = {
     });
   },
 
-  deletaLivro: async (req, res) => {
-    const livro = req.params.livro;
+  removeLivro: async (req, res) => {
+    const idLivro = req.params.idLivro;
     try {
-      await modelLivros.removerLivro(livro);
+      await modelLivros.removeLivro(idLivro);
 
       res.json({
         msg: "Livro deletado com sucesso",
         erro: false,
       });
+
     } catch (error) {
       res.json({
         msg: error.message,
@@ -101,15 +114,22 @@ const livroController = {
     }
   },
 
-  atualizarValorLivro: async (req, res) => {
+  atualizaLivro: async (req, res) => {
     const idLivro = req.params.idLivro;
     const body = req.body;
     try {
-      const valorAtualizado = atualizarValorLivro(body.idLivro, body.valor);
-      await modelLivros.atualizaValorLivro(idLivro, valorAtualizado);
+      const livroAtualizado = criaLivro(body.titulo,
+        body.autor,
+        body.genero,
+        body.formato,
+        body.valor,
+        body.idioma,
+        body.numeroPaginas)
+
+      await modelLivros.atualizaLivro(idLivro, livroAtualizado);
       res.json({
-        msg: "Valor do livro atualizado com sucesso",
-        valor: valorAtualizado,
+        msg: "O livro foi atualizado com sucesso",
+        livro: livroAtualizado,
         erro: false,
       });
     } catch (error) {
