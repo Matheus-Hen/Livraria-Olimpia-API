@@ -68,11 +68,179 @@ npm run db
 
 # Rotas
 
+### Clientes
+
+ * __GET  /clientes__ 
+
+     _Confere os clientes registrados no banco de dados_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+     * __GET  /clientes/nome/:nome__ 
+
+     _Busca um cliente no banco de dados pelo nome_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+     * __GET  /clientes/cpf/:cpf__ 
+
+     _Busca um cliente no banco de dados pelo CPF_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+    * __GET  /clientes/email/:email__ 
+
+     _Busca um cliente no banco de dados pelo email_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+    
+    * __GET  /clientes/id/:id__ 
+
+     _Busca um cliente no banco de dados pelo ID_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+    
+    * __POST  /clientes__ 
+
+     _Cria um novo cliente e insere no banco de dados_
+
+          Esquema da requisição:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+        * __PUT  /clientes__ 
+
+     _Atualiza um ou múltiplos dados de um cliente desejado_
+
+          Esquema da requisição:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+        * __DELETE  /clientes/id/:id__ 
+
+     _Realiza uma deleção no banco de dados do cliente com o ID requerido_
+
+     Esquema de resposta:
+      ```json
+    {
+        "produtos": [
+            {
+                "idEstoque": 101,
+                "produto": "Código Limpo",
+                "quantidade": 457,
+                "fornecedor": "Editora Alta Books"
+            }
+        ],
+    ```
+
+
+
 ### Estoque
 
  * __GET  /estoque__ 
 
-    _Conferindo os livros disponíveis no estoque_
+    _Confere os livros disponíveis no estoque_
     
     Esquema de resposta:
     ```json
