@@ -5,7 +5,7 @@ import dao from "../DAO/livrosDAO.js"
 
 class Livro {
     constructor (idLivro, titulo, autor, genero, formato, valor, idioma, numeroPaginas){
-        this.idLivro = idLivro      //idProduto PK
+        this.idLivro = idLivro 
         this.titulo = titulo
         this.autor = autor
         this.genero = genero
@@ -23,8 +23,8 @@ class Livro {
         return await dao.listarLivros()
     }
 
-    buscaLivroId =  async (titulo) =>{
-        return await dao.buscaLivroId(titulo)
+    buscaLivroId =  async (idLivro) =>{
+        return await dao.buscaLivroId(idLivro)
     }
     
     buscaLivro =  async (titulo) =>{
@@ -64,16 +64,23 @@ class Livro {
         // Adionar tratamento caso o livro já não exista na lista. 
     }
 
-    atualizaValorLivro = async(idlivro, novoValor) => {
-        const valorAtual = await this.buscaLivroId(idlivro)
+    atualizaLivro = async (idLivro, novoDado) => {
+        const livroAtual = await this.buscaLivroId(idLivro)
 
-        if (valorAtual) {
-            const valorAtualizado = {
-                "valor": novoValor.valor || valorAtual.valor
+        if (livroAtual) {
+            const livroAtualizado = {
+                "titulo": novoDado.titulo || livroAtual.titulo,
+                "autor": novoDado.autor || livroAtual.autor,
+                "genero": novoDado.genero || livroAtual.genero,
+                "formato": novoDado.formato || livroAtual.formato,
+                "valor": novoDado.valor || livroAtual.valor,
+                "idioma": novoDado.idioma || livroAtual.idioma,
+                "numeroPaginas": novoDado.numeroPaginas || livroAtual.numeroPaginas,
+                
             }
-            return await dao.atualizaValorLivro(idLivro, valorAtualizado)
+            return await dao.atualizaLivro(idLivro, livroAtualizado)
         } else {
-            throw new Error("O Id do livro não foi encontrado")
+            throw new Error("O livro não foi encontrado")
         }
 
     }
