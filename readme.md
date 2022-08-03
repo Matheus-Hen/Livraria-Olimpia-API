@@ -1157,7 +1157,45 @@ Esquema de resposta:
 }
 ```
 ---
+**DELETE /livros/idLivro/:idLivro**
 
+  _Realiza uma deleção no banco de dados de livros com o id requerido_
+
+  Busca um livro no banco de dados pelo id:
+  id: 100013
+  
+  Esquema de resposta:
+
+```json
+
+{
+    "msg": "Livro deletado com sucesso",
+    "erro": false
+}
+```
+---
+**PUT /livros/:idLivro**
+
+  _Atualiza um ou múltiplos dados de um livro desejado_
+  
+  Esquema de resposta:
+
+```json
+
+{
+    "msg": "O livro foi atualizado com sucesso",
+    "livro": {
+        "titulo": "The Miracle Morning",
+        "autor": "Hal Elrod",
+        "genero": "Autoajuda",
+        "formato": "Físico",
+        "valor": 60,
+        "idioma": "Inglês",
+        "numeroPaginas": 196
+    },
+}
+```
+---
 ## Licença:
 
 Copyright © 2022 - OlimpiaAPI
