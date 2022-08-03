@@ -480,7 +480,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /pagamentos/valor/:valor**
 
-  _Buscao pagamento no banco de dados pelo valor_
+  _Busca o pagamento no banco de dados pelo valor_
 
   ```json
   {
@@ -568,7 +568,7 @@ Como resposta, você receberá este esquema :
 
 ---
 
-- **GET /pagamentos/**
+- **POST /pagamentos/**
 
   _Cria um novo pagamento e insere no banco de dados_
 
@@ -587,7 +587,7 @@ Como resposta, você receberá este esquema :
 
   ***
 
-- **GET /pagamentos/**
+- **POST /pagamentos/**
 
   _Cria um novo pagamento e insere no banco de dados_
 
@@ -619,6 +619,209 @@ Como resposta, você receberá este esquema :
     }
   }
   ```
+
+---
+
+### Fornecedores
+
+- **GET /fornecedores**
+
+  _Confere os fornecedores registrados no banco de dados_
+
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 1,
+        "nome": "PAPERSHIFT",
+        "cnpj": "03546726000111",
+        "produto": "Artigos de Papelaria",
+        "email": "compras@papershift.com.br",
+        "telefone": "55 19 23768254",
+        "endereco": "Avenida Barcelona, 1405 - Agua Branca, Campinas - SP",
+        "cep": "03945080"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **GET / fornecedores/id/:id**
+
+  _Busca um fornecedor no banco de dados pelo id_
+
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 2,
+        "nome": "A Página",
+        "cnpj": "01795809000110",
+        "produto": "Livros",
+        "email": "compras@apagina.com.br",
+        "telefone": "55 41 32135643",
+        "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
+        "cep": "01830260"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **GET /fornecedores/cnpj/:cnpj**
+
+  _Busca um fornecedor no banco de dados pelo id_
+
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 1,
+        "nome": "PAPERSHIFT",
+        "cnpj": "03546726000111",
+        "produto": "Artigos de Papelaria",
+        "email": "compras@papershift.com.br",
+        "telefone": "55 19 23768254",
+        "endereco": "Avenida Barcelona, 1405 - Agua Branca, Campinas - SP",
+        "cep": "03945080"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **GET /fornecedores/produto/:produto**
+
+  _busca produtos por fornecedores_
+
+  ```json
+  {
+    "fornecedores": [
+        {
+            "id": 2,
+            "nome": "A Página",
+            "cnpj": "01795809000110",
+            "produto": "Livros",
+            "email": "compras@apagina.com.br",
+            "telefone": "55 41 32135643",
+            "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
+            "cep": "01830260"
+        },
+  }
+  ```
+
+---
+
+- **GET /fornecedores/endereco/:cep**
+
+  _busca fornecedores por cep_
+
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 5,
+        "nome": "Bookstan",
+        "cnpj": "01746378240110",
+        "produto": "Livros",
+        "email": "compras@bookstan.com.br",
+        "telefone": "55 98 88748278",
+        "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
+        "cep": "04985570"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **POST /fornecedores**
+
+  _Cria um novo fornecedor e insere no banco de dados_
+
+  ```json
+  {
+    "id": 366,
+    "nome": "livroteca",
+    "cnpj": "01746378240133",
+    "produto": "Tudo",
+    "email": "tudo@bookstan.com.br",
+    "telefone": "55 98 88748278",
+    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
+    "cep": "04985519"
+  }
+  ```
+
+  Esquema de resposta:
+
+  ```json
+  {
+    "msg": "Fornecedor inserido",
+    "id": 366,
+    "nome": "livroteca",
+    "cnpj": "01746378240133",
+    "produto": "Tudo",
+    "email": "tudo@bookstan.com.br",
+    "telefone": "55 98 88748278",
+    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
+    "cep": "04985519"
+  }
+  ```
+
+---
+
+- **DELETE /fornecedores/id/:id**
+
+  _Realiza uma deleção no banco de dados do fornecedor com o id requeridop_
+
+  > id: 1
+
+  ```json
+  {
+    "msg": "Fornecedor deletado",
+    "erro": false
+  }
+  ```
+
+---
+
+- **PUT /fornecedores/id/:id**
+
+  _Atualização de dados por id_
+
+ ```json
+    {
+    "id": 23,
+    "nome": "Vendotudo",
+    "cnpj": "01746378242222",
+    "produto": "Tudo",
+    "email": "tudo@bookstan.com.br",
+    "telefone": "55 98 88748278",
+    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
+    "cep": "04985579"
+    }
+```
+
+Esquema de resposta:
+
+```json
+{
+  "msg": "Fornecedor atualizado",
+  "fornecedor": {
+      "nome": "Vendotudo",
+      "cnpj": "01746378242222",
+      "produto": "Tudo",
+      "email": "tudo@bookstan.com.br",
+      "telefone": "55 98 88748278",
+      "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
+      "cep": "04985579"
+  },
+}
+
+````
 
 ## Pessoas Desenvolvedoras do Projeto:
 
