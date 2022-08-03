@@ -804,8 +804,145 @@ Esquema de resposta:
       "cep": "04985579"
   },
 }
+```
+---
 
-````
+### Funcionários
+
+- **GET /funcionario**
+
+  _Confere os funcionários registrados no banco de dados_
+
+  Esquema de resposta:
+
+  ```json
+  {
+            "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100",
+            "cargo": "CEO"
+  }
+  ```
+
+---
+- **GET /funcionario/nome/:nome**
+
+  _Procurando um funcionário pelo nome cadastrado no sistema_
+
+  Esquema de resposta:
+
+  ```json
+        {
+            "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100",
+            "cargo": "CEO"
+        },
+  ```
+
+---
+**GET /funcionario/cpf/:cpf**
+
+  _Procurando um funcionário pelo cpf cadastrado no sistema_
+
+  Esquema de resposta:
+
+  ```json
+        {
+            "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100",
+            "cargo": "CEO"
+        }, 
+  ```
+
+---
+**GET /funcionario/email/:email**
+
+  _Procurando um funcionário pelo email cadastrado no sistema_
+
+  Esquema de resposta:
+
+  ```json
+        {
+            "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100",
+            "cargo": "CEO"
+        }, 
+  ```
+---
+**GET /funcionario/id/:id**
+
+  _Procurando um funcionário pelo id cadastrado no sistema_
+
+  Esquema de resposta:
+
+  ```json
+        {
+             "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100"
+        }, 
+  ```
+---
+**POST /funcionario**
+
+  _Adicionando funcionário sistema_
+
+  Esquema de edição de funcionário:
+
+  ```json
+        {
+    "Funcionario": {
+        "nome": "Junim",
+        "email": "juni.@gmail.com",
+        "cpf": "14454548405",
+        "telefone": "3736954712",
+        "senha": "zmaruinho100",
+        "cargo": "Desenvolvedor Junior"
+    },
+    "erro": false
+} 
+  ```
+  Esquema de resposta:
+
+  ```json
+       {
+    "msg": "Funcionario inserido com sucesso",
+    "funcionario": {},
+    "erro": false
+       }
+  ```
+---
+**DELETE /funcionario/id/:id**
+
+  _Deleta funcionário do sistema_
+
+  Esquema de deleção:
+
+  ```json
+  {
+    "msg": "Funcionario deletado com sucesso",
+    "erro": false
+  }
+  ```
+---
 
 ## Pessoas Desenvolvedoras do Projeto:
 
