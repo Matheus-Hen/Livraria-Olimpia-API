@@ -240,35 +240,94 @@ npm run db
 
  * __GET  /estoque__ 
 
-    _Confere os livros disponíveis no estoque_
-    
-    Esquema de resposta:
-    ```json
-    {
-        "produtos": [
-            {
-                "idEstoque": 101,
-                "produto": "Código Limpo",
-                "quantidade": 457,
-                "fornecedor": "Editora Alta Books"
-            }
-        ],
-    ```
+GET/ESTOQUE: Acessando os produtos cadastrados no estoque 
 
+_- Esquema de resposta:
 
+ ```
+
+{
+    "produtos": [
+        {
+            "idEstoque": 101,
+            "produto": "Código Limpo",
+            "quantidade": 457,
+            "fornecedor": "Editora Alta Books"
+        }
+    ],
+ ```
+ 
 ---
 
- * __método /rota__ 
+POST/ESTOQUE: Inserindo novos produtos em estoque 
 
-    _legenda_
-    
-    Esquema de resposta:
-    ```json
-    {
-    }
-    ```
+- Esquema de inserção de um novo produto:
+
+        {
+            "produto": "Diário de um banana",
+            "quantidade": 500,
+            "fornecedor": "Fernando LTDA"
+        }
+
+ Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
 
 
+- Esquema de resposta de um produto inserido :
+ ```
+{
+    "msg": "Um novo produto foi inserido com sucesso",
+    "estoque": {
+        "produto": "Diário de um banana",
+        "quantidade": 500,
+        "fornecedor": "Fernando LTDA"
+    },
+    "erro": false
+}
+ ```
+---
+
+GET/ESTOQUE: Buscando um produto pelo ID no sistema 
+
+- Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
+
+> http://localhost:3000/estoque/id/106
+
+- Como resposta, você receberá este esquema :
+ ```
+{
+    "produtos": [
+        {
+            "idEstoque": 106,
+            "produto": "Diário de um banana",
+            "quantidade": 500,
+            "fornecedor": "Fernando LTDA"
+        }
+    ],
+    "erro": false
+}
+ ```
+---
+
+DELETE/ESTOQUE: Removendo um produto do estoque 
+
+- Adicione no corpo da mensagem o produto que deseja remover :
+
+ ```
+            {
+            "idEstoque": 106,
+            "produto": "Diário de um banana 2",
+            "quantidade": 500,
+            "fornecedor": "Fernando LTDA"
+            }
+ ```
+- Como resposta, você receberá este esquema :
+
+{
+    "msg": "O produto foi removido do estoque",
+    "erro": false
+}
+
+---
 
 ## Pessoas Desenvolvedoras do Projeto:
 
