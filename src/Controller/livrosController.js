@@ -57,7 +57,7 @@ const livroController = {
       
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resultadoBusca,
+          "titulo": resposta.dados,
           "erro": false,
         });
       } else {
@@ -81,7 +81,7 @@ const livroController = {
       
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resultadoBusca,
+          "titulo": resposta.dados,
           "erro": false,
         });
       } else {
@@ -106,7 +106,7 @@ const livroController = {
       
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resultadoBusca,
+          "titulo": resposta.dados,
           "erro": false,
         });
       } else {
@@ -130,7 +130,7 @@ const livroController = {
       
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resultadoBusca,
+          "titulo": resposta.dados,
           "erro": false,
         });
       } else {
@@ -154,7 +154,7 @@ const livroController = {
       
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resultadoBusca,
+          "titulo": resposta.dados,
           "erro": false,
         });
       } else {
