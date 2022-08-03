@@ -1,7 +1,8 @@
-import sqlite3 from 'sqlite3'
-sqlite3.verbose()
-const db = new sqlite3.Database('olimpia.db');
+import sqlite3 from "sqlite3";
+sqlite3.verbose();
+const db = new sqlite3.Database("olimpia.db");
 
+// ******************LIVROS*************************
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
     "idLivro" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,9 +34,10 @@ VALUES
 `;
 
 function criaTabelaLivros() {
-    db.run(LIVROS_SCHEMA, (error)=> {
-        if (error) console.log("Erro ao criar tabela de livros");
-    });
+  db.run(LIVROS_SCHEMA, (error) => {
+    if (error)
+      console.log(`Erro na criação da tabela livros: ${error.message}`);
+  });
 }
 
 function populaTabelaLivros() {
