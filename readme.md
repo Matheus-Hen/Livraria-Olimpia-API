@@ -75,7 +75,8 @@ npm run db
      _Confere os clientes registrados no banco de dados_
 
      Esquema de resposta:
-      ```json
+     
+      ```
     {
         "produtos": [
             {
@@ -113,7 +114,7 @@ npm run db
      _Busca um cliente no banco de dados pelo CPF_
 
      Esquema de resposta:
-      ```json
+      ```
     {
         "produtos": [
             {
@@ -132,7 +133,8 @@ npm run db
      _Busca um cliente no banco de dados pelo email_
 
      Esquema de resposta:
-      ```json
+     
+      ```
     {
         "produtos": [
             {
@@ -151,7 +153,7 @@ npm run db
      _Busca um cliente no banco de dados pelo ID_
 
      Esquema de resposta:
-      ```json
+      ```
     {
         "produtos": [
             {
@@ -169,7 +171,8 @@ npm run db
 
      _Cria um novo cliente e insere no banco de dados_
 
-          Esquema da requisição:
+       Esquema da requisição:
+       
       ```json
     {
         "produtos": [
@@ -183,7 +186,8 @@ npm run db
     ```
 
      Esquema de resposta:
-      ```json
+     
+      ```
     {
         "produtos": [
             {
@@ -201,8 +205,7 @@ npm run db
      _Atualiza um ou múltiplos dados de um cliente desejado_
 
         Esquema da requisição:
-      ```json
-    {
+      ```
         "produtos": [
             {
                 "idEstoque": 101,
@@ -211,10 +214,11 @@ npm run db
                 "fornecedor": "Editora Alta Books"
             }
         ],
-    ```
+        ```
 
-   Esquema de resposta:
-      ```json
+ Esquema de resposta:
+   
+      ```
     {
         "produtos": [
             {
@@ -306,7 +310,7 @@ _Buscando um produto pelo ID no sistema_
 
 > http://localhost:3000/estoque/id/106
 
-- Como resposta, você receberá este esquema :
+  Como resposta, você receberá este esquema :
  ```
 {
     "produtos": [
@@ -327,7 +331,7 @@ _Buscando um produto pelo ID no sistema_
 
   _Removendo um produto do estoque_ 
 
-- Adicione no corpo da mensagem o produto que deseja remover :
+  Adicione no corpo da mensagem o produto que deseja remover :
 
  ```
             {
@@ -337,13 +341,15 @@ _Buscando um produto pelo ID no sistema_
             "fornecedor": "Fernando LTDA"
             }
  ```
-- Como resposta, você receberá este esquema :
+  Como resposta, você receberá este esquema :
 
+ ```
 {
     "msg": "O produto foi removido do estoque",
     "erro": false
 }
 
+ ```
 ---
 
 ## Pessoas Desenvolvedoras do Projeto:
