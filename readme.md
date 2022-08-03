@@ -4,12 +4,8 @@
 
 ![capaolimpiaapi](https://user-images.githubusercontent.com/83258570/182043643-85058033-482e-49d3-9e27-2617b702d698.jpg)
 
----
 
 ## Pessoas Desenvolvedoras do Projeto:
-
----
-
 <table>
   <tr>
     <td align="center">
