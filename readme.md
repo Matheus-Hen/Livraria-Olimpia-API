@@ -1011,6 +1011,152 @@ Esquema de resposta:
   }
   ```
 ---
+### Livros
+
+- **GET /livros**
+
+_Acessando os livros cadastrados no estoque_
+
+Esquema de resposta:
+
+```json
+{
+    "livros": [
+        {
+            "idLivro": 100001,
+            "titulo": "O Pequeno Principe",
+            "autor": "Antoine de Saint Exupéry",
+            "genero": "Literatura Infanto juvenil",
+            "formato": "Físico",
+            "valor": 20,
+            "idioma": "Português",
+            "numeroPaginas": 96
+        }
+    ]
+    },
+```
+---
+
+**GET /livros/titulo/:titulo**
+
+  _Busca livros no banco de dados pelo titulo_
+
+  Esquema de resposta:
+
+
+```json
+{
+    "titulo": {
+        "idLivro": 100001,
+        "titulo": "O Pequeno Principe",
+        "autor": "Antoine de Saint Exupéry",
+        "genero": "Literatura Infanto juvenil",
+        "formato": "Físico",
+        "valor": 20,
+        "idioma": "Português",
+        "numeroPaginas": 96
+    },
+    "erro": false
+}
+```
+---
+
+**GET /livros/idLivro/:idLivro**
+
+  _Busca livro no banco de dados pelo ID_
+
+  Esquema de resposta:
+
+
+```json
+{
+    "titulo": {
+        "idLivro": 100004,
+        "titulo": "As Brumas de Avalon",
+        "autor": "Marion Zimmer Bradley",
+        "genero": "Romance",
+        "formato": "Físico",
+        "valor": 42,
+        "idioma": "Português",
+        "numeroPaginas": 320
+    },
+    "erro": false
+}
+```
+---
+**GET /livros/genero/:genero**
+
+  _Busca livro no banco de dados pelo genero_
+
+  Esquema de resposta:
+
+
+```json
+{
+    "titulo": [
+        {
+            "idLivro": 100004,
+            "titulo": "As Brumas de Avalon",
+            "autor": "Marion Zimmer Bradley",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 42,
+            "idioma": "Português",
+            "numeroPaginas": 320
+        },
+    ]
+```
+---
+**GET /livros/autor/:autor**
+
+  _Busca livro no banco de dados pelo autor_
+
+  Esquema de resposta:
+
+
+```json
+{
+    "titulo": [
+        {
+            "idLivro": 100006,
+            "titulo": "Contact",
+            "autor": "Carl Sagan",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 35,
+            "idioma": "Inglês",
+            "numeroPaginas": 432
+        }
+    ],
+}
+```
+---
+**GET /livros/idioma/:idioma**
+
+  _Busca livro no banco de dados pelo idioma_
+
+  Esquema de resposta:
+
+
+```json
+
+{
+    "titulo": [
+        {
+            "idLivro": 100010,
+            "titulo": "The Book Thief",
+            "autor": "Markus Zusak",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 45,
+            "idioma": "Alemão",
+            "numeroPaginas": 480
+        }
+    ],
+    "erro": false
+}
+```
+---
 
 ## Licença:
 
