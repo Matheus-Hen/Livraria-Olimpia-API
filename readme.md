@@ -124,6 +124,8 @@ npm run db
             }
         ],
     ```
+    
+---
 
   * __GET  /clientes/email/:email__ 
 
@@ -142,8 +144,9 @@ npm run db
         ],
     ```
 
+---
     
-    * __GET  /clientes/id/:id__ 
+  * __GET  /clientes/id/:id__ 
 
      _Busca um cliente no banco de dados pelo ID_
 
@@ -160,8 +163,9 @@ npm run db
         ],
     ```
 
+---
     
-    * __POST  /clientes__ 
+  * __POST  /clientes__ 
 
      _Cria um novo cliente e insere no banco de dados_
 
@@ -190,12 +194,13 @@ npm run db
             }
         ],
     ```
+   ---
 
-      * __PUT  /clientes__ 
+   * __PUT  /clientes__ 
 
      _Atualiza um ou múltiplos dados de um cliente desejado_
 
-          Esquema da requisição:
+        Esquema da requisição:
       ```json
     {
         "produtos": [
@@ -208,7 +213,7 @@ npm run db
         ],
     ```
 
-     Esquema de resposta:
+   Esquema de resposta:
       ```json
     {
         "produtos": [
@@ -220,8 +225,8 @@ npm run db
             }
         ],
     ```
-
-        * __DELETE  /clientes/id/:id__ 
+---
+  * __DELETE  /clientes/id/:id__ 
 
      _Realiza uma deleção no banco de dados do cliente com o ID requerido_
 
@@ -238,7 +243,7 @@ npm run db
         ],
     ```
 
-
+---
 
 ### Estoque
 
@@ -246,7 +251,7 @@ npm run db
 
  _Acessando os produtos cadastrados no estoque_
 
-_- Esquema de resposta:
+ Esquema de resposta:
 
  ```
 
@@ -267,7 +272,7 @@ _- Esquema de resposta:
  
  _Inserindo novos produtos em estoque_
 
-- Esquema de inserção de um novo produto:
+  Esquema de inserção de um novo produto:
 
         {
             "produto": "Diário de um banana",
@@ -278,7 +283,7 @@ _- Esquema de resposta:
  Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
 
 
-- Esquema de resposta de um produto inserido :
+  Esquema de resposta de um produto inserido :
  ```
 {
     "msg": "Um novo produto foi inserido com sucesso",
@@ -297,7 +302,7 @@ _- Esquema de resposta:
 
 _Buscando um produto pelo ID no sistema_
 
-- Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
+  Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
 
 > http://localhost:3000/estoque/id/106
 
