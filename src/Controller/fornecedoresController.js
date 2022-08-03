@@ -1,23 +1,32 @@
 import Fornecedores from '../model/fornecedoresModel.js'
 import { criaFornecedor } from '../services/validacoesFornecedores.js'
 
+const modelFornecedor = new Fornecedores()
+
 const fornecedoresController = {
 
     //CRIA / INSERE
     criarNewFornecedor: async (req, res)=> {
       const body = req.body
-      const modelFornecedor = new Fornecedores()
       try {
         const novoFornecedor = criaFornecedor(body.nome, body.cnpj, body.produto,
         body.email, body.telefone, body.endereco, body.cep)
-        await modelFornecedor.insereFornecedores(novoFornecedor)
-          res.json(
+        const resposta = await modelFornecedor.insereFornecedores(novoFornecedor)
+
+        if (resposta.status === 200) {
+          res.status(resposta.status).json(
             {"msg": "Fornecedor inserido",
-              "cliente": novoFornecedor,
+              "cliente": resposta.dados,
               "erro": false}
           )   
+        } else {
+          res.status(resposta.status).json(
+            {"msg": resposta.mensagem,
+          "erro": true}
+          )
+        }
             } catch (error) {
-              res.json(
+              res.status(500).json(
                {"msg": error.message,
                 "erro": true}
                )
@@ -26,62 +35,124 @@ const fornecedoresController = {
     
      //geral
     procurarFornecedores : async (req, res)=> {
-      const modelFornecedor = new Fornecedores()
-      const todosFornecedores = await modelFornecedor.totalDeFornecedores()
-      
-      res.json({
-          "fornecedores": todosFornecedores,
-          "erro": false
-      })
+      try {
+        const resposta = await modelFornecedor.totalDeFornecedores()
+        
+        if (resposta.status === 200) {
+          res.status(resposta.status).json({
+              "fornecedores": resposta.dados,
+              "erro": false
+          })
+        } else {
+          res.status(resposta.status).json({
+            "mensagem": resposta.mensagem,
+            "erro": true
+          })
+        }
+      } catch (error) {
+        res.status(500).json(
+          {"mensagem": error.message,
+        "erro": true}
+          )
+      }
     },
 
     //especificos
     procurarIDfornecedores : async (req, res)=> {
-      const id = req.params.id
-      const modelFornecedor = new Fornecedores()
-      const result = await modelFornecedor.IDfornecedor(id)
-      
-      res.json({
-          "fornecedores": result,
-          "erro": false
-      })
+      try {
+        const id = req.params.id
+        const resposta = await modelFornecedor.IDfornecedor(id)
+        
+        if (resposta.status === 200) {
+          res.status(resposta.status).json({
+              "fornecedores": resposta.dados,
+              "erro": false
+          })
+        } else {
+          res.status(resposta.status).json({
+            "mensagem": resposta.mensagem,
+            "erro": true})
+        }
+      } catch (error) {
+        res.status(500).json({
+          "mensagem": error.message,
+          "erro": true
+        })
+      }
     },
 
     procurarProdutosFornecedores : async (req, res)=> {
-      const produtos = req.params.produtos
-      const modelFornecedor = new Fornecedores()
-      const result = await modelFornecedor.produtosFornecedor(produtos)
-      
-      res.json({
-          "fornecedores": result,
-          "erro": false
+      try {
+        const produtos = req.params.produtos
+        const resposta = await modelFornecedor.produtosFornecedor(produtos)
+
+        if (resposta.status === 200) {
+          res.status(resposta.status).json({
+            "fornecedores": resposta.dados,
+            "erro": false
+        })
+        } else {
+          res.status(resposta.status).json({
+            "mensagem": resposta.mensagem,
+            "erro": true})
+        }
+    } catch (error) {
+      res.status(500).json({
+        "mensagem": error.message,
+        "erro": true
       })
+      }
     },
   
     procurarCEPfornecedores : async (req, res)=> {
-      const cep = req.params.cep
-      const modelFornecedor = new Fornecedores()
-      const result = await modelFornecedor.CEPfornecedor(cep)
-      
-      res.json({
-          "fornecedores": result,
-          "erro": false
-      })
+      try {
+        
+        const cep = req.params.cep
+        const resposta = await modelFornecedor.CEPfornecedor(cep)
+        
+        if (resposta.status === 200) {
+          res.status(resposta.status).json({
+              "fornecedores": resposta.dados,
+              "erro": false
+          })
+        } else {
+          res.status(resposta.status).json({
+            "mensagem": resposta.mensagem,
+            "erro": true})
+        }
+      } catch (error) {
+        res.status(500).json({
+          "mensagem": error.message,
+          "erro": true
+        })
+        }
     },
   
     procurarCNPJfornecedores : async (req, res)=> {
-      const cnpj = req.params.cnpj
-      const modelFornecedor = new Fornecedores()
-      const result = await modelFornecedor.CNPJfornecedor(cnpj)
-      res.json({
-          "fornecedores": result,
-          "erro": false
-      })
+      try {
+        const cnpj = req.params.cnpj
+        const resposta = await modelFornecedor.CNPJfornecedor(cnpj)
+        
+        if (resposta.status === 200) {
+          res.status(resposta.status).json({
+              "fornecedores": resposta.dados,
+              "erro": false
+          })
+        } else {
+          res.status(resposta.status).json({
+            "mensagem": resposta.mensagem,
+            "erro": true})
+        }
+      } catch (error) {
+        res.status(500).json({
+          "mensagem": error.message,
+          "erro": true
+        })
+      }
     },
 
      //DELETA
     deletaFornecedor: async (req, res)=> {
-      const modelFornecedor = new Fornecedores()
       const id = req.params.id
       try { 
         await modelFornecedor.deletaFornecedor(id)
@@ -99,7 +170,6 @@ const fornecedoresController = {
 
     //ATUALIZA
     atualizaFornecedor: async (req, res)=> {
-      const modelFornecedor = new Fornecedores()
       const id = req.params.id
       const body = req.body
       try { 
