@@ -128,7 +128,7 @@ npm run db
     
 ---
 
-  * __GET  /clientes/email/:email__ 
+   * __GET  /clientes/email/:email__ 
 
      _Busca um cliente no banco de dados pelo email_
 
@@ -148,7 +148,7 @@ npm run db
 
 ---
     
-  * __GET  /clientes/id/:id__ 
+   * __GET  /clientes/id/:id__ 
 
      _Busca um cliente no banco de dados pelo ID_
 
@@ -167,7 +167,7 @@ npm run db
 
 ---
     
-  * __POST  /clientes__ 
+   * __POST  /clientes__ 
 
      _Cria um novo cliente e insere no banco de dados_
 
@@ -230,7 +230,7 @@ npm run db
         ],
     ```
 ---
-  * __DELETE  /clientes/id/:id__ 
+   * __DELETE  /clientes/id/:id__ 
 
      _Realiza uma deleção no banco de dados do cliente com o ID requerido_
 
@@ -284,7 +284,7 @@ npm run db
             "fornecedor": "Fernando LTDA"
         }
 
- Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
+   Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
 
 
   Esquema de resposta de um produto inserido :
@@ -304,13 +304,14 @@ npm run db
 * __GET  /estoque/id__ 
 
 
-_Buscando um produto pelo ID no sistema_
+  _Buscando um produto pelo ID no sistema_
 
   Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
 
-> http://localhost:3000/estoque/id/106
+  > http://localhost:3000/estoque/id/106
 
   Como resposta, você receberá este esquema :
+  
  ```
 {
     "produtos": [
@@ -324,7 +325,9 @@ _Buscando um produto pelo ID no sistema_
     "erro": false
 }
  ```
+ 
 ---
+
 
 * __DELETE  /estoque__ 
 
