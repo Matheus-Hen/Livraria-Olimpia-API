@@ -411,7 +411,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /pagamentos/idPagamentos/:idPagamentos**
 
-  _Busca um pagamento no banco de dados pelo id_
+  _Busca pagamento no banco de dados pelo id_
 
   ```json
   {
@@ -678,7 +678,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /fornecedores/produto/:produto**
 
-  _busca fornecedores pelo tipo de produto_
+  _Busca fornecedores pelo tipo de produto_
 
   ```json
   {
@@ -701,7 +701,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /fornecedores/endereco/:cep**
 
-  _busca fornecedores por cep_
+  _Busca fornecedores por cep_
 
   ```json
   {
