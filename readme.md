@@ -79,7 +79,8 @@ npm run db
             "quantidade": 457,
             "fornecedor": "Editora Alta Books"
         }
-    }
+        ]
+    },
   ```
 
 ---
@@ -99,7 +100,8 @@ npm run db
            "quantidade": 457,
            "fornecedor": "Editora Alta Books"
        }
-   }
+    ]
+   },
   ```
 
 ---
@@ -116,7 +118,7 @@ npm run db
     "produto": "Código Limpo",
     "quantidade": 457,
     "fornecedor": "Editora Alta Books"
-  }
+  },
   ```
 
 ---
@@ -136,7 +138,8 @@ npm run db
             "quantidade": 457,
             "fornecedor": "Editora Alta Books"
         }
-    }
+    ]
+    },
   ```
 
   ```
@@ -152,15 +155,16 @@ npm run db
   Esquema de resposta:
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 ---
@@ -172,29 +176,31 @@ npm run db
   Esquema da requisição:
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
   Esquema de resposta:
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 ---
@@ -206,29 +212,31 @@ npm run db
   Esquema da requisição:
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 Esquema de resposta:
 
 ```json
- {
+{
   "clientes": [
-      {
-          "idEstoque": 101,
-          "produto": "Código  Limpo",
-          "quantidade": 457,
-          "fornecedor": "Editora Alta Books"
-      }
-  }
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
 ```
 
 ---
@@ -240,15 +248,16 @@ Esquema de resposta:
   Esquema de resposta:
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 ---
@@ -262,15 +271,16 @@ _Acessando os produtos cadastrados no estoque_
 Esquema de resposta:
 
 ```json
- {
+{
   "clientes": [
-      {
-          "idEstoque": 101,
-          "produto": "Código  Limpo",
-          "quantidade": 457,
-          "fornecedor": "Editora Alta Books"
-      }
-  }
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
 ```
 
 ---
@@ -282,15 +292,16 @@ _Inserindo novos produtos em estoque_
 Esquema de inserção de um novo produto:
 
 ```json
- {
+{
   "clientes": [
-      {
-          "idEstoque": 101,
-          "produto": "Código  Limpo",
-          "quantidade": 457,
-          "fornecedor": "Editora Alta Books"
-      }
-  }
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
 ```
 
 Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
@@ -298,15 +309,16 @@ Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
 Esquema de resposta de um produto inserido :
 
 ```json
- {
+{
   "clientes": [
-      {
-          "idEstoque": 101,
-          "produto": "Código  Limpo",
-          "quantidade": 457,
-          "fornecedor": "Editora Alta Books"
-      }
-  }
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
 ```
 
 ---
@@ -322,16 +334,16 @@ Esquema de resposta de um produto inserido :
   Como resposta, você receberá este esquema :
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
-
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 ---
@@ -343,31 +355,31 @@ Esquema de resposta de um produto inserido :
   Adicione no corpo da mensagem o produto que deseja remover :
 
   ```json
-   {
+  {
     "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    }
-
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
   ```
 
 Como resposta, você receberá este esquema :
 
 ```json
- {
+{
   "clientes": [
-      {
-          "idEstoque": 101,
-          "produto": "Código  Limpo",
-          "quantidade": 457,
-          "fornecedor": "Editora Alta Books"
-      }
-  }
-
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
 ```
 
 ---
@@ -380,19 +392,19 @@ Como resposta, você receberá este esquema :
 
   ```json
   {
-  "pagamentos": [
-        {
-            "idPagamentos": 2022,
-            "cliente": "luana silva de alencar",
-            "formaDePagamento": "pix",
-            "valor": 120,
-            "parcelamento": "0",
-            "status": "pago",
-            "data": "20-08-2022",
-            "idLivros": null
-        }
-  ],
-
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -426,18 +438,19 @@ Como resposta, você receberá este esquema :
 
   ```json
   {
-  "pagamentos": [
-        {
-            "idPagamentos": 2022,
-            "cliente": "luana silva de alencar",
-            "formaDePagamento": "pix",
-            "valor": 120,
-            "parcelamento": "0",
-            "status": "pago",
-            "data": "20-08-2022",
-            "idLivros": null
-        }
-  ],
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -449,18 +462,18 @@ Como resposta, você receberá este esquema :
   ```json
   {
     "pagamentos": [
-        {
-            "idPagamentos": 2023,
-            "cliente": "pedro josé Barros",
-            "formaDePagamento": "cartao",
-            "valor": 89,
-            "parcelamento": "2",
-            "status": "pago",
-            "data": "15-08-2022",
-            "idLivros": null
-        }
-    ],
-
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -472,17 +485,18 @@ Como resposta, você receberá este esquema :
   ```json
   {
     "pagamentos": [
-        {
-            "idPagamentos": 2024,
-            "cliente": "marcos santos",
-            "formaDePagamento": "boleto",
-            "valor": 180,
-            "parcelamento": "1",
-            "status": "pago",
-            "data": "02-08-2022",
-            "idLivros": null
-        }
-    ],
+      {
+        "idPagamentos": 2024,
+        "cliente": "marcos santos",
+        "formaDePagamento": "boleto",
+        "valor": 180,
+        "parcelamento": "1",
+        "status": "pago",
+        "data": "02-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -494,17 +508,18 @@ Como resposta, você receberá este esquema :
   ```json
   {
     "pagamentos": [
-        {
-            "idPagamentos": 2023,
-            "cliente": "pedro josé Barros",
-            "formaDePagamento": "cartao",
-            "valor": 89,
-            "parcelamento": "2",
-            "status": "pago",
-            "data": "15-08-2022",
-            "idLivros": null
-        }
-    ],
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 - **GET /pagamentos/cliente/:cliente**
@@ -514,17 +529,18 @@ Como resposta, você receberá este esquema :
   ```json
   {
     "pagamentos": [
-        {
-            "idPagamentos": 2024,
-            "cliente": "marcos santos",
-            "formaDePagamento": "boleto",
-            "valor": 180,
-            "parcelamento": "1",
-            "status": "pago",
-            "data": "02-08-2022",
-            "idLivros": null
-        }
-    ],
+      {
+        "idPagamentos": 2024,
+        "cliente": "marcos santos",
+        "formaDePagamento": "boleto",
+        "valor": 180,
+        "parcelamento": "1",
+        "status": "pago",
+        "data": "02-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -535,17 +551,19 @@ Como resposta, você receberá este esquema :
 
   ```json
   {
-  "pagamentos": [
+    "pagamentos": [
       {
-          "idPagamentos": 2022,
-          "cliente": "luana silva de alencar",
-          "formaDePagamento": "pix",
-          "valor": 120,
-          "parcelamento": "0",
-          "status": "pago",
-          "data": "20-08-2022",
-          "idLivros": null
-      },
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
+  }
   ```
 
 ---
@@ -564,7 +582,7 @@ Como resposta, você receberá este esquema :
     "status": "pendente",
     "data": "20-08-2021",
     "idLivros": null
-  }
+  },
   ```
 
   ***
@@ -592,14 +610,14 @@ Como resposta, você receberá este esquema :
   {
     "msg": "Pagamento inserido com sucesso",
     "pagamentos": {
-        "cliente": 2089,
-        "formaDePagamento": "Ana Ana",
-        "valor": "dinheiro",
-        "parcelamento": 290,
-        "status": "2",
-        "data": "pendente"
-    },
-
+      "cliente": 2089,
+      "formaDePagamento": "Ana Ana",
+      "valor": "dinheiro",
+      "parcelamento": 290,
+      "status": "2",
+      "data": "pendente"
+    }
+  }
   ```
 
 ## Pessoas Desenvolvedoras do Projeto:
