@@ -1,5 +1,3 @@
-// import  bd from '../database/bd.js'
-
 import dao from "../DAO/livrosDAO.js"
 
 
@@ -16,31 +14,143 @@ class Livro {
     }
 
     cadastroLivro = async (livro) =>{
-        return await dao.cadastrarLivro(livro)
+        try {
+            const data = await dao.cadastrarLivro(livro)
+            return {
+                "dados": data,
+                "status": 200
+            }
+        } catch (error) {
+            return {
+                "mensagem": error.message,
+                "status": 400
+            }
+        }
     }
 
     listaDeLivros = async () => {
-        return await dao.listarLivros()
+        try {
+            const data = await dao.listarLivros()
+            return {
+                "dados": data,
+                "status": 200
+            }
+        } catch (error) {
+            return {
+                "mensagem": error.message,
+                "status": 400
+            }
+        }
     }
     
     buscaLivro =  async (titulo) =>{
-        return await dao.buscaLivro(titulo)
+        try {
+            const data = await dao.buscaLivro(titulo)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livro de título ${titulo} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
     
     buscaLivroId =  async (idLivro) =>{
-        return await dao.buscaLivroId(idLivro)
+        try {
+            const data = await dao.buscaLivroId(idLivro)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livro de ID ${idLivro} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
 
     buscaGenero =  async (genero) =>{
-        return await dao.buscaGenero(genero)
+        try {
+            const data = await dao.buscaGenero(genero)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livro de genero ${genero} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
 
     buscaAutor =  async (autor) =>{
-        return await dao.buscaAutor(autor)
+        try {
+            const data = await dao.buscaAutor(autor)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livros de autor(a) ${autor} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
 
     buscaIdioma =  async (idioma) =>{
-        return await dao.buscaIdioma(idioma)
+        try {
+            const data = await dao.buscaIdioma(idioma)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livro de idioma ${idioma} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
 
     /*buscaEditora =  async (idioma) =>{
@@ -50,27 +160,55 @@ class Livro {
     }*/
 
     removeLivro = async (idLivro) =>{
-        return await dao.removeLivro(idLivro)
-        // Adionar tratamento caso o livro já não exista na lista. 
+        try {
+            const data = await dao.removeLivro(idLivro)
+            if (data) {
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                return {
+                    "mensagem": `Livro de ID ${idLivro} não encontrado`,
+                    "status": 404
+                }
+            }
+        } catch (error) {
+            return {
+                "dados": error.message,
+                "status": 400
+            }
+        }
     }
 
     atualizaLivro = async (idLivro, novoDado) => {
-        const livroAtual = await this.buscaLivroId(idLivro)
-
-        if (livroAtual) {
-            const livroAtualizado = {
-                "titulo": novoDado.titulo || livroAtual.titulo,
-                "autor": novoDado.autor || livroAtual.autor,
-                "genero": novoDado.genero || livroAtual.genero,
-                "formato": novoDado.formato || livroAtual.formato,
-                "valor": novoDado.valor || livroAtual.valor,
-                "idioma": novoDado.idioma || livroAtual.idioma,
-                "numeroPaginas": novoDado.numeroPaginas || livroAtual.numeroPaginas,
-                
+        try {
+            const livroAtual = await this.buscaLivroId(idLivro)
+    
+            if (livroAtual) {
+                const livroAtualizado = {
+                    "titulo": novoDado.titulo || livroAtual.titulo,
+                    "autor": novoDado.autor || livroAtual.autor,
+                    "genero": novoDado.genero || livroAtual.genero,
+                    "formato": novoDado.formato || livroAtual.formato,
+                    "valor": novoDado.valor || livroAtual.valor,
+                    "idioma": novoDado.idioma || livroAtual.idioma,
+                    "numeroPaginas": novoDado.numeroPaginas || livroAtual.numeroPaginas,
+                    
+                }
+                const data = await dao.atualizaLivro(idLivro, livroAtualizado)
+                return {
+                    "dados": data,
+                    "status": 200
+                }
+            } else {
+                throw new Error("O livro não foi encontrado")
             }
-            return await dao.atualizaLivro(idLivro, livroAtualizado)
-        } else {
-            throw new Error("O livro não foi encontrado")
+        } catch (error) {
+            return {
+                "mensagem": error.message,
+                "status": 400
+            }
         }
 
     }

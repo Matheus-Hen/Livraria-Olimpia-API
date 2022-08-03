@@ -18,98 +18,173 @@ const livroController = {
         body.numeroPaginas
       );
 
-      console.log(novoLivro)
+      const resposta = await modelLivros.cadastroLivro(novoLivro);
 
-      await modelLivros.cadastroLivro(novoLivro);
-
-      res.json({
-        msg: "Cadastro do livro realizado com sucesso",
-        livro: novoLivro,
-        erro: false,
+      res.status(resposta.status).json({
+        "msg": "Cadastro do livro realizado com sucesso",
+        "livro": resposta.dados,
+        "erro": false,
       });
 
     } catch (error) {
-      res.json({ 
-        msg: error.message, 
-        erro: true 
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
       });
     }
   },
 
   listarLivros: async (req, res) => {
-    const todosLivros = await modelLivros.listaDeLivros();
-
-    res.json({
-      livros: todosLivros,
-      erro: false,
-    });
+    try {
+      const resposta = await modelLivros.listaDeLivros();
+  
+      res.status(resposta.status).json({
+        "livros": resposta.dados,
+        "erro": false,
+      });
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
   buscaLivro: async (req, res) => {
-    const titulo = req.params.titulo;
-    const resultadoBusca = await modelLivros.buscaLivro(titulo);
-
-    res.json({
-      titulo: resultadoBusca,
-      erro: false,
-    });
+    try {
+      const titulo = req.params.titulo;
+      const resposta = await modelLivros.buscaLivro(titulo);
+      
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          "titulo": resultadoBusca,
+          "erro": false,
+        });
+      } else {
+        res.status(resposta.status).json(
+          {"mensagem": resposta.mensagem,
+          "erro": true}
+        )
+      }
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
-  buscaLivroId: async (req, res) => {
-    const idLivro = req.params.idLivro;
-    const resultadoBusca = await modelLivros.buscaLivroId(idLivro);
-
-    res.json({
-      idLivro: resultadoBusca,
-      erro: false,
-    });
+  buscaLivroId: async (req, res) => { 
+    try {
+      const idLivro = req.params.idLivro;
+      const resposta = await modelLivros.buscaLivroId(idLivro);
+      
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          "titulo": resultadoBusca,
+          "erro": false,
+        });
+      } else {
+        res.status(resposta.status).json(
+          {"mensagem": resposta.mensagem,
+          "erro": true}
+        )
+      }
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
 
-  buscaGenero: async (req, res) => {
-    const genero = req.params.genero;
-    const resultadoBusca = await modelLivros.buscaGenero(genero);
-
-    res.json({
-      genero: resultadoBusca,
-      erro: false,
-    });
+  buscaGenero: async (req, res) => { 
+    try {
+      const genero = req.params.genero;
+      const resposta = await modelLivros.buscaGenero(genero);
+      
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          "titulo": resultadoBusca,
+          "erro": false,
+        });
+      } else {
+        res.status(resposta.status).json(
+          {"mensagem": resposta.mensagem,
+          "erro": true}
+        )
+      }
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
   buscaAutor: async (req, res) => {
-    const autor = req.params.autor;
-    const resultadoBusca = await modelLivros.buscaAutor(autor);
-
-    res.json({
-      autor: resultadoBusca,
-      erro: false,
-    });
+    try {
+      const autor = req.params.autor;
+      const resposta = await modelLivros.buscaAutor(autor);
+      
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          "titulo": resultadoBusca,
+          "erro": false,
+        });
+      } else {
+        res.status(resposta.status).json(
+          {"mensagem": resposta.mensagem,
+          "erro": true}
+        )
+      }
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
   buscaIdioma: async (req, res) => {
-    const idioma = req.params.idioma;
-    const resultadoBusca = await modelLivros.buscaIdioma(idioma);
-
-    res.json({
-      idioma: resultadoBusca,
-      erro: false,
-    });
+    try {
+      const idioma = req.params.idioma;
+      const resposta = await modelLivros.buscaIdioma(idioma);
+      
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          "titulo": resultadoBusca,
+          "erro": false,
+        });
+      } else {
+        res.status(resposta.status).json(
+          {"mensagem": resposta.mensagem,
+          "erro": true}
+        )
+      }
+    } catch (error) {
+      res.status(resposta.status).json({ 
+        "msg": error.message, 
+        "erro": true 
+      });
+    }
   },
 
   removeLivro: async (req, res) => {
     const idLivro = req.params.idLivro;
     try {
-      await modelLivros.removeLivro(idLivro);
+      const resposta = await modelLivros.removeLivro(idLivro);
 
-      res.json({
-        msg: "Livro deletado com sucesso",
-        erro: false,
+      res.status(resposta.status).json({
+        "msg": "Livro deletado com sucesso",
+        "erro": false,
       });
 
     } catch (error) {
-      res.json({
-        msg: error.message,
-        erro: true,
+      res.status(resposta.status).json({
+        "msg": error.message,
+        "erro": true,
       });
     }
   },
@@ -126,16 +201,16 @@ const livroController = {
         body.idioma,
         body.numeroPaginas)
 
-      await modelLivros.atualizaLivro(idLivro, livroAtualizado);
-      res.json({
-        msg: "O livro foi atualizado com sucesso",
-        livro: livroAtualizado,
-        erro: false,
+      const resposta = await modelLivros.atualizaLivro(idLivro, livroAtualizado);
+      res.status(resposta.status).json({
+        "msg": "O livro foi atualizado com sucesso",
+        "livro": livroAtualizado,
+        "erro": false,
       });
     } catch (error) {
-      res.json({
-        msg: error.message,
-        erro: true,
+      res.status(resposta.status).json({
+        "msg": error.message,
+        "erro": true,
       });
     }
   },
