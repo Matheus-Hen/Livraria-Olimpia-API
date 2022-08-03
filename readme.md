@@ -4,6 +4,78 @@
 
 ![capaolimpiaapi](https://user-images.githubusercontent.com/83258570/182043643-85058033-482e-49d3-9e27-2617b702d698.jpg)
 
+---
+
+## Pessoas Desenvolvedoras do Projeto:
+
+---
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/lisandradecassia/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102766893?v=4" width="100px;"><br>
+        <sub>
+        <b>Lisandra Silva</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/andre-sqr/">
+        <img style="border-radius: 50%; width="100px;"" src="https://avatars.githubusercontent.com/u/102765824?v=4" width="100px;"><br>
+        <sub>
+        <b>André Siqueira</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/matheus-henrique-de-l%C3%A1zaro-silva/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/44203985?v=4" width="100px;"><br>
+        <sub>
+        <b>Matheus Henrique</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/ester-messias-08b706177/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/87023023?v=4" width="100px;"><br>
+        <sub>
+        <b>Ester Messias</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/wellisonsales/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/83258570?v=4" width="100px;"><br>
+        <sub>
+        <b>Wellison Sales</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/nuchoa/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/97313973?v=4" width="100px;"><br>
+        <sub>
+        <b>Nathalia Uchoa</br>
+        <sub>
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
+        </sub>
+      </a>
+    </td>
+</table>
+
+---
+
 ## Tecnologias utilizadas:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -942,76 +1014,6 @@ Esquema de resposta:
     "erro": false
   }
   ```
----
-
-## Pessoas Desenvolvedoras do Projeto:
-
----
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/lisandradecassia/">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102766893?v=4" width="100px;"><br>
-        <sub>
-        <b>Lisandra Silva</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/andre-sqr/">
-        <img style="border-radius: 50%; width="100px;"" src="https://avatars.githubusercontent.com/u/102765824?v=4" width="100px;"><br>
-        <sub>
-        <b>André Siqueira</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/matheus-henrique-de-l%C3%A1zaro-silva/">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/44203985?v=4" width="100px;"><br>
-        <sub>
-        <b>Matheus Henrique</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/ester-messias-08b706177/">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/87023023?v=4" width="100px;"><br>
-        <sub>
-        <b>Ester Messias</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/wellisonsales/">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/83258570?v=4" width="100px;"><br>
-        <sub>
-        <b>Wellison Sales</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/nuchoa/">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/97313973?v=4" width="100px;"><br>
-        <sub>
-        <b>Nathalia Uchoa</br>
-        <sub>
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="20px">
-        </sub>
-      </a>
-    </td>
-</table>
-
 ---
 
 ## Licença:
