@@ -87,7 +87,9 @@ npm run db
         ],
     ```
 
-     * __GET  /clientes/nome/:nome__ 
+---
+
+  * __GET  /clientes/nome/:nome__ 
 
      _Busca um cliente no banco de dados pelo nome_
 
@@ -104,7 +106,9 @@ npm run db
         ],
     ```
 
-     * __GET  /clientes/cpf/:cpf__ 
+---
+
+   * __GET  /clientes/cpf/:cpf__ 
 
      _Busca um cliente no banco de dados pelo CPF_
 
@@ -121,7 +125,7 @@ npm run db
         ],
     ```
 
-    * __GET  /clientes/email/:email__ 
+  * __GET  /clientes/email/:email__ 
 
      _Busca um cliente no banco de dados pelo email_
 
@@ -187,7 +191,7 @@ npm run db
         ],
     ```
 
-        * __PUT  /clientes__ 
+      * __PUT  /clientes__ 
 
      _Atualiza um ou múltiplos dados de um cliente desejado_
 
@@ -240,7 +244,7 @@ npm run db
 
  * __GET  /estoque__ 
 
-GET/ESTOQUE: Acessando os produtos cadastrados no estoque 
+ _Acessando os produtos cadastrados no estoque_
 
 _- Esquema de resposta:
 
@@ -259,7 +263,9 @@ _- Esquema de resposta:
  
 ---
 
-POST/ESTOQUE: Inserindo novos produtos em estoque 
+ * __POST  /estoque__ 
+ 
+ _Inserindo novos produtos em estoque_
 
 - Esquema de inserção de um novo produto:
 
@@ -286,7 +292,10 @@ POST/ESTOQUE: Inserindo novos produtos em estoque
  ```
 ---
 
-GET/ESTOQUE: Buscando um produto pelo ID no sistema 
+* __GET  /estoque/id__ 
+
+
+_Buscando um produto pelo ID no sistema_
 
 - Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
 
@@ -308,7 +317,10 @@ GET/ESTOQUE: Buscando um produto pelo ID no sistema
  ```
 ---
 
-DELETE/ESTOQUE: Removendo um produto do estoque 
+* __DELETE  /estoque__ 
+
+
+  _Removendo um produto do estoque_ 
 
 - Adicione no corpo da mensagem o produto que deseja remover :
 
