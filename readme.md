@@ -434,7 +434,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /pagamentos/status/status**
 
-  _Busca um pagamento no banco de dados pelo id_
+  _Busca um pagamento no banco de dados pelo status_
 
   ```json
   {
@@ -524,7 +524,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /pagamentos/cliente/:cliente**
 
-  _Busca o pagamento no banco de dados pela quantidade de parcelas_
+  _Busca o pagamento no banco de dados pelo nome do cliente_
 
   ```json
   {
@@ -567,23 +567,6 @@ Como resposta, você receberá este esquema :
   ```
 
 ---
-
-- **POST /pagamentos/**
-
-  _Cria um novo pagamento e insere no banco de dados_
-
-  ```json
-  {
-    "idPagamentos": 2089,
-    "cliente": "Ana Ana",
-    "formaDePagamento": "dinheiro",
-    "valor": 290,
-    "parcelamento": "2",
-    "status": "pendente",
-    "data": "20-08-2021",
-    "idLivros": null
-  },
-  ```
 
   ***
 
@@ -672,7 +655,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /fornecedores/cnpj/:cnpj**
 
-  _Busca um fornecedor no banco de dados pelo id_
+  _Busca um fornecedor no banco de dados pelo cnpj_
 
   ```json
   {
@@ -695,7 +678,7 @@ Como resposta, você receberá este esquema :
 
 - **GET /fornecedores/produto/:produto**
 
-  _busca produtos por fornecedores_
+  _busca fornecedores pelo tipo de produto_
 
   ```json
   {
@@ -710,6 +693,7 @@ Como resposta, você receberá este esquema :
             "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
             "cep": "01830260"
         },
+  ]
   }
   ```
 
@@ -790,7 +774,7 @@ Como resposta, você receberá este esquema :
 
 - **PUT /fornecedores/id/:id**
 
-  _Atualização de dados por id_
+  _Atualização de dados do fornecedor por id_
 
  ```json
     {
