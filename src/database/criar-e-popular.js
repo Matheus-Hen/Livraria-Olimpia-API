@@ -2,6 +2,7 @@ import sqlite3 from "sqlite3";
 sqlite3.verbose();
 const db = new sqlite3.Database("olimpia.db");
 
+// ******************LIVROS*************************
 const LIVROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "LIVROS" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,6 +23,7 @@ function criaTabelaLivros() {
   });
 }
 
+// ******************CLIENTES*************************
 const CLIENTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENTES" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,6 +60,8 @@ function populaTabelaClientes() {
     })
   }  
 
+// ******************FUNCIONARIOS*************************
+
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,15 +72,30 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "senha" text,
     "cargo" text
   );
-`;
+`
+const FUNCIONARIOS_ADD_DATA = `
+INSERT INTO FUNCIONARIOS (id, nome, email, cpf, telefone, senha, cargo)
+VALUES 
+(1, 'Marcos Henrique', 'marquinho@gmail.com', '14458658405', '3436954712', 'zmarquinho100', 'CEO'),
+(2, 'Maria Eduarda', 'dudinha@yahoo.com', '15736428425', '34995142687', 'lovemylife', 'gerente'),
+(3, 'Taylor Swift', 'folkloreaoty@gmail.com', '44727894181', '9928763448', 'amomeusgatinhos', 'Vendedora'),
+(4, 'Selena Gomez', 'seleninha@yahoo.com', '01243297050', '3125412343', 'gomez321   ', 'Chefe de Departamento'),
+(5, 'Emma Watson', 'EmmaW@gmail.com', '75238428425', '1237575524', 'hermione123', 'Consultora')
+`
+
+function populaTabelaFuncionarios() {
+    db.run(FUNCIONARIOS_ADD_DATA, (error) => {
+      if (error) console.log("Erro ao popular a tabela de Funcionarios")
+    })
+  }  
 
 function criaTabelaFuncionarios() {
-  db.run(FUNCIONARIOS_SCHEMA, (error) => {
-    if (error)
-      console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
-  });
+    db.run(FUNCIONARIOS_SCHEMA, (error) => {
+        if (error) console.log(`Erro na criação da tabela funcionarios: ${error.message}`);
+    });
 }
 
+// ******************FORNECEDORES*************************
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -118,29 +137,48 @@ function popularTabelaFornecedores() {
   });
 }
 
+// ******************PAGAMENTOS*************************
+
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "idPagamentos" INTEGER PRIMARY KEY AUTOINCREMENT,
     "cliente" integer,
-    "forma_pagamento" text,
+    "formaDePagamento" text,
     "valor" real,
     "parcelamento" text,
     "status" text,
-    "data" text
-  );
-  
-`;
+    "data" text,
+    "idLivros" integer,
+    FOREIGN KEY ("idLivros")  REFERENCES LIVROS (id));
+`
+const POPULAR_PAGAMENTOS = `
+INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
+VALUES 
+    (002022, 'luana silva de alencar', 'pix', 120, 0, 'pago', '20-08-2022'),
+    (002023, 'pedro josé Barros', 'cartao', 89, 2, 'pago', '15-08-2022'),
+    (002024, 'marcos santos', 'boleto', 180, 1, 'pago', '02-08-2022'),
+    (002025, 'amanda tainá Rosa', 'pix', 59, 0, 'pago', '17-06-2022'),
+    (002026, 'ana Julia maria', 'cartao', 59, 0, 'pago', '17-06-2022')
+`
+
 
 function criaTabelaPagamentos() {
-  db.run(PAGAMENTOS_SCHEMA, (error) => {
-    if (error)
-      console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
-  });
+    db.run(PAGAMENTOS_SCHEMA, (error) => {
+        if (error) console.log(`Erro na criação da tabela pagamentos: ${error.message}`);
+    });
 }
 
+function popularTabelaPagamentos() {
+    db.run(POPULAR_PAGAMENTOS, (error)=> {
+        if (error) console.log(`Erro ao popular tabela pagamentos: ${error.message}`);
+    })
+}
+
+
+// ******************ESTOQUE*************************
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "idEstoque" INTEGER PRIMARY KEY AUTOINCREMENT,
     "produto" integer,
     "quantidade" integer,
     "fornecedor" integer
@@ -148,19 +186,37 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
 `;
 
 function criaTabelaEstoque() {
-  db.run(ESTOQUE_SCHEMA, (error) => {
-    if (error)
-      console.log(`Erro na criação da tabela estoque: ${error.message}`);
-  });
+    db.run(ESTOQUE_SCHEMA, (error) => {
+        if (error) console.log(`Erro na criação da tabela estoque: ${error.message}`);
+    });
 }
 
-db.serialize(() => {
-  criaTabelaLivros();
-  criaTabelaClientes();
-  populaTabelaClientes()
-  criaTabelaFuncionarios();
-  criaTabelaFornecedores();
-  popularTabelaFornecedores();
-  criaTabelaPagamentos();
-  criaTabelaEstoque();
-});
+const dadosEstoque = `
+INSERT INTO ESTOQUE (idEstoque, produto, quantidade, fornecedor)
+VALUES 
+    (101, 'Livro um', 202,  "Editora Insitrica"),
+    (102, 'Livro dois', 502, "Catavento"),
+    (103, 'Livro tres', 102, "Porta de Trás"),
+    (104, 'Livro quatro', 303, "Editora Devinho"),
+    (105, 'Livro cincto', 507, "Editora Perry")
+`
+
+function popularEstoque() {
+    db.run(dadosEstoque, (error)=> {
+        if (error) console.log(`Erro na criação da população do Estoque: ${error.message}`);
+    });
+}
+
+db.serialize( ()=> {
+    criaTabelaLivros()
+    criaTabelaClientes()
+    populaTabelaClientes()
+    criaTabelaFuncionarios()
+    populaTabelaFuncionarios()
+    criaTabelaFornecedores()
+    popularTabelaFornecedores()
+    criaTabelaPagamentos()
+    popularTabelaPagamentos()
+    criaTabelaEstoque()
+    popularEstoque()
+})
