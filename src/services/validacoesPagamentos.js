@@ -8,4 +8,4 @@ export const criaPagamento = (cliente, formaDePagamento, valor, parcelamento, st
         "status": status,
         "data": data
     }
-    }
+}
