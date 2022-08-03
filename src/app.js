@@ -5,6 +5,7 @@ import pagamentos from "./router/routerPagamentos.js";
 import fornecedores from "./router/fornecedoresRouter.js"
 import routerEstoque from "./router/routerEstoque.js";
 import { routerFuncionario } from "./router/routerFuncionario.js";
+import routerLivros from "./router/routerLivros.js";
 
 const app = express()
 
@@ -17,6 +18,7 @@ fornecedores(app)
 routerCliente(app)
 routerEstoque(app)
 routerFuncionario(app)
+routerLivros(app)
 
 const port = 3000;
 
