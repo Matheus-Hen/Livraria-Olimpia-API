@@ -16,11 +16,12 @@ const FuncionarioController = {
     
     showFuncionarioName: async (req, res)=> {
         const nome = req.params.nome
+        console.log(nome);
         const modelFuncionario = new Funcionario()
         const resultadoBusca = await modelFuncionario.showFuncName(nome)
         
-        res.json({
-            "funcionario": resultadoBusca,
+        res.status(200).json({
+            "funcionario": nome,
             "erro": false
         })
     },
@@ -47,7 +48,7 @@ const FuncionarioController = {
         })
     },
     
-    showFuncionarioID: async (req, res)=> {
+        showFuncionarioID: async (req, res)=> {
         const id = req.params.id
         const modelFuncionario = new Funcionario()
         const resultadoBusca = await modelFuncionario.showFuncID(id)

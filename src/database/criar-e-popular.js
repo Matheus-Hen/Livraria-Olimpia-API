@@ -148,14 +148,10 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "parcelamento" text,
     "status" text,
     "data" text,
-    "idLivros" integer,
-    "LivroQuant" integer,
-    FOREIGN KEY ("idLivros")  REFERENCES ESTOQUE (idEstoque),
-    FOREIGN KEY ("LivroQuant") REFERENCES ESTOQUE (quatidade)
     );
 `
 const POPULAR_PAGAMENTOS = `
-INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data, idLivros, LivroQuant)
+INSERT INTO PAGAMENTOS (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data)
 VALUES 
     (002022, 'luana silva de alencar', 'pix', 120, 0, 'pago', '20-08-2022'),
     (002023, 'pedro josé Barros', 'cartao', 89, 2, 'pago', '15-08-2022'),
@@ -181,11 +177,11 @@ function popularTabelaPagamentos() {
 // ******************ESTOQUE*************************
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
-    "idEstoque" INTEGER AUTO_INCREMENT,
+    "idEstoque" INTEGER PRIMARY KEY AUTOINCREMENT,
     "produto" integer,
     "quantidade" INTEGER ,
     "fornecedor" integer,
-    PRIMARY KEY (idEstoque, quantidade)
+    
   );
 `;
 
