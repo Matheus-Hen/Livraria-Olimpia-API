@@ -1195,6 +1195,40 @@ Esquema de resposta:
     },
 }
 ```
+**POST /livros**
+
+  _Cria um novo livro e insere no banco de dados_
+
+  Esquema de requisição de livros:
+
+  ```json
+       {
+            "idLivro": 1000333,
+            "titulo": "ciranda cirandinha vamos",
+            "autor": "Antoine de Saint Exupéry",
+            "genero": "Literatura Infanto juvenil",
+            "formato": "Físico",
+            "valor": 20,
+            "idioma": "Português",
+            "numeroPaginas": 96
+        }
+  ```
+  Esquema de resposta:
+
+  ```json
+     {
+        "msg": "Cadastro do livro realizado com sucesso",
+        "livro": {
+        "titulo": "ciranda cirandinha vamos",
+        "autor": "Antoine de Saint Exupéry",
+        "genero": "Literatura Infanto juvenil",
+        "formato": "Físico",
+        "valor": 20,
+        "idioma": "Português",
+        "numeroPaginas": 96
+    },
+    }
+  ```
 ---
 ## Licença:
 
