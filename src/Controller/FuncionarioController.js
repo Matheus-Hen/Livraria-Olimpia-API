@@ -96,7 +96,7 @@ const FuncionarioController = {
 
             if (resultadoBusca.status === 200) {
                 res.status(resultadoBusca.status).json({
-                    "funcionario": resultadoBusca,
+                    "funcionario": resultadoBusca.dados,
                     "erro": false
                 })
             } else {
@@ -157,10 +157,10 @@ const FuncionarioController = {
             try { 
                 const funcionarioAtualizado = newFunc(body.nome, body.email, body.cpf,
                 body.telefone, body.cargo, body.senha)
-                const resposta = await modelFuncionario.newFunc(id, funcionarioAtualizado)
+                const resposta = await modelFuncionario.updateFunc(id, funcionarioAtualizado)
                 res.status(200).json(
                     {"msg": "Funcionario atualizado com sucesso",
-                    "cliente": resposta,
+                    "cliente": resposta.dados,
                     "erro": false}
             )
             } catch (error) {
