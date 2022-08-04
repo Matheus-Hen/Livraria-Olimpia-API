@@ -1010,6 +1010,40 @@ Esquema de resposta:
     "erro": false
   }
   ```
+
+- **PUT /funcionario**
+
+  _Atualiza um ou múltiplos dados de um funcionário desejado_
+
+  Esquema da requisição:
+
+  ```json
+  {
+      "id": 1,
+      "nome": "Marcos Henrique",
+      "email": "marquinho@gmail.com",
+      "cpf": "14458658405",
+      "telefone": "12345678",
+      "senha": "zmarquinho100",
+      "cargo": "CEO"
+  }
+  ```
+
+Esquema de resposta:
+
+```json
+{
+    "msg": "Funcionario atualizado com sucesso",
+    "cliente": {
+    "nome": "Marcos Henrique",
+    "email": "marquinho@gmail.com",
+    "cpf": "14458658405",
+    "telefone": "12345678",
+    "cargo": "CEO",
+    "senha": "zmarquinho100"
+    },
+    }
+```
 ---
 ### Livros
 
