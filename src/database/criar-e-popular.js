@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "valor" real,
     "parcelamento" text,
     "status" text,
-    "data" text,
+    "data" text
     );
 `
 const POPULAR_PAGAMENTOS = `
@@ -203,8 +203,7 @@ CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "idEstoque" INTEGER PRIMARY KEY AUTOINCREMENT,
     "produto" integer,
     "quantidade" INTEGER ,
-    "fornecedor" integer,
-    
+    "fornecedor" integer
   );
 `;
 
