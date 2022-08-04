@@ -165,7 +165,7 @@ function popularTabelaFornecedores() {
 const PAGAMENTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PAGAMENTOS" (
     "idPagamentos" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "cliente" integer,
+    "cliente" text,
     "formaDePagamento" text,
     "valor" real,
     "parcelamento" text,
@@ -201,9 +201,9 @@ function popularTabelaPagamentos() {
 const ESTOQUE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ESTOQUE" (
     "idEstoque" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "produto" integer,
+    "produto" text,
     "quantidade" INTEGER ,
-    "fornecedor" integer
+    "fornecedor" text
   );
 `;
 
