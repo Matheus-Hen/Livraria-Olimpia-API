@@ -670,7 +670,58 @@ Como resposta, você receberá este esquema :
     }
   }
   ```
+---
+- **DELETE /pagamentos/id/:id**
 
+  _Realiza uma deleção no banco de dados do pagamento com o id requerido_
+
+  Busca um fornecedor no banco de dados pelo id: 2022
+
+  Esquema de resposta:
+
+  ```json
+  {
+    "msg": "Pagamento deletado com sucesso",
+    "erro": false
+  }
+  ```
+---
+- **PUT /pagamentos**
+
+  _Atualiza um ou múltiplos dados de um pagamento desejado_
+
+  Esquema da requisição:
+
+  ```json
+    {
+            "idPagamentos": 2023,
+            "cliente": "pedro josé Barros",
+            "formaDePagamento": "cartao",
+            "valor": 150,
+            "parcelamento": "2",
+            "status": "pago",
+            "data": "15-08-2022"
+        }
+  ```
+
+Esquema de resposta:
+
+```json
+{
+    "msg": "Pagamento atualizado com sucesso",
+    "cliente": {
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 150,
+        "status": "pago",
+        "parcelamento": "2",
+        "data": "15-08-2022"
+    },
+    "erro": false
+}
+```
+
+---
 ---
 
 ### Fornecedores
