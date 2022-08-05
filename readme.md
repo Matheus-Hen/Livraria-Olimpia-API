@@ -139,15 +139,16 @@ npm run db
   Esquema de resposta:
 
   ```json
-   {
-    "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-        ]
+  {
+	"clientes": [
+		{
+			"id": 3,
+			"nome": "Taylor Swift",
+			"email": "taylorcontato@gmail.com",
+			"cpf": "44727894181",
+			"telefone": "9928763448",
+			"senha": "amomeusgatinhos",
+			"cep": "69304410"
     },
   ```
 
@@ -156,19 +157,24 @@ npm run db
 - **GET /clientes/nome/:nome**
 
   _Busca um cliente no banco de dados pelo nome_
+  
+  
 
   Esquema de resposta:
 
   ```json
-  {
-   "clientes": [
-       {
-           "idEstoque": 101,
-           "produto": "Código  Limpo",
-           "quantidade": 457,
-           "fornecedor": "Editora Alta Books"
-       }
-    ]
+    {
+    "cliente": {
+      "id": 3,
+      "nome": "Taylor Swift",
+      "email": "taylorcontato@gmail.com",
+      "cpf": "44727894181",
+      "telefone": "9928763448",
+      "senha": "amomeusgatinhos",
+      "cep": "69304410"
+    },
+    "erro": false
+  }
    },
   ```
 
@@ -181,12 +187,17 @@ npm run db
   Esquema de resposta:
 
   ```json
-  {
-    "idEstoque": 101,
-    "produto": "Código Limpo",
-    "quantidade": 457,
-    "fornecedor": "Editora Alta Books"
-  },
+   {
+    "cliente": {
+      "id": 4,
+      "nome": "Pera Pereira",
+      "email": "perapereira@yahoo.com",
+      "cpf": "01243297050",
+      "telefone": "8325412343",
+      "senha": "pear123",
+      "cep": "79002914"
+    },
+  
   ```
 
 ---
@@ -198,21 +209,18 @@ npm run db
   Esquema de resposta:
 
   ```json
-   {
-    "clientes": [
-        {
-            "idEstoque": 101,
-            "produto": "Código  Limpo",
-            "quantidade": 457,
-            "fornecedor": "Editora Alta Books"
-        }
-    ]
+		{
+			"id": 5,
+			"nome": "Kanye West",
+			"email": "uniaokanyetaylor@gmail.com",
+			"cpf": "99421990803",
+			"telefone": "7937575524",
+			"senha": "thecollegedropout",
+			"cep": "65057807"
     },
   ```
 
-  ```
-
-  ```
+ 
 
 ---
 
@@ -223,50 +231,47 @@ npm run db
   Esquema de resposta:
 
   ```json
-  {
-    "clientes": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
-    ]
-  }
+    {
+      "cliente": {
+        "id": 3,
+        "nome": "Taylor Swift",
+        "email": "taylorcontato@gmail.com",
+        "cpf": "44727894181",
+        "telefone": "9928763448",
+        "senha": "amomeusgatinhos",
+        "cep": "69304410"
+      },
+      "erro": false
+    }
   ```
 
 ---
 
 - **POST /clientes**
 
-  _Cria um novo cliente e insere no banco de dados_
+  _Criar um novo cliente e insere no banco de dados_
 
   Esquema da requisição:
 
   ```json
-  {
-    "clientes": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
-    ]
-  }
+     {
+      "cliente": {
+        "nome": "Junim",
+        "email": "devcontato@gmail.com",
+        "cpf": "50258909856",
+        "telefone": "9953578491",
+        "senha": "umasenhalegal",
+        "cep": "05890600"
+      },
+      "erro": false
+    }
   ```
 
   Esquema de resposta:
 
   ```json
   {
-    "clientes": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
+    "msg": "um novo cliente foi adicionado ao banco"
     ]
   }
   ```
@@ -280,28 +285,33 @@ npm run db
   Esquema da requisição:
 
   ```json
-  {
-    "clientes": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
-    ]
-  }
+  
+    {
+			"id": 5,
+			"nome": "Kanye West da Silva",
+			"email": "uniaokanycontato@gmail.com",
+			"cpf": "99421990803",
+			"telefone": "7937575524",
+			"senha": "thecollegedropout",
+			"cep": "65057807"
+    }
+
   ```
 
 Esquema de resposta:
 
 ```json
-{
+{  
+  "msg": "Cliente atualizado com sucesso",
   "clientes": [
     {
-      "idEstoque": 101,
-      "produto": "Código  Limpo",
-      "quantidade": 457,
-      "fornecedor": "Editora Alta Books"
+			"id": 5,
+			"nome": "Kanye West da Silva",
+			"email": "uniaokanycontato@gmail.com",
+			"cpf": "99421990803",
+			"telefone": "7937575524",
+			"senha": "thecollegedropout",
+			"cep": "65057807"
     }
   ]
 }
@@ -316,16 +326,19 @@ Esquema de resposta:
   Esquema de resposta:
 
   ```json
-  {
-    "clientes": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
-    ]
-  }
+{
+  "clientes": [
+    {
+			"id": 5,
+			"nome": "Kanye West da Silva",
+			"email": "uniaokanycontato@gmail.com",
+			"cpf": "99421990803",
+			"telefone": "7937575524",
+			"senha": "thecollegedropout",
+			"cep": "65057807"
+    }
+  ]
+}
   ```
 
 ---
