@@ -1,4 +1,4 @@
-import livroController from "../Controller/livrosController.js";
+import livroController from "../controller/livrosController.js";
 
 const routerLivros = (app)=> {
 

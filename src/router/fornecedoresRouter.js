@@ -1,4 +1,4 @@
-import fornecedoresController from '../Controller/fornecedoresController.js'
+import fornecedoresController from '../controller/fornecedoresController.js'
 
 const fornecedores = (app)=> {
   app.get('/fornecedores', fornecedoresController.procurarFornecedores) //total
