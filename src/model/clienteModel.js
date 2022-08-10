@@ -1,19 +1,13 @@
 import dao from '../DAO/clienteDAO.js'
-
+import { criaCliente } from "../services/validacoesCliente.js";
 class Cliente {
-    constructor(id, nome, email, cpf, telefone, senha, cep) {
-        this.id = id
-        this.nome = nome
-        this.email = email
-        this.cpf = cpf
-        this.telefone = telefone
-        this.senha = senha
-        this.cep = cep
-    }
 
-    inserirCliente = async (cliente) => {
-        try { 
-        const data = await dao.insereCliente(cliente)
+    inserirCliente = async (nome, email,cpf, 
+        telefone, cep, senha) => {
+        try {
+        const cliente = criaCliente(nome,email,cpf,telefone,cep,senha);
+        if(cliente == false) throw error
+        const data = await dao.insereCliente(cliente);
         return {
             "dados" : data,
             "status" : 200
@@ -145,8 +139,11 @@ class Cliente {
         }
     }
 
-    atualizarCliente = async (id, novoCliente) => {
-        try {
+    atualizarCliente = async (id, nome, email, cpf,
+        telefone, senha, cep) => {
+            try {
+            const novoCliente = criaCliente(nome, email, cpf,
+                telefone, senha, cep)
             const clienteAtual = await this.buscarClienteId(id)
             if (clienteAtual) {
                 const clienteAtualizado = {
@@ -157,6 +154,7 @@ class Cliente {
                     "cep": novoCliente.cep || clienteAtual.cep,
                     "senha": novoCliente.senha || clienteAtual.senha
                 }
+                console.log(clienteAtualizado)  
                 const data = await dao.atualizarCliente(id, clienteAtualizado)
                 return {
                     "dados": data,
