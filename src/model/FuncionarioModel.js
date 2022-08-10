@@ -1,5 +1,4 @@
 import dao from '../DAO/funcionarioDAO.js'
-import db from '../database/connect.js'
 
 class Funcionario {
     constructor(id, nome, email, cpf, telefone, cargo, senha) {
