@@ -74,7 +74,7 @@ const daoEstoque = {
             })
      },
      
-     atualizarEstoque: (id, novoProdutoEstoque) => {
+        atualizarEstoque: (id, novoProdutoEstoque) => {
         const ATUALIZA_ESTOQUE = `
         UPDATE ESTOQUE
         SET produto = ?, quantidade = ?, fornecedor = ?

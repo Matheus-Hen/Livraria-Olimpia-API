@@ -18,6 +18,9 @@
     "sqlite": "^4.1.2",
     "sqlite3": "^5.0.10"
   },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
   "engines": {
     "node": "16.15.0"
   }

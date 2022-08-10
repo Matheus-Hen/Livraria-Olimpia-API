@@ -1,4 +1,3 @@
-import db from '../database/connect.js'
 import dao from '../DAO/fornecedoresDAO.js'
 
 class Fornecedores {
