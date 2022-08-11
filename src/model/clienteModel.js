@@ -148,14 +148,13 @@ class Cliente {
             const clienteAtual = await this.buscarClienteId(id)
             if (clienteAtual) {
                 const clienteAtualizado = {
-                    "nome": novoCliente.nome || clienteAtual.nome,
-                    "email": novoCliente.email || clienteAtual.email,
-                    "cpf": novoCliente.cpf || clienteAtual.cpf,
-                    "telefone": novoCliente.telefone || clienteAtual.telefone,
-                    "cep": novoCliente.cep || clienteAtual.cep,
-                    "senha": novoCliente.senha || clienteAtual.senha
+                    "nome": novoCliente.nome || clienteAtual.dados.nome,
+                    "email": novoCliente.email || clienteAtual.dados.email,
+                    "cpf": novoCliente.cpf || clienteAtual.dados.cpf,
+                    "telefone": novoCliente.telefone || clienteAtual.dados.telefone,
+                    "cep": novoCliente.cep || clienteAtual.dados.cep,
+                    "senha": novoCliente.senha || clienteAtual.dados.senha
                 }
-                console.log(clienteAtualizado)  
                 const data = await dao.atualizarCliente(id, clienteAtualizado)
                 return {
                     "dados": data,
