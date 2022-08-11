@@ -13,7 +13,7 @@ const routerLivros = (app)=> {
 
     app.delete('/livros/idLivro/:idLivro', livroController.removeLivro)
 
-    app.put('/livros/:idLivro', livroController.atualizaLivro)
+    app.put('/livros/idLivro/:idLivro', livroController.atualizaLivro)
 }
 
 export default routerLivros 
