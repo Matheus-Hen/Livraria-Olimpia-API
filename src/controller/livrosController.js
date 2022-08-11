@@ -1,5 +1,4 @@
 import Livro from "../model/livrosModels.js";
-import { criaLivro } from "../services/validacoesLivro.js";
 
 const modelLivros = new Livro();
 
@@ -8,17 +7,13 @@ const livroController = {
     const body = req.body;
 
     try {
-      const novoLivro = await criaLivro(
-        body.titulo,
+      const resposta = await modelLivros.cadastroLivro(body.titulo,
         body.autor,
         body.genero,
         body.formato,
         body.valor,
         body.idioma,
-        body.numeroPaginas
-      );
-
-      const resposta = await modelLivros.cadastroLivro(novoLivro);
+        body.numeroPaginas);
 
       res.status(resposta.status).json({
         "msg": "Cadastro do livro realizado com sucesso",
@@ -193,23 +188,24 @@ const livroController = {
     const idLivro = req.params.idLivro;
     const body = req.body;
     try {
-      const livroAtualizado = criaLivro(body.titulo,
+      const resposta = await modelLivros.atualizaLivro(idLivro, 
+        body.titulo,
         body.autor,
         body.genero,
         body.formato,
         body.valor,
         body.idioma,
-        body.numeroPaginas)
-
-      const resposta = await modelLivros.atualizaLivro(idLivro, livroAtualizado);
+        body.numeroPaginas);
+        console.log(resposta.status);
+        if (resposta.status !== 200) throw resposta
       res.status(resposta.status).json({
         "msg": "O livro foi atualizado com sucesso",
-        "livro": livroAtualizado,
+        "livro": resposta.dados,
         "erro": false,
       });
     } catch (error) {
-      res.status(resposta.status).json({
-        "msg": error.message,
+      res.status(400).json({
+        "msg": error.mensagem,
         "erro": true,
       });
     }

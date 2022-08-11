@@ -1,5 +1,4 @@
 import Estoque from "../model/estoqueModel.js";
-import { criaEstoque } from "../services/validacoesEstoque.js";
 
 const estoqueModel = new Estoque()
 

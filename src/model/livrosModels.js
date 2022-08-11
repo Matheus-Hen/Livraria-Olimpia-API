@@ -2,19 +2,10 @@ import dao from "../DAO/livrosDAO.js"
 
 
 class Livro {
-    constructor (idLivro, titulo, autor, genero, formato, valor, idioma, numeroPaginas){
-        this.idLivro = idLivro 
-        this.titulo = titulo
-        this.autor = autor
-        this.genero = genero
-        this.formato = formato
-        this.valor = valor
-        this.idioma = idioma
-        this.numeroPaginas = numeroPaginas
-    }
 
-    cadastroLivro = async (livro) =>{
+    cadastroLivro = async (titulo, autor, genero, formato, valor, idioma, nPaginas) =>{
         try {
+            const livro = this.criaLivro(titulo, autor, genero, formato, valor, idioma, nPaginas)
             const data = await dao.cadastrarLivro(livro)
             return {
                 "dados": data,
@@ -153,12 +144,6 @@ class Livro {
         }
     }
 
-    /*buscaEditora =  async (idioma) =>{
-        return await dao.buscarEditora(idioma)
-        // Adicionar um tratamento de erro para idioma não encontrado.
-        // Adicionar um tratamento para buscar por parte (% da busca) do texto e ignorar letras maísculas e minúsculas.
-    }*/
-
     removeLivro = async (idLivro) =>{
         try {
             const data = await dao.removeLivro(idLivro)
@@ -181,19 +166,19 @@ class Livro {
         }
     }
 
-    atualizaLivro = async (idLivro, novoDado) => {
+    atualizaLivro = async (idLivro, titulo, autor, genero, formato, valor, idioma, nPaginas) => {
         try {
+            const novoDado = this.criaLivro(titulo, autor, genero, formato, valor, idioma, nPaginas)
             const livroAtual = await this.buscaLivroId(idLivro)
-    
             if (livroAtual) {
                 const livroAtualizado = {
-                    "titulo": novoDado.titulo || livroAtual.titulo,
-                    "autor": novoDado.autor || livroAtual.autor,
-                    "genero": novoDado.genero || livroAtual.genero,
-                    "formato": novoDado.formato || livroAtual.formato,
-                    "valor": novoDado.valor || livroAtual.valor,
-                    "idioma": novoDado.idioma || livroAtual.idioma,
-                    "numeroPaginas": novoDado.numeroPaginas || livroAtual.numeroPaginas,
+                    "titulo": novoDado.titulo || livroAtual.dados.titulo,
+                    "autor": novoDado.autor || livroAtual.dados.autor,
+                    "genero": novoDado.genero || livroAtual.dados.genero,
+                    "formato": novoDado.formato || livroAtual.dados.formato,
+                    "valor": novoDado.valor || livroAtual.dados.valor,
+                    "idioma": novoDado.idioma || livroAtual.dados.idioma,
+                    "numeroPaginas": novoDado.numeroPaginas || livroAtual.dados.numeroPaginas,
                     
                 }
                 const data = await dao.atualizaLivro(idLivro, livroAtualizado)
@@ -213,6 +198,18 @@ class Livro {
 
     }
 
+    criaLivro = (titulo, autor, genero, formato, valor, idioma, numeroPaginas) => {
+
+        return {
+            "titulo": titulo,
+            "autor": autor,
+            "genero": genero,
+            "formato": formato, 
+            "valor": valor, 
+            "idioma": idioma,
+            "numeroPaginas": numeroPaginas
+        }
+    }
 }
 
 export default Livro
