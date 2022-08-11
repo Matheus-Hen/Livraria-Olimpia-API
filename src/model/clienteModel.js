@@ -1,5 +1,5 @@
 import dao from '../DAO/clienteDAO.js'
-import { validarCPF, validarEmail, validarSenha } from "../services/validacoesCliente.js";
+import { validarCPF, validarEmail, validarSenha } from "../services/filtroValidacao.js";
 
 class Cliente {
     

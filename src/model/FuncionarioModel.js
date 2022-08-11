@@ -1,19 +1,13 @@
 import dao from '../DAO/funcionarioDAO.js'
 
 class Funcionario {
-    constructor(id, nome, email, cpf, telefone, cargo, senha) {
-        this.id = id
-        this.nome = nome
-        this.email = email
-        this.cpf = cpf
-        this.telefone = telefone
-        this.cargo = cargo
-        this.senha = senha
-    }
 
-    insertFunc = async (cliente) => {
+    insertFunc = async (nome, email, cpf, 
+        telefone, cargo, senha) => {
         try {
-            const data = await dao.insertFunc(cliente)
+            const funcionario = this.newFunc(nome, email, cpf, telefone, cargo, senha)
+            if (funcionario == false) throw error
+            const data = await dao.insertFunc(funcionario)
             return {
                 "dados": data,
                 "status": 200
@@ -144,8 +138,9 @@ class Funcionario {
     }
     }
 
-    updateFunc = async (id, newFunc) => {
+    updateFunc = async (id, nome, email, cpf, telefone, cargo, senha) => {
         try {
+            const newFunc = this.newFunc(nome, email, cpf, telefone, cargo, senha)
             const AtualFunc = await this.showFuncID(id)
             if (AtualFunc) {
                 const atualizaFunc = {
@@ -171,6 +166,18 @@ class Funcionario {
             }
         }
     }
+
+    newFunc = (nome, email, cpf, telefone, cargo, senha)=> {
+    
+        return {
+            "nome": nome,
+            "email": email,
+            "cpf": cpf,
+            "telefone": telefone,
+            "cargo": cargo,
+            "senha": senha
+        }
+        }
 }
 
 export default Funcionario
