@@ -144,12 +144,12 @@ class Funcionario {
             const AtualFunc = await this.showFuncID(id)
             if (AtualFunc) {
                 const atualizaFunc = {
-                    "nome": newFunc.nome || AtualFunc.nome,
-                    "email": newFunc.email || AtualFunc.email,
-                    "cpf": newFunc.cpf || AtualFunc.cpf,
-                    "telefone": newFunc.telefone || AtualFunc.telefone,
-                    "cargo": newFunc.cargo || AtualFunc.cargo,
-                    "senha": newFunc.senha || AtualFunc.senha
+                    "nome": newFunc.nome || AtualFunc.dados.nome,
+                    "email": newFunc.email || AtualFunc.dados.email,
+                    "cpf": newFunc.cpf || AtualFunc.dados.cpf,
+                    "telefone": newFunc.telefone || AtualFunc.dados.telefone,
+                    "cargo": newFunc.cargo || AtualFunc.dados.cargo,
+                    "senha": newFunc.senha || AtualFunc.dados.senha
                 }
                 const data = await dao.updateFunc(id, atualizaFunc)
                 return {
