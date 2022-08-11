@@ -9,7 +9,7 @@ const daoEstoque = {
     VALUES (?, ?, ?)
     `
     return new Promise((resolve, reject)=> {
-        db.get(INSERE_ESTOQUE, estoque.produto, estoque.quantidade,
+        db.run(INSERE_ESTOQUE, estoque.produto, estoque.quantidade,
             estoque.fornecedor,
             (error)=>{
                 if (error)
@@ -19,26 +19,6 @@ const daoEstoque = {
             })
     })
     },
-
-
-    // buscando fornecedor no estoque 
-
-
-    buscarFornecedorEstoque: () => {
-        const PEGA_FORNECEDOR = `
-        SELECT * FROM FORNECEDOR
-        `
-
-        return new Promise((resolve, reject) => {
-            db.all(PEGA_FORNECEDOR, (error, row) => {
-                if (error) 
-                reject(error)
-                else
-                    resolve(row)
-            })
-        })
-    },
-
 
     // buscando todos os produtos do estoque
 
@@ -65,7 +45,7 @@ const daoEstoque = {
             `
     
             return new Promise((resolve, reject) => {
-                db.all(PEGA_QUANTIDADE, id, (error, row) => {
+                db.get(PEGA_QUANTIDADE, id, (error, row) => {
                     if (error) 
                     reject(error)
                     else
@@ -74,19 +54,19 @@ const daoEstoque = {
             })
      },
      
-        atualizarEstoque: (id, novoProdutoEstoque) => {
+        atualizarEstoque: (idEstoque, novoProdutoEstoque) => {
         const ATUALIZA_ESTOQUE = `
         UPDATE ESTOQUE
         SET produto = ?, quantidade = ?, fornecedor = ?
         WHERE idEstoque = ?
         `
             return new Promise((resolve, reject) => {
-                db.run(ATUALIZA_ESTOQUE, novoProdutoEstoque.id , novoProdutoEstoque.produto, novoProdutoEstoque.quantidade, id,
-                    (error, row) => {
+                db.all(ATUALIZA_ESTOQUE, novoProdutoEstoque.produto, novoProdutoEstoque.quantidade, novoProdutoEstoque.fornecedor, idEstoque,
+                    (error) => {
                     if (error) 
                     reject(error)
                     else
-                        resolve(row)
+                        resolve(novoProdutoEstoque)
                 })
             })
      },
