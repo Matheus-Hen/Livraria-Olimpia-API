@@ -34,30 +34,29 @@ export const validaCPF = (cpf) => {
   ].indexOf(strCPF) !== -1)
     return false
 
-  // Com a multiplicação pelo posicionamento do caractere dos nove primeiros dígitos do CPF para calcular a variável
-
-  // for (let i = 1; i <= 9; i++) {
-  //   Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
-  //   Resto = (Soma * 10) % 11
-  // }
-  // if ((Resto == 10) || (Resto == 11))
-  //   Resto = 0
-
-  // if (Resto != parseInt(strCPF.substring(9, 10)))
-  //   return false
-
-  // Soma = 0
-
-  // for (let i = 1; i <= 10; i++){}
-  //   Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i)
-
-  // Resto = (Soma * 10) % 11
-
-  // if ((Resto == 10) || (Resto == 11))
-  //   Resto = 0
-
-  // if (Resto != parseInt(strCPF.substring(10, 11)))
-  //   return false
-
   return true
 }
+
+
+export const validarSenha = (senha)=>{
+  if(!seteDigitos(senha)){
+      throw new Error("A senha precisa ter 7 ou mais caracteres")
+  }
+}
+
+export const validarEmail = (email)=>{
+  if(verificaArroba(email)){
+      return email
+  }else{
+      throw new Error("Algo está faltando em seu email, digite corretamente.")
+  }
+}
+
+export const validarCPF = (cpf) => {
+  if(validaCPF (cpf)){
+      return cpf
+  }else{
+      throw new Error("Verifique o campo do cpf")
+  }
+}
+
