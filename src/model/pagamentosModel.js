@@ -1,15 +1,6 @@
 import dao from '../DAO/pagamentosDAO.js'
 
 class pagamentos {
-    constructor(idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, data) {
-        this.idPagamentos = idPagamentos;
-        this.cliente = cliente;
-        this.formaDePagamento = formaDePagamento;
-        this.valor = valor;
-        this.parcelamento = parcelamento;
-        this.status = status;
-        this.data = data;
-    }
 
     pegaPagamentosTodos = async (Pagamentos) => {
         try {
@@ -187,8 +178,9 @@ class pagamentos {
         }
     }
 
-    inserePagamentos = async (pagamentos) => {
+    inserePagamentos = async (cliente, formaDePagamento, valor, parcelamento, status, date) => {
         try {
+            const pagamentos = this.criaPagamento(cliente, formaDePagamento, valor, parcelamento, status, date)
             const data = await dao.inserePagamentos(pagamentos)
             return {
                 "dados": data,
@@ -202,17 +194,18 @@ class pagamentos {
         }
     }
 
-    atualizarPagamento = async (idPagamentos, novoPagamento) => {
+    atualizarPagamento = async (idPagamentos, cliente, formaDePagamento, valor, parcelamento, status, date) => {
         try {
+            const novoPagamento = this.criaPagamento(cliente, formaDePagamento, valor, parcelamento, status, date)
             const pagamentoAtual = await this.pegaPagamentosId(idPagamentos)
             if (pagamentoAtual) {
                 const pagamentoAtualizado = {
-                    "cliente": novoPagamento.cliente || pagamentoAtual.cliente,
-                    "formaDePagamento": novoPagamento.formaDePagamento || pagamentoAtual.formaDePagamento,
-                    "valor": novoPagamento.valor || pagamentoAtual.valor,
-                    "status": novoPagamento.status || pagamentoAtual.status,
-                    "parcelamento": novoPagamento.parcelamento || pagamentoAtual.parcelamento,
-                    "data": novoPagamento.data || pagamentoAtual.data,
+                    "cliente": novoPagamento.cliente || pagamentoAtual.dados.cliente,
+                    "formaDePagamento": novoPagamento.formaDePagamento || pagamentoAtual.dados.formaDePagamento,
+                    "valor": novoPagamento.valor || pagamentoAtual.dados.valor,
+                    "status": novoPagamento.status || pagamentoAtual.dados.status,
+                    "parcelamento": novoPagamento.parcelamento || pagamentoAtual.dados.parcelamento,
+                    "data": novoPagamento.data || pagamentoAtual.dados.data,
                 }
                 const data = await dao.atualizarPagamento(idPagamentos, pagamentoAtualizado)
                 return {
@@ -233,10 +226,10 @@ class pagamentos {
     deletaPagamento = async (idPagamentos) => {
         try {
             const data = await dao.deletaPagamento(idPagamentos)
-            return {
-                "dados": data,
-                "status": 200
-            }
+                return {
+                    "dados": data,
+                    "status": 200
+                }
         } catch (error) {
             return {
                 "mensagem": error.message,
@@ -244,6 +237,19 @@ class pagamentos {
             }
         }
     }
+
+    criaPagamento = (cliente, formaDePagamento, valor, parcelamento, status, data)=> {
+    
+        return {
+            "cliente": cliente,
+            "formaDePagamento": formaDePagamento,
+            "valor": valor,
+            "parcelamento": parcelamento,
+            "status": status,
+            "data": data
+        }
+        }
+    
 }
 
 export default pagamentos
