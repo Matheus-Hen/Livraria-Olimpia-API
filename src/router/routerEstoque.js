@@ -8,13 +8,13 @@ const routerEstoque = (app)=> {
     app.post('/estoque', estoqueController.InsereEstoque)
     // adicionar uma nova informação no estoque
 
-    app.get('/estoque/id/:id', estoqueController.buscarQuantidadePorId)
+    app.get('/estoque/id/:idEstoque', estoqueController.buscarQuantidadePorId)
     // buscando quantidade por id ativo dentro do estoque 
 
-    app.put('/estoque', estoqueController.atualizaEstoque)
+    app.put('/estoque/id/:idEstoque', estoqueController.atualizaEstoque)
     // atualizar as informações no estoque
 
-    app.delete('/estoque', estoqueController.deletaProdutoEstoque)
+    app.delete('/estoque/id/:idEstoque', estoqueController.deletaProdutoEstoque)
     // deletar informação do estoque
 }
 
