@@ -1,11 +1,12 @@
 import dao from '../DAO/clienteDAO.js'
-import { criaCliente } from "../services/validacoesCliente.js";
-class Cliente {
+import { validarCPF, validarEmail, validarSenha } from "../services/validacoesCliente.js";
 
+class Cliente {
+    
     inserirCliente = async (nome, email,cpf, 
         telefone, cep, senha) => {
         try {
-        const cliente = criaCliente(nome,email,cpf,telefone,cep,senha);
+            const cliente = this.criaCliente(nome,email,cpf,telefone,cep,senha);
         if(cliente == false) throw error
         const data = await dao.insereCliente(cliente);
         return {
@@ -19,9 +20,9 @@ class Cliente {
         }
     }
         }
-
-    removerCliente = async (id) => {
-        try {
+        
+        removerCliente = async (id) => {
+            try {
             const data = await dao.removeCliente(id)
             return {
                 "dados" : data,
@@ -50,7 +51,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteId = async (id) => {
         try {
             const data = await dao.pegaClientePeloId(id)
@@ -72,7 +73,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteNome =  async (nome) => {
         try {
             const data = await dao.pegaClientePeloNome(nome)
@@ -116,7 +117,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteCPF = async (cpf) => {
         try {
             const data = await dao.pegaClientePeloCPF(cpf)
@@ -142,8 +143,8 @@ class Cliente {
     atualizarCliente = async (id, nome, email, cpf,
         telefone, senha, cep) => {
             try {
-            const novoCliente = criaCliente(nome, email, cpf,
-                telefone, senha, cep)
+                const novoCliente = this.criaCliente(nome, email, cpf,
+                    telefone, senha, cep)
             const clienteAtual = await this.buscarClienteId(id)
             if (clienteAtual) {
                 const clienteAtualizado = {
@@ -170,6 +171,21 @@ class Cliente {
             }
         }
     }
+
+    criaCliente = (nome, email, cpf, telefone, senha, cep)=> {
+        validarEmail(email)
+        validarSenha(senha)
+        validarCPF(cpf)
+    
+        return {
+            "nome": nome,
+            "email": email,
+            "cpf": cpf,
+            "telefone": telefone,
+            "senha": senha,
+            "cep": cep
+        }
+    } 
 }
 
 export default Cliente

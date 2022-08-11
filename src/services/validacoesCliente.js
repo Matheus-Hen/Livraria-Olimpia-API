@@ -1,12 +1,12 @@
 import { seteDigitos, verificaArroba, validaCPF } from "./filtroValidacao.js"
 
-const validarSenha = (senha)=>{
+export const validarSenha = (senha)=>{
     if(!seteDigitos(senha)){
         throw new Error("A senha precisa ter 7 ou mais caracteres")
     }
 }
 
-const validarEmail = (email)=>{
+export const validarEmail = (email)=>{
     if(verificaArroba(email)){
         return email
     }else{
@@ -14,7 +14,7 @@ const validarEmail = (email)=>{
     }
 }
 
-const validarCPF = (cpf) => {
+export const validarCPF = (cpf) => {
     if(validaCPF (cpf)){
         return cpf
     }else{
@@ -22,17 +22,3 @@ const validarCPF = (cpf) => {
     }
 }
 
-export const criaCliente = (nome, email, cpf, telefone, senha, cep)=> {
-    validarEmail(email)
-    validarSenha(senha)
-    validarCPF(cpf)
-
-    return {
-        "nome": nome,
-        "email": email,
-        "cpf": cpf,
-        "telefone": telefone,
-        "senha": senha,
-        "cep": cep
-    }
-    } 
