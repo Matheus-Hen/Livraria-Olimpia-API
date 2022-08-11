@@ -1,20 +1,12 @@
 import dao from '../DAO/estoqueDAO.js'
 
 class Estoque {
-    constructor(idEstoque, produto, quantidade, fornecedor) {
-        this.idEstoque = idEstoque
-        this.produto = produto
-        this.quantidade = quantidade
-        this.fornecedor = fornecedor
-    }
-
 
     buscarEstoque = async(produtos) => {
         try {
             const data = await dao.buscarEstoque(produtos)
             return {
                 "dados": data,
-                "tamanho": data.length,
                 "status": 200
             }
         } catch (error) {
@@ -47,9 +39,10 @@ class Estoque {
             }
         }
 
-    inserirEstoque = async (produto) => {
+    inserirEstoque = async (produto, quantidade, fornecedor) => {
         try {
-            const data = await dao.insereEstoque(produto)
+            const estoque = this.criaEstoque(produto, quantidade, fornecedor)
+            const data = await dao.insereEstoque(estoque)
             return {
                 "dados": data,
                 "status": 200
@@ -64,16 +57,16 @@ class Estoque {
 
 
     
-    atualizarEstoque = async (id, atualizaEstoque) =>{
+    atualizarEstoque = async (id, produto, quantidade, fornecedor) =>{
         try {
+            const atualizaEstoque = this.criaEstoque(produto, quantidade, fornecedor)
             const informacaoAtual = await this.buscarQuantidadePorId(id)
             if (informacaoAtual) {
                 const informacaoAtualizada = {
-                    "produto": atualizaEstoque.produto || informacaoAtual.produto,
-                    "quantidade": atualizaEstoque.quantidade || informacaoAtual.quantidade,
-                    "fornecedor": atualizaEstoque.fornecedor|| informacaoAtual.fornecedor
+                    "produto": atualizaEstoque.produto || informacaoAtual.dados.produto,
+                    "quantidade": atualizaEstoque.quantidade || informacaoAtual.dados.quantidade,
+                    "fornecedor": atualizaEstoque.fornecedor|| informacaoAtual.dados.fornecedor
                 }
-    
                 const data = await dao.atualizarEstoque(id, informacaoAtualizada)
                 return {
                     "dados": data,
@@ -106,6 +99,13 @@ class Estoque {
         }
     }
 
+    criaEstoque = (produto, quantidade, fornecedor)=> {
+        return {
+            "produto": produto,
+            "quantidade": quantidade,
+            "fornecedor": fornecedor,
+        }
+    }
 }
 
 export default Estoque
