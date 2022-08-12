@@ -1,19 +1,11 @@
 import dao from '../DAO/fornecedoresDAO.js'
+import {validaCNPJ} from '../services/filtroValidacao.js'
 
 class Fornecedores {
-  constructor(id, nome, cnpj, produto, email, telefone, endereco, cep) {
-    this.id = id;
-    this.nome = nome;
-    this.email = email;
-    this.cnpj = cnpj;
-    this.produto = produto;
-    this.telefone = telefone;
-    this.endereco = endereco;
-    this.cep = cep;
-  }
 
-  insereFornecedores = async(fornecedor) => {
+  insereFornecedores = async(nome, cnpj, produto, email, telefone, endereco, cep) => {
     try {
+      const fornecedor = this.criaFornecedor(nome, cnpj, produto, email, telefone, endereco, cep)
       const data = await dao.insereFornecedor(fornecedor)
         return {
           "dados": data,
@@ -153,19 +145,20 @@ class Fornecedores {
     }
   }
 
-  atualizaFornecedor = async(id, newFornecedor)=>{
+  atualizaFornecedor = async(id, nome, cnpj, produto, email, telefone, endereco, cep)=>{
     try { 
+      const newFornecedor = this.criaFornecedor(nome, cnpj, produto, email, telefone, endereco, cep)
       const fornecedorVigente = await this.IDfornecedor(id)
       if(fornecedorVigente){
         const fornecedorAtualizado = {
-        "id": newFornecedor.id || fornecedorVigente.id,
-        "nome": newFornecedor.nome || fornecedorVigente.nome,
-        'cnpj': newFornecedor.cnpj || fornecedorVigente.cnpj,
-        'produto': newFornecedor.produto || fornecedorVigente.produto,
-        'email': newFornecedor.email || fornecedorVigente.email,
-        'telefone': newFornecedor.telefone || fornecedorVigente.telefone,
-        'endereco': newFornecedor.endereco || fornecedorVigente.endereco,
-        'cep': newFornecedor.cep || fornecedorVigente.cep
+        "id": newFornecedor.id || fornecedorVigente.dados.id,
+        "nome": newFornecedor.nome || fornecedorVigente.dados.nome,
+        'cnpj': newFornecedor.cnpj || fornecedorVigente.dados.cnpj,
+        'produto': newFornecedor.produto || fornecedorVigente.dados.produto,
+        'email': newFornecedor.email || fornecedorVigente.dados.email,
+        'telefone': newFornecedor.telefone || fornecedorVigente.dados.telefone,
+        'endereco': newFornecedor.endereco || fornecedorVigente.dados.endereco,
+        'cep': newFornecedor.cep || fornecedorVigente.dados.cep
       }
       const data = await dao.atualizaFornecedor(id, fornecedorAtualizado)
       return {
@@ -182,6 +175,19 @@ class Fornecedores {
       }
     }
   }
+
+  criaFornecedor = (nome, cnpj, produto, email, telefone, endereco, cep)=> {
+    validaCNPJ(cnpj)
+    return {
+        "nome": nome,
+        "cnpj": cnpj,
+        "produto": produto,
+        "email": email,
+        "telefone": telefone,
+        "endereco": endereco,
+        "cep": cep
+    }
+    }
 }
 
 export default Fornecedores;

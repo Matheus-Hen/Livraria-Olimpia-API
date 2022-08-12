@@ -1,14 +1,14 @@
 // filtra a senha que deve possuir 7 caracteres
-export const seteDigitos = (senha) => {
+const seteDigitos = (senha) => {
   return senha?.length >= 7
 }
 //filtro se possui o @ no email
-export const verificaArroba = (email) => {
+const verificaArroba = (email) => {
   return email?.includes("@")
 }
 
 //filtro de cpf
-export const validaCPF = (cpf) => {
+const validaCPF = (cpf) => {
   var Soma = 0
   var Resto
 
@@ -60,3 +60,13 @@ export const validarCPF = (cpf) => {
   }
 }
 
+export const validaCNPJ = (cnpj)=>{
+  if(cnpj){
+      if(cnpj.length < 14){
+          throw new Error("O CNPJ precisa ter 14 caracteres")
+      }          
+  }else{
+      throw new Error("Insira um CNPJ com 14 caracteres")
+  }
+  return cnpj
+}

@@ -1,5 +1,4 @@
 import Fornecedores from '../model/fornecedoresModel.js'
-import { criaFornecedor } from '../services/validacoesFornecedores.js'
 
 const modelFornecedor = new Fornecedores()
 
@@ -9,9 +8,8 @@ const fornecedoresController = {
     criarNewFornecedor: async (req, res)=> {
       const body = req.body
       try {
-        const novoFornecedor = criaFornecedor(body.nome, body.cnpj, body.produto,
-        body.email, body.telefone, body.endereco, body.cep)
-        const resposta = await modelFornecedor.insereFornecedores(novoFornecedor)
+        const resposta = await modelFornecedor.insereFornecedores(body.nome, body.cnpj, body.produto,
+          body.email, body.telefone, body.endereco, body.cep)
 
         if (resposta.status === 200) {
           res.status(resposta.status).json(
@@ -173,17 +171,17 @@ const fornecedoresController = {
       const id = req.params.id
       const body = req.body
       try { 
-         const fornecedorAtualizado = criaFornecedor(body.nome, body.cnpj,
-            body.produto, body.email, body.telefone, body.endereco, body.cep)
-            await modelFornecedor.atualizaFornecedor(id, fornecedorAtualizado)
-            res.json(
+           const resposta = await modelFornecedor.atualizaFornecedor(id, body.nome, body.cnpj,
+              body.produto, body.email, body.telefone, body.endereco, body.cep)
+              if (resposta.status !== 200) throw resposta
+            res.status(resposta.status).json(
               {"msg": "Fornecedor atualizado",
-                "fornecedor": fornecedorAtualizado,
+                "fornecedor": resposta.dados,
                 "erro": false}
             )
           } catch (error) {
-            res.json(
-            {"msg": error.message,
+            res.status(400).json(
+            {"msg": error.mensagem,
               "erro": true}
             )
           }
