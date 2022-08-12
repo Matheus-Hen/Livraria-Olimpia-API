@@ -1,19 +1,14 @@
 import dao from '../DAO/clienteDAO.js'
+import { validarCPF, validarEmail, validarSenha } from "../services/filtroValidacao.js";
 
 class Cliente {
-    constructor(id, nome, email, cpf, telefone, senha, cep) {
-        this.id = id
-        this.nome = nome
-        this.email = email
-        this.cpf = cpf
-        this.telefone = telefone
-        this.senha = senha
-        this.cep = cep
-    }
-
-    inserirCliente = async (cliente) => {
-        try { 
-        const data = await dao.insereCliente(cliente)
+    
+    inserirCliente = async (nome, email,cpf, 
+        telefone, cep, senha) => {
+        try {
+            const cliente = this.criaCliente(nome,email,cpf,telefone,cep,senha);
+        if(cliente == false) throw error
+        const data = await dao.insereCliente(cliente);
         return {
             "dados" : data,
             "status" : 200
@@ -25,9 +20,9 @@ class Cliente {
         }
     }
         }
-
-    removerCliente = async (id) => {
-        try {
+        
+        removerCliente = async (id) => {
+            try {
             const data = await dao.removeCliente(id)
             return {
                 "dados" : data,
@@ -56,7 +51,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteId = async (id) => {
         try {
             const data = await dao.pegaClientePeloId(id)
@@ -78,7 +73,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteNome =  async (nome) => {
         try {
             const data = await dao.pegaClientePeloNome(nome)
@@ -122,7 +117,7 @@ class Cliente {
             }
         }
     }
-
+    
     buscarClienteCPF = async (cpf) => {
         try {
             const data = await dao.pegaClientePeloCPF(cpf)
@@ -145,17 +140,20 @@ class Cliente {
         }
     }
 
-    atualizarCliente = async (id, novoCliente) => {
-        try {
+    atualizarCliente = async (id, nome, email, cpf,
+        telefone, senha, cep) => {
+            try {
+                const novoCliente = this.criaCliente(nome, email, cpf,
+                    telefone, senha, cep)
             const clienteAtual = await this.buscarClienteId(id)
             if (clienteAtual) {
                 const clienteAtualizado = {
-                    "nome": novoCliente.nome || clienteAtual.nome,
-                    "email": novoCliente.email || clienteAtual.email,
-                    "cpf": novoCliente.cpf || clienteAtual.cpf,
-                    "telefone": novoCliente.telefone || clienteAtual.telefone,
-                    "cep": novoCliente.cep || clienteAtual.cep,
-                    "senha": novoCliente.senha || clienteAtual.senha
+                    "nome": novoCliente.nome || clienteAtual.dados.nome,
+                    "email": novoCliente.email || clienteAtual.dados.email,
+                    "cpf": novoCliente.cpf || clienteAtual.dados.cpf,
+                    "telefone": novoCliente.telefone || clienteAtual.dados.telefone,
+                    "cep": novoCliente.cep || clienteAtual.dados.cep,
+                    "senha": novoCliente.senha || clienteAtual.dados.senha
                 }
                 const data = await dao.atualizarCliente(id, clienteAtualizado)
                 return {
@@ -172,6 +170,21 @@ class Cliente {
             }
         }
     }
+
+    criaCliente = (nome, email, cpf, telefone, senha, cep)=> {
+        validarEmail(email)
+        validarSenha(senha)
+        validarCPF(cpf)
+    
+        return {
+            "nome": nome,
+            "email": email,
+            "cpf": cpf,
+            "telefone": telefone,
+            "senha": senha,
+            "cep": cep
+        }
+    } 
 }
 
 export default Cliente

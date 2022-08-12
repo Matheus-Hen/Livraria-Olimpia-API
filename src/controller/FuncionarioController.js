@@ -1,5 +1,4 @@
 import Funcionario from "../model/FuncionarioModel.js";
-import { newFunc } from "../services/ValidacaoFunc.js";
 
 const modelFuncionario = new Funcionario()
 
@@ -116,10 +115,10 @@ const FuncionarioController = {
     AddNewFuncionario: async (req, res)=> {
         const body = req.body
         try {
-            const newFuncionario = newFunc(body.nome, body.email, body.cpf, 
-                body.telefone, body.cargo, body.senha)
-                const resposta = await modelFuncionario.insertFunc(newFuncionario)
+                const resposta = await modelFuncionario.insertFunc(body.nome, body.email, body.cpf, 
+                    body.telefone, body.cargo, body.senha)
                 
+                if (resposta.status !== 200) throw resposta
                 res.status(200).json(
                     {"msg": "Funcionario inserido com sucesso",
                     "funcionario": resposta.dados,
@@ -128,7 +127,7 @@ const FuncionarioController = {
                     
                 } catch (error) {
                     res.status(400).json(
-                        {"msg": error.message,
+                        {"msg": error.mensagem,
                         "erro": true}
                         )
                     }
@@ -155,9 +154,9 @@ const FuncionarioController = {
         const id = req.params.id
         const body = req.body
             try { 
-                const funcionarioAtualizado = newFunc(body.nome, body.email, body.cpf,
-                body.telefone, body.cargo, body.senha)
-                const resposta = await modelFuncionario.updateFunc(id, funcionarioAtualizado)
+                const resposta = await modelFuncionario.updateFunc(id, body.nome, body.email, body.cpf,
+                    body.telefone, body.cargo, body.senha)
+                if (resposta.status !== 200) throw resposta
                 res.status(200).json(
                     {"msg": "Funcionario atualizado com sucesso",
                     "cliente": resposta.dados,
@@ -165,7 +164,7 @@ const FuncionarioController = {
             )
             } catch (error) {
                 res.status(400).json(
-                    {"msg": error.message,
+                    {"msg": error.mensagem,
                     "erro": true}
             )
         }

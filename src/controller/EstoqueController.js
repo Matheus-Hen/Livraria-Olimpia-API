@@ -1,5 +1,4 @@
 import Estoque from "../model/estoqueModel.js";
-import { criaEstoque } from "../services/validacoesEstoque.js";
 
 const estoqueModel = new Estoque()
 
@@ -32,9 +31,9 @@ const estoqueController = {
     InsereEstoque: async (req, res)=> {
         const body = req.body
         try {
-            const novoEstoque = criaEstoque(body.idEstoque, body.produto, body.quantidade, body.fornecedor)
-            const resposta = await estoqueModel.inserirEstoque(novoEstoque)
+            const resposta = await estoqueModel.inserirEstoque(body.produto, body.quantidade, body.fornecedor)
             
+            if (resposta.status !== 200) throw resposta
             res.status(resposta.status).json(
                 {"msg": "Um novo produto foi inserido com sucesso",
                 "estoque": resposta.dados,
@@ -50,18 +49,18 @@ const estoqueController = {
     },
 
     buscarQuantidadePorId: async (req, res)=> {
-        const id = req.params.id
+        const id = req.params.idEstoque
 
         try {
-            const todosProdutos = await estoqueModel.buscarQuantidadePorId(id)
-    
+            const resposta = await estoqueModel.buscarQuantidadePorId(id)
+            if (resposta.status !== 200) throw resposta
             res.status(resposta.status).json({
-                "produtos": todosProdutos,
+                "produtos": resposta.dados,
                 "erro": false
             })
         } catch (error) {
-            res.status(500).json({
-                "mensagem": error.message,
+            res.status(error.status).json({
+                "mensagem": error.mensagem,
                 "erro": true
             })
         }
@@ -69,34 +68,27 @@ const estoqueController = {
 
     atualizaEstoque: async (req, res)=> {
         const id = req.params.idEstoque
-        const body= await req.body
-
+        const body = await req.body
         try {
-            const informacaoAtualizada = criaEstoque(
-                body.idEstoque,
-                body.produto,
-                body.quantidade,
-                body.fornecedor
-            )
-
-            const resposta = await estoqueModel.atualizarEstoque(id, informacaoAtualizada)
+            const resposta = await estoqueModel.atualizarEstoque(id, body.produto, body.quantidade, body.fornecedor)
+            if (resposta.status !== 200) throw resposta
             res.status(resposta.status).json(
-                {"msg": "Produto atualizado com éxito",
+                {"msg": "Produto atualizado com êxito",
                 "produto": resposta.dados,
                 "erro": false}
             )
             
         } catch (error) {
 
-         res.status(500).json(
-          {"msg": error.message,
+         res.status(resposta.status).json(
+          {"msg": error.mensagem,
           "erro": true}
           )
        }
    },
 
     deletaProdutoEstoque: async (req,res) =>{
-        const id = req.params.id
+        const id = req.params.idEstoque
 
         try{
             const resposta = await estoqueModel.removeProduto(id)

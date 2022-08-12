@@ -1,5 +1,4 @@
 import pagamentos from "../model/pagamentosModel.js"
-import {criaPagamento} from "../services/validacoesPagamentos.js"
 
 const modelPagamentos = new pagamentos()
 
@@ -199,10 +198,9 @@ const pagamentosController = {
     inserePagamentos: async (req, res) => {
         const body = req.body
         try {
-            const novoPagamento = criaPagamento(body.idPagamentos, body.cliente, body.formaDePagamento, body.valor,
-                body.parcelamento, body.status, body.data, body.idLivro, body.QuantLivro)
-            const resposta = await modelPagamentos.inserePagamentos(novoPagamento)
-
+            const resposta = await modelPagamentos.inserePagamentos(body.cliente, body.formaDePagamento, body.valor,
+                body.parcelamento, body.status, body.data)
+            if (resposta.status !== 200) throw resposta
             res.status(resposta.status).json(
                 {
                     "msg": "Pagamento inserido com sucesso",
@@ -211,9 +209,9 @@ const pagamentosController = {
                 }
             )
         } catch (error) {
-            res.status(500).json(
+            res.status(error.status).json(
                 {
-                    "msg": error.message,
+                    "msg": error.mensagem,
                     "erro": true
                 }
             )
@@ -224,10 +222,9 @@ const pagamentosController = {
         const idPagamentos = req.params.idPagamentos
         const body = req.body
         try {
-            const pagamentoAtualizado = criaPagamento(body.cliente, body.formaDePagamento, body.valor,
-                body.parcelamento, body.status, body.data)
-            const resposta = await modelPagamentos.atualizarPagamento(idPagamentos, pagamentoAtualizado)
-            res.json(
+            const resposta = await modelPagamentos.atualizarPagamento(idPagamentos, body.cliente, body.formaDePagamento, body.valor, body.parcelamento, body.status, body.data)
+            if (resposta.status !== 200) throw resposta
+            res.status(resposta.status).json(
                 {
                     "msg": "Pagamento atualizado com sucesso",
                     "cliente": resposta.dados,
@@ -235,9 +232,9 @@ const pagamentosController = {
                 }
             )
         } catch (error) {
-            res.status(500).json(
+            res.status(error.status).json(
                 {
-                    "msg": error.message,
+                    "msg": error.mensagem,
                     "erro": true
                 }
             )
@@ -247,8 +244,8 @@ const pagamentosController = {
     deletaPagamento: async (req, res) => {
         const idPagamentos = req.params.idPagamentos
         try {
-            await modelPagamentos.deletaPagamento(idPagamentos)
-
+            const resposta = await modelPagamentos.deletaPagamento(idPagamentos)
+            if (resposta.status !== 200) throw resposta
             res.json(
                 {
                     "msg": "Pagamento deletado com sucesso",
@@ -256,9 +253,9 @@ const pagamentosController = {
                 }
             )
         } catch (error) {
-            res.status(500).json(
+            res.status(error.status).json(
                 {
-                    "msg": error.message,
+                    "msg": error.mensagem,
                     "erro": true
                 }
             )
