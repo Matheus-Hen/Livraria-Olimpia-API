@@ -8,7 +8,7 @@
 ## Pessoas Desenvolvedoras do Projeto:
 <table>
   <tr>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/lisandradecassia/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102766893?v=4" width="100px;"><br>
         <sub>
@@ -18,7 +18,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/andre-sqr/">
         <img style="border-radius: 50%; width="100px;"" src="https://avatars.githubusercontent.com/u/102765824?v=4" width="100px;"><br>
         <sub>
@@ -28,7 +28,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/matheus-henrique-de-l%C3%A1zaro-silva/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/44203985?v=4" width="100px;"><br>
         <sub>
@@ -38,7 +38,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/ester-messias-08b706177/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/87023023?v=4" width="100px;"><br>
         <sub>
@@ -48,7 +48,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/wellisonsales/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/83258570?v=4" width="100px;"><br>
         <sub>
@@ -58,7 +58,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/nuchoa/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/97313973?v=4" width="100px;"><br>
         <sub>
