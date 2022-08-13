@@ -45,10 +45,10 @@ const Validacoes = {
 
   _validaEmail: (email) => {
     const carac = '@';
-    if (carac.test(email)) {
-      throw new Error('Algo está faltando em seu email, digite corretamente.');
-    } else {
+    if (email.includes(carac)) {
       return email;
+    } else {
+      throw new Error('Algo está faltando em seu email, digite corretamente.');
     }
   },
 };
