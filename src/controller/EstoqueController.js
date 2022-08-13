@@ -20,7 +20,7 @@ const estoqueController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -91,7 +91,7 @@ const estoqueController = {
 
     try {
       await EstoqueValidacao._validaDeleteEstoque(
-        Estoque,
+        id,
         estoqueModel.removeProduto,
       );
 
@@ -100,7 +100,7 @@ const estoqueController = {
         erro: false,
       });
     } catch (error) {
-      res.status(400).json({
+      res.status(404).json({
         msg: error.message,
         error: true,
       });
