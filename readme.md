@@ -96,10 +96,14 @@ A **"OlimpiaAPI"** é um sistema de gerenciamento de livrarias e pode ser utiliz
 
 Para utilizar este projeto de código aberto, é necessário fazer um `git clone` em sua máquina para ter acesso ao ambiente de desenvolvimento. Lembre-se de conferir se você possui instalado o `Node.js` e o gereciador de arquivos `NPM` nas versões citadas em `pré-requisitos`.
 
-No terminal da sua máquina, digite `git clone` + o link do repositório desta API:
+No terminal/Powershell da sua máquina, digite `git clone` + o link do repositório desta API como demonstrado no comando abaixo:
 
 ```
 git clone https://github.com/Matheus-Hen/Livraria-Olimpia-API
+```
+Para iniciar o banco de dados com os dados padrão e popula-lo, rode o comando abaixo:
+```
+ npm run db
 ```
 
 Acessando a pasta:
@@ -120,15 +124,8 @@ Rodando o projeto:
 npm start
 ```
 
-### Reinicialização do banco de dados:
 
-Por padrão, o banco de dados da OlimpiaAPI possui dados populados de forma simulada e está representado como `olimpia.db` nos arquivos do projeto. Dessa forma, você pode realizar consultas de rotas sem a necessidade de inicializar o banco. Mas, se caso deseja reiniciar por algum motivo o banco, utilize o comando abaixo no terminal após os passos anteriores.
-
-```
-npm run db
-```
-
-# Rotas
+# Rotas Implementadas
 
 ### Clientes
 
