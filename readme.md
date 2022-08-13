@@ -919,7 +919,7 @@ Esquema de resposta:
   }
   ```
 ---
-- **DELETE /pagamentos/id/:id**
+- **DELETE /pagamentos/idPagamentos/:id**
 
   _Realiza uma deleção no banco de dados do pagamento com o id requerido_
 
