@@ -10,15 +10,6 @@ const EstoqueValidacao = {
       return estoque;
     }
   },
-
-  _validaAtualizar: async (id, callback, newBody) => {
-    const object = await callback(id, newBody);
-    if (object === undefined) {
-      throw new Error('Não foi possível atualizar estas informações');
-    } else {
-      return object;
-    }
-  },
 };
 
 export default EstoqueValidacao;
