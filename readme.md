@@ -101,23 +101,22 @@ No terminal/Powershell da sua máquina, digite `git clone` + o link do repositó
 ```
 git clone https://github.com/Matheus-Hen/Livraria-Olimpia-API
 ```
-Para iniciar o banco de dados com os dados padrão e popula-lo, rode o comando abaixo:
-```
- npm run db
-```
 
 Acessando a pasta:
-
 ```
 cd Livraria-Olimpia-API
 ```
 
 Instalandos os pacotes:
-
 ```
 npm install
 ```
-
+ 
+Para iniciar o banco de dados com os dados padrão e popula-lo, rode o comando abaixo:
+```
+npm run db
+```
+  
 Rodando o projeto:
 
 ```
