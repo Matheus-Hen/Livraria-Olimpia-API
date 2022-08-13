@@ -1025,7 +1025,6 @@ Esquema de resposta:
   _Confere os funcionários registrados no banco de dados_
   
   Requisição: 
-  
   > http://localhost:3000/funcionario/
 
   Esquema de resposta:
@@ -1282,15 +1281,18 @@ Esquema de resposta:
  
   ---
   ### Livros
-
+  
   - **GET /livros**
-
-_Acessando os livros cadastrados no estoque_
-
-Esquema de resposta:
-
-```json
-{
+  _Acessando os livros cadastrados no estoque_
+  
+  
+  Requisição: 
+  >http://localhost:3000/livros
+  
+  
+  Esquema de resposta:
+  ```json
+  {
     "livros": [
         {
             "idLivro": 100001,
@@ -1301,45 +1303,134 @@ Esquema de resposta:
             "valor": 20,
             "idioma": "Português",
             "numeroPaginas": 96
+        },
+        {
+            "idLivro": 100004,
+            "titulo": "As Brumas de Avalon",
+            "autor": "Marion Zimmer Bradley",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 42,
+            "idioma": "Português",
+            "numeroPaginas": 320
+        },
+        {
+            "idLivro": 100005,
+            "titulo": "The Shining",
+            "autor": "Stephen King",
+            "genero": "Ficção",
+            "formato": "Digital",
+            "valor": 30,
+            "idioma": "Inglês",
+            "numeroPaginas": 324
+        },
+        {
+            "idLivro": 100006,
+            "titulo": "Contact",
+            "autor": "Carl Sagan",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 35,
+            "idioma": "Inglês",
+            "numeroPaginas": 432
+        },
+        {
+            "idLivro": 100007,
+            "titulo": "O Lado Feio do Amor",
+            "autor": "Colleen Hover",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 33,
+            "idioma": "Português",
+            "numeroPaginas": 256
+        },
+        {
+            "idLivro": 100008,
+            "titulo": "Vulgo Grace",
+            "autor": "Margaret Atwood",
+            "genero": "Ficção Policial",
+            "formato": "Digital",
+            "valor": 89,
+            "idioma": "Português",
+            "numeroPaginas": 512
+        },
+        {
+            "idLivro": 100009,
+            "titulo": "O Homem do Castelo Alto",
+            "autor": "Philip K. Dick",
+            "genero": "Literatura",
+            "formato": "Físico",
+            "valor": 47,
+            "idioma": "Português",
+            "numeroPaginas": 288
+        },
+        {
+            "idLivro": 100010,
+            "titulo": "The Book Thief",
+            "autor": "Markus Zusak",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 45,
+            "idioma": "Alemão",
+            "numeroPaginas": 480
+        },
+        {
+            "idLivro": 100011,
+            "titulo": "Verity",
+            "autor": "Colleen Hoover",
+            "genero": "Suspense",
+            "formato": "Digital",
+            "valor": 84,
+            "idioma": "Inglês",
+            "numeroPaginas": 270
+        },
+        {
+            "idLivro": 100012,
+            "titulo": "The Miracle Morning",
+            "autor": "Hal Elrod",
+            "genero": "Autoajuda",
+            "formato": "Físico",
+            "valor": 57,
+            "idioma": "Inglês",
+            "numeroPaginas": 196
+        },
+        {
+            "idLivro": 100013,
+            "titulo": "A Invenção de Morel",
+            "autor": "Adolfo Bioy Casares",
+            "genero": "Ficção Científica",
+            "formato": "Físico",
+            "valor": 43,
+            "idioma": "Português",
+            "numeroPaginas": 160
+        },
+        {
+            "idLivro": 100014,
+            "titulo": "Duna",
+            "autor": "Frank Herbert",
+            "genero": "Ficção Científica",
+            "formato": "Digital",
+            "valor": 77,
+            "idioma": "Inglês",
+            "numeroPaginas": 544
         }
-    ]
-    },
-```
----
-
-**GET /livros/titulo/:titulo**
+    ],
+    "erro": false
+  }
+  ```
+  
+  ---
+  **GET /livros/titulo/:titulo**
 
   _Busca livros no banco de dados pelo titulo_
 
+  Requisição: 
+  http://localhost:3000/livros/titulo/As Brumas de Avalon
+  
+  
   Esquema de resposta:
-
-
-```json
-{
-    "titulo": {
-        "idLivro": 100001,
-        "titulo": "O Pequeno Principe",
-        "autor": "Antoine de Saint Exupéry",
-        "genero": "Literatura Infanto juvenil",
-        "formato": "Físico",
-        "valor": 20,
-        "idioma": "Português",
-        "numeroPaginas": 96
-    },
-    "erro": false
-}
-```
----
-
-**GET /livros/idLivro/:idLivro**
-
-  _Busca livro no banco de dados pelo ID_
-
-  Esquema de resposta:
-
-
-```json
-{
+  ```json
+  {
     "titulo": {
         "idLivro": 100004,
         "titulo": "As Brumas de Avalon",
@@ -1351,18 +1442,48 @@ Esquema de resposta:
         "numeroPaginas": 320
     },
     "erro": false
-}
-```
----
-**GET /livros/genero/:genero**
+  }
+  ```
+  
+  ---
+  **GET /livros/idLivro/:idLivro**
+
+  _Busca livro no banco de dados pelo ID_
+
+  
+  Requisição: 
+  http://localhost:3000/livros/idLivro/100005
+  
+  
+  Esquema de resposta:
+  ```json
+  {
+    "titulo": {
+        "idLivro": 100005,
+        "titulo": "The Shining",
+        "autor": "Stephen King",
+        "genero": "Ficção",
+        "formato": "Digital",
+        "valor": 30,
+        "idioma": "Inglês",
+        "numeroPaginas": 324
+    },
+    "erro": false
+  }
+  ```
+  
+  ---
+  **GET /livros/genero/:genero**
 
   _Busca livro no banco de dados pelo genero_
-
+  
+  Requisição: 
+  http://localhost:3000/livros/genero/Romance
+  
+  
   Esquema de resposta:
-
-
-```json
-{
+   ```json
+  {
     "titulo": [
         {
             "idLivro": 100004,
@@ -1374,19 +1495,6 @@ Esquema de resposta:
             "idioma": "Português",
             "numeroPaginas": 320
         },
-    ]
-```
----
-**GET /livros/autor/:autor**
-
-  _Busca livro no banco de dados pelo autor_
-
-  Esquema de resposta:
-
-
-```json
-{
-    "titulo": [
         {
             "idLivro": 100006,
             "titulo": "Contact",
@@ -1396,21 +1504,73 @@ Esquema de resposta:
             "valor": 35,
             "idioma": "Inglês",
             "numeroPaginas": 432
+        },
+        {
+            "idLivro": 100007,
+            "titulo": "O Lado Feio do Amor",
+            "autor": "Colleen Hover",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 33,
+            "idioma": "Português",
+            "numeroPaginas": 256
+        },
+        {
+            "idLivro": 100010,
+            "titulo": "The Book Thief",
+            "autor": "Markus Zusak",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 45,
+            "idioma": "Alemão",
+            "numeroPaginas": 480
         }
     ],
-}
-```
----
-**GET /livros/idioma/:idioma**
+    "erro": false
+  }
+  ```
+  
+  ---
+**GET /livros/autor/:autor**
+
+  _Busca livro no banco de dados pelo autor_
+  
+  Requisição: 
+  http://localhost:3000/livros/autor/Colleen Hover
+  
+
+  Esquema de resposta:
+  ```json
+  {
+    "titulo": [
+        {
+            "idLivro": 100007,
+            "titulo": "O Lado Feio do Amor",
+            "autor": "Colleen Hover",
+            "genero": "Romance",
+            "formato": "Físico",
+            "valor": 33,
+            "idioma": "Português",
+            "numeroPaginas": 256
+        }
+    ],
+    "erro": false
+  }
+  ```
+  
+  ---
+  **GET /livros/idioma/:idioma**
 
   _Busca livro no banco de dados pelo idioma_
 
+  
+  Requisição: 
+  http://localhost:3000/livros/idioma/Alemão
+  
+  
   Esquema de resposta:
-
-
-```json
-
-{
+  ```json
+  {
     "titulo": [
         {
             "idLivro": 100010,
@@ -1424,47 +1584,63 @@ Esquema de resposta:
         }
     ],
     "erro": false
-}
-```
----
-**DELETE /livros/idLivro/:idLivro**
+  } 
+  ```
+  
+  ---
+  **DELETE /livros/idLivro/:idLivro**
 
   _Realiza uma deleção no banco de dados de livros com o id requerido_
 
-  Busca um livro no banco de dados pelo id:
-  id: 100013
+  Esquema de requisição: 
+  >http://localhost:3000/livros/idLivro/100011
   
-  Esquema de resposta:
-
-```json
-
-{
+  
+  Esquema de deleção:
+  ```json
+  {
     "msg": "Livro deletado com sucesso",
     "erro": false
-}
-```
----
-**PUT /livros/:idLivro**
+  }
+  ```
+  
+  ---
+  **PUT /livros/:idLivro**
 
   _Atualiza um ou múltiplos dados de um livro desejado_
   
+  Esquema de requisição:
+  ```json
+  {
+            "idLivro": 100001,
+            "titulo": "O Pequeno Principe",
+            "autor": "Antoine de Saint Exupéry",
+            "genero": "Literatura Infanto juvenil",
+            "formato": "Físico",
+            "valor": 3000,
+            "idioma": "Português",
+            "numeroPaginas": 96
+  }
+  ```
+  
+ 
   Esquema de resposta:
-
-```json
-
-{
+  ```json
+  {
     "msg": "O livro foi atualizado com sucesso",
     "livro": {
-        "titulo": "The Miracle Morning",
-        "autor": "Hal Elrod",
-        "genero": "Autoajuda",
+        "titulo": "O Pequeno Principe",
+        "autor": "Antoine de Saint Exupéry",
+        "genero": "Literatura Infanto juvenil",
         "formato": "Físico",
-        "valor": 60,
-        "idioma": "Inglês",
-        "numeroPaginas": 196
+        "valor": 3000,
+        "idioma": "Português",
+        "numeroPaginas": 96
     },
-}
-```
+    "erro": false
+  }
+  
+  ```
 **POST /livros**
 
   _Cria um novo livro e insere no banco de dados_
@@ -1486,20 +1662,22 @@ Esquema de resposta:
   Esquema de resposta:
 
   ```json
-     {
-        "msg": "Cadastro do livro realizado com sucesso",
-        "livro": {
-        "titulo": "ciranda cirandinha vamos",
+  {
+    "msg": "O livro foi atualizado com sucesso",
+    "livro": {
+        "titulo": "O Pequeno Principe",
         "autor": "Antoine de Saint Exupéry",
         "genero": "Literatura Infanto juvenil",
         "formato": "Físico",
-        "valor": 20,
+        "valor": 3000,
         "idioma": "Português",
         "numeroPaginas": 96
     },
-    }
+    "erro": false
+  }
   ```
----
+  
+  ---
 ## Licença:
 
 Copyright © 2022 - OlimpiaAPI
