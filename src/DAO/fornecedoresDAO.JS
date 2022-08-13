@@ -43,7 +43,7 @@ const daoFornecedores = {
     WHERE id = ?
     `;
     return new Promise((resolve, reject) => {
-      db.all(PEGA_ID_FORNECEDORES, id, (error, row) => {
+      db.get(PEGA_ID_FORNECEDORES, id, (error, row) => {
         if (error) reject(error);
         else resolve(row);
       });
@@ -56,7 +56,7 @@ const daoFornecedores = {
     WHERE cnpj = ?
     `;
     return new Promise((resolve, reject) => {
-      db.all(PEGA_CNPJ_FORNECEDORES, cnpj, (error, row) => {
+      db.get(PEGA_CNPJ_FORNECEDORES, cnpj, (error, row) => {
         if (error) reject(error);
         else resolve(row);
       });
@@ -110,7 +110,7 @@ const daoFornecedores = {
   `;
 
     return new Promise((resolve, reject) => {
-      db.all(
+      db.run(
         ATT_FORNECEDORES,
         newFornecedor.nome,
         newFornecedor.cnpj,

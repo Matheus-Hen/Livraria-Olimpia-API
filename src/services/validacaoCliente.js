@@ -10,16 +10,6 @@ const ClienteValidacao = {
       return cliente;
     }
   },
-
-  _validaAtualizar: async (id, callback) => {
-    const abobora = await callback(id);
-    if (abobora === undefined) {
-      throw new Error('Não foi possível atualizar estas informações');
-    } else {
-      await callback(id);
-      return abobora;
-    }
-  },
 };
 
 export default ClienteValidacao;

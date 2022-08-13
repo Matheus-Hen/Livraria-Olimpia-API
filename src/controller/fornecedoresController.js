@@ -1,8 +1,128 @@
 import Fornecedores from '../model/fornecedoresModel.js';
+import FornecedorValidacao from '../services/validacaoFornecedor.js';
 
 const modelFornecedor = new Fornecedores();
 
 const fornecedoresController = {
+  procurarFornecedores: async (req, res) => {
+    try {
+      const resposta = await modelFornecedor.totalDeFornecedores();
+
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          fornecedores: resposta.dados,
+          erro: false,
+        });
+      } else {
+        res.status(resposta.status).json({
+          msg: resposta.mensagem,
+          erro: true,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
+      });
+    }
+  },
+
+  procurarIDfornecedores: async (req, res) => {
+    const id = req.params.id;
+    try {
+      const resposta = await modelFornecedor.IDfornecedor(id);
+
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          fornecedores: resposta.dados,
+          erro: false,
+        });
+      } else {
+        res.status(resposta.status).json({
+          msg: resposta.mensagem,
+          erro: true,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
+      });
+    }
+  },
+
+  procurarProdutosFornecedores: async (req, res) => {
+    const produtos = req.params.produtos;
+    try {
+      const resposta = await modelFornecedor.produtosFornecedor(produtos);
+
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          fornecedores: resposta.dados,
+          erro: false,
+        });
+      } else {
+        res.status(resposta.status).json({
+          msg: resposta.mensagem,
+          erro: true,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
+      });
+    }
+  },
+
+  procurarCEPfornecedores: async (req, res) => {
+    const cep = req.params.cep;
+    try {
+      const resposta = await modelFornecedor.CEPfornecedor(cep);
+
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          fornecedores: resposta.dados,
+          erro: false,
+        });
+      } else {
+        res.status(resposta.status).json({
+          msg: resposta.mensagem,
+          erro: true,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
+      });
+    }
+  },
+
+  procurarCNPJfornecedores: async (req, res) => {
+    const cnpj = req.params.cnpj;
+    try {
+      const resposta = await modelFornecedor.CNPJfornecedor(cnpj);
+
+      if (resposta.status === 200) {
+        res.status(resposta.status).json({
+          fornecedores: resposta.dados,
+          erro: false,
+        });
+      } else {
+        res.status(resposta.status).json({
+          msg: resposta.mensagem,
+          erro: true,
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
+      });
+    }
+  },
+
   criarNewFornecedor: async (req, res) => {
     const body = req.body;
     try {
@@ -16,147 +136,36 @@ const fornecedoresController = {
         body.cep,
       );
 
-      if (resposta.status === 200) {
-        res
-          .status(resposta.status)
-          .json({
-            msg: 'Fornecedor inserido',
-            cliente: resposta.dados,
-            erro: false,
-          });
-      } else {
-        res
-          .status(resposta.status)
-          .json({ msg: resposta.mensagem, erro: true });
-      }
-    } catch (error) {
-      res.status(500).json({ msg: error.message, erro: true });
-    }
-  },
-
-  procurarFornecedores: async (req, res) => {
-    try {
-      const resposta = await modelFornecedor.totalDeFornecedores();
-
-      if (resposta.status === 200) {
-        res.status(resposta.status).json({
-          fornecedores: resposta.dados,
-          erro: false,
-        });
-      } else {
-        res.status(resposta.status).json({
-          mensagem: resposta.mensagem,
-          erro: true,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({ mensagem: error.message, erro: true });
-    }
-  },
-
-  procurarIDfornecedores: async (req, res) => {
-    try {
-      const id = req.params.id;
-      const resposta = await modelFornecedor.IDfornecedor(id);
-
-      if (resposta.status === 200) {
-        res.status(resposta.status).json({
-          fornecedores: resposta.dados,
-          erro: false,
-        });
-      } else {
-        res.status(resposta.status).json({
-          mensagem: resposta.mensagem,
-          erro: true,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        mensagem: error.message,
-        erro: true,
+      if (resposta.status !== 200) throw resposta;
+      res.status(resposta.status).json({
+        msg: 'Fornecedor inserido com sucesso!',
+        cliente: resposta.dados,
+        erro: false,
       });
-    }
-  },
-
-  procurarProdutosFornecedores: async (req, res) => {
-    try {
-      const produtos = req.params.produtos;
-      const resposta = await modelFornecedor.produtosFornecedor(produtos);
-
-      if (resposta.status === 200) {
-        res.status(resposta.status).json({
-          fornecedores: resposta.dados,
-          erro: false,
-        });
-      } else {
-        res.status(resposta.status).json({
-          mensagem: resposta.mensagem,
-          erro: true,
-        });
-      }
     } catch (error) {
-      res.status(500).json({
-        mensagem: error.message,
-        erro: true,
-      });
-    }
-  },
-
-  procurarCEPfornecedores: async (req, res) => {
-    try {
-      const cep = req.params.cep;
-      const resposta = await modelFornecedor.CEPfornecedor(cep);
-
-      if (resposta.status === 200) {
-        res.status(resposta.status).json({
-          fornecedores: resposta.dados,
-          erro: false,
-        });
-      } else {
-        res.status(resposta.status).json({
-          mensagem: resposta.mensagem,
-          erro: true,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        mensagem: error.message,
-        erro: true,
-      });
-    }
-  },
-
-  procurarCNPJfornecedores: async (req, res) => {
-    try {
-      const cnpj = req.params.cnpj;
-      const resposta = await modelFornecedor.CNPJfornecedor(cnpj);
-
-      if (resposta.status === 200) {
-        res.status(resposta.status).json({
-          fornecedores: resposta.dados,
-          erro: false,
-        });
-      } else {
-        res.status(resposta.status).json({
-          mensagem: resposta.mensagem,
-          erro: true,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        mensagem: error.message,
+      res.status(400).json({
+        msg: error.message,
         erro: true,
       });
     }
   },
 
   deletaFornecedor: async (req, res) => {
-    const id = req.params.id;
+    const fornecedor = req.params.id;
     try {
-      await modelFornecedor.deletaFornecedor(id);
-      res.json({ msg: 'Fornecedor deletado', erro: false });
+      await FornecedorValidacao._validaDeleteFornecedor(
+        fornecedor,
+        modelFornecedor.deletaFornecedor,
+      );
+      res.json({
+        msg: 'Fornecedor deletado com sucesso',
+        erro: false,
+      });
     } catch (error) {
-      res.json({ msg: error.message, erro: true });
+      res.status(404).json({
+        msg: error.message,
+        erro: true,
+      });
     }
   },
 
@@ -174,16 +183,17 @@ const fornecedoresController = {
         body.endereco,
         body.cep,
       );
-      if (resposta.status !== 200) throw resposta;
-      res
-        .status(resposta.status)
-        .json({
-          msg: 'Fornecedor atualizado',
-          fornecedor: resposta.dados,
-          erro: false,
-        });
+      if (resposta.status != 200) throw resposta;
+      res.status(resposta.status).json({
+        msg: 'Fornecedor atualizado',
+        fornecedor: resposta.dados,
+        erro: false,
+      });
     } catch (error) {
-      res.status(400).json({ msg: error.mensagem, erro: true });
+      res.status(error.status).json({
+        msg: error.mensagem,
+        erro: true,
+      });
     }
   },
 };

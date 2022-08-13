@@ -20,7 +20,7 @@ const clienteController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -44,7 +44,7 @@ const clienteController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -69,7 +69,7 @@ const clienteController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -94,7 +94,7 @@ const clienteController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -103,7 +103,6 @@ const clienteController = {
 
   buscarClientePeloID: async (req, res) => {
     const id = req.params.id;
-
     try {
       const resposta = await modelCliente.buscarClienteId(id);
 
@@ -119,7 +118,7 @@ const clienteController = {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.message,
         erro: true,
       });
@@ -145,7 +144,7 @@ const clienteController = {
         erro: false,
       });
     } catch (error) {
-      res.status(500).json({
+      res.status(400).json({
         msg: error.mensagem,
         erro: true,
       });
@@ -154,19 +153,17 @@ const clienteController = {
 
   deletaCliente: async (req, res) => {
     const cliente = req.params.id;
-
     try {
       await ClienteValidacao._validaDeleteCliente(
         cliente,
         modelCliente.removerCliente,
       );
-
       res.json({
         msg: 'Cliente deletado com sucesso',
         erro: false,
       });
     } catch (error) {
-      res.status(400).json({
+      res.status(404).json({
         msg: error.message,
         erro: true,
       });
