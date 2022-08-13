@@ -8,7 +8,7 @@
 ## Pessoas Desenvolvedoras do Projeto:
 <table>
   <tr>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/lisandradecassia/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102766893?v=4" width="100px;"><br>
         <sub>
@@ -18,7 +18,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/andre-sqr/">
         <img style="border-radius: 50%; width="100px;"" src="https://avatars.githubusercontent.com/u/102765824?v=4" width="100px;"><br>
         <sub>
@@ -28,7 +28,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/matheus-henrique-de-l%C3%A1zaro-silva/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/44203985?v=4" width="100px;"><br>
         <sub>
@@ -38,7 +38,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/ester-messias-08b706177/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/87023023?v=4" width="100px;"><br>
         <sub>
@@ -48,7 +48,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/wellisonsales/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/83258570?v=4" width="100px;"><br>
         <sub>
@@ -58,7 +58,7 @@
         </sub>
       </a>
     </td>
-    <td align="center">
+    <td align="center" width="170px;">
       <a href="https://www.linkedin.com/in/nuchoa/">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/97313973?v=4" width="100px;"><br>
         <sub>
@@ -96,10 +96,14 @@ A **"OlimpiaAPI"** é um sistema de gerenciamento de livrarias e pode ser utiliz
 
 Para utilizar este projeto de código aberto, é necessário fazer um `git clone` em sua máquina para ter acesso ao ambiente de desenvolvimento. Lembre-se de conferir se você possui instalado o `Node.js` e o gereciador de arquivos `NPM` nas versões citadas em `pré-requisitos`.
 
-No terminal da sua máquina, digite `git clone` + o link do repositório desta API:
+No terminal/Powershell da sua máquina, digite `git clone` + o link do repositório desta API como demonstrado no comando abaixo:
 
 ```
 git clone https://github.com/Matheus-Hen/Livraria-Olimpia-API
+```
+Para iniciar o banco de dados com os dados padrão e popula-lo, rode o comando abaixo:
+```
+ npm run db
 ```
 
 Acessando a pasta:
@@ -120,15 +124,8 @@ Rodando o projeto:
 npm start
 ```
 
-### Reinicialização do banco de dados:
 
-Por padrão, o banco de dados da OlimpiaAPI possui dados populados de forma simulada e está representado como `olimpia.db` nos arquivos do projeto. Dessa forma, você pode realizar consultas de rotas sem a necessidade de inicializar o banco. Mas, se caso deseja reiniciar por algum motivo o banco, utilize o comando abaixo no terminal após os passos anteriores.
-
-```
-npm run db
-```
-
-# Rotas
+# Rotas Implementadas
 
 ### Clientes
 
@@ -136,59 +133,19 @@ npm run db
 
   _Confere os clientes registrados no banco de dados_
 
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-    {
-        "clientes": [
-            {
-                "id": 1,
-                "nome": "Adriano Silva",
-                "email": "adrianosilva@gmail.com",
-                "cpf": "24456634405",
-                "telefone": "6435380744",
-                "senha": "adrianinho123",
-                "cep": "61948530"
-            },
-            {
-                "id": 2,
-                "nome": "Olivia Rogéria",
-                "email": "good4u@yahoo.com",
-                "cpf": "48576088207",
-                "telefone": "8721148532",
-                "senha": "traitor",
-                "cep": "59025100"
-            },
-            {
-                "id": 3,
-                "nome": "Taylor Swift",
-                "email": "folkloreaoty@gmail.com",
-                "cpf": "44727894181",
-                "telefone": "9928763448",
-                "senha": "amomeusgatinhos",
-                "cep": "69304410"
-            },
-            {
-                "id": 4,
-                "nome": "Pera Pereira",
-                "email": "perapereira@yahoo.com",
-                "cpf": "01243297050",
-                "telefone": "8325412343",
-                "senha": "pear123",
-                "cep": "79002914"
-            },
-            {
-                "id": 5,
-                "nome": "Kanye West",
-                "email": "uniaokanyetaylor@gmail.com",
-                "cpf": "99421990803",
-                "telefone": "7937575524",
-                "senha": "thecollegedropout",
-                "cep": "65057807"
-            }
-        ],
-        "erro": false
-    }
+   {
+    "clientes": [
+        {
+            "idEstoque": 101,
+            "produto": "Código  Limpo",
+            "quantidade": 457,
+            "fornecedor": "Editora Alta Books"
+        }
+        ]
+    },
   ```
 
 ---
@@ -197,25 +154,19 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo nome_
 
-Requisição
-  
-  > http://localhost:3000/clientes/nome/Taylor Swift
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-    {
-    "cliente": {
-      "id": 3,
-      "nome": "Taylor Swift",
-      "email": "taylorcontato@gmail.com",
-      "cpf": "44727894181",
-      "telefone": "9928763448",
-      "senha": "amomeusgatinhos",
-      "cep": "69304410"
-    },
-    "erro": false
-  }
+  {
+   "clientes": [
+       {
+           "idEstoque": 101,
+           "produto": "Código  Limpo",
+           "quantidade": 457,
+           "fornecedor": "Editora Alta Books"
+       }
+    ]
+   },
   ```
 
 ---
@@ -224,26 +175,15 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo CPF_
 
-Requisição:
-
-  > http://localhost:3000/clientes/cpf/44727894181
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
   {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
-  }
-  
+    "idEstoque": 101,
+    "produto": "Código Limpo",
+    "quantidade": 457,
+    "fornecedor": "Editora Alta Books"
+  },
   ```
 
 ---
@@ -252,25 +192,23 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo email_
 
-Requisição:
-
-> http://localhost:3000/clientes/email/folkloreaoty@gmail.com
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-  {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
-  }
+   {
+    "clientes": [
+        {
+            "idEstoque": 101,
+            "produto": "Código  Limpo",
+            "quantidade": 457,
+            "fornecedor": "Editora Alta Books"
+        }
+    ]
+    },
+  ```
+
+  ```
+
   ```
 
 ---
@@ -279,23 +217,18 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo ID_
 
-Requisição:
-> http://localhost:3000/clientes/id/3
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
   {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
   }
   ```
 
@@ -303,31 +236,35 @@ Esquema de resposta:
 
 - **POST /clientes**
 
-  _Criar um novo cliente e insere no banco de dados_
+  _Cria um novo cliente e insere no banco de dados_
 
-Esquema de requisição:
-
-```json
-     {
-      "cliente": {
-        "nome": "Junim",
-        "email": "devcontato@gmail.com",
-        "cpf": "50258909856",
-        "telefone": "9953578491",
-        "senha": "umasenhalegal",
-        "cep": "05890600"
-      },
-      "erro": false
-    }
-
- ```
- 
-
-Esquema de resposta:
+  Esquema da requisição:
 
   ```json
   {
-    "msg": "o cliente foi inserido com sucesso"
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+  Esquema de resposta:
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
   }
   ```
 
@@ -340,178 +277,8 @@ Esquema de resposta:
   Esquema da requisição:
 
   ```json
-  
-    {
-			"id": 5,
-			"nome": "Kanye West da Silva",
-			"email": "uniaokanycontato@gmail.com",
-			"cpf": "99421990803",
-			"telefone": "7937575524",
-			"senha": "thecollegedropout",
-			"cep": "65057807"
-    }
-
-  ```
-
-Esquema de resposta:
-
-```json
-{  
-  "msg": "Cliente atualizado com sucesso",
-  "clientes": [
-    {
-			"id": 5,
-			"nome": "Kanye West da Silva",
-			"email": "uniaokanycontato@gmail.com",
-			"cpf": "99421990803",
-			"telefone": "7937575524",
-			"senha": "thecollegedropout",
-			"cep": "65057807"
-    }
-  ]
-}
-```
-
----
-
-- **DELETE /clientes/id/:id**
-
-  _Realiza uma deleção no banco de dados do cliente com o ID requerido_
-
-  Esquema de requisição: 
-
-> http://localhost:3000/clientes/id/3
-
-  Esquema de resposta:
-
-  ```json
-{
-    "msg": "Cliente deletado com sucesso",
-    "erro": false
-}
-  ```
-
----
-
-### Estoque
-
-- **GET /estoque**
-
-_Acessando os produtos cadastrados no estoque_
-
-Esquema de requisição:
-
-> http://localhost:3000/estoque
-
-Esquema de resposta:
-
-```json
-{
-    "produtos": [
-        {
-            "idEstoque": 101,
-            "produto": "Livro um",
-            "quantidade": 202,
-            "fornecedor": "Editora Insitrica"
-        },
-        {
-            "idEstoque": 102,
-            "produto": "Livro dois",
-            "quantidade": 502,
-            "fornecedor": "Catavento"
-        },
-        {
-            "idEstoque": 103,
-            "produto": "Livro tres",
-            "quantidade": 102,
-            "fornecedor": "Porta de Trás"
-        },
-        {
-            "idEstoque": 104,
-            "produto": "Livro quatro",
-            "quantidade": 303,
-            "fornecedor": "Editora Devinho"
-        },
-        {
-            "idEstoque": 105,
-            "produto": "Livro cincto",
-            "quantidade": 507,
-            "fornecedor": "Editora Perry"
-        }
-    ],
-    "erro": false
-}
-```
-
----
-
-- **POST /estoque**
-
-_Inserindo novos produtos em estoque_
-
-Esquema de requisição:
-
-```json
-{
-  "produtos": [
-    {
-      "produto": "Diário de Um Banana",
-      "quantidade": 457,
-      "fornecedor": "Florinda Livros LTDA"
-    }
-  ]
-}
-```
-
-Esquema de resposta:
-
-```json
   {
-      "msg": "Um novo produto foi inserido com sucesso",
-      "estoque": {},
-      "erro": false
-  }
-```
-
-Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
-
----
-
-- **GET /estoque/id**
-
-  _Buscando um produto pelo ID no sistema_
-
-  Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
-
-Esquema de requisição:
-
-  > http://localhost:3000/estoque/id/101
-
-Esquema de resposta:
-
-  ```json
-{
-    "produtos": {
-        "idEstoque": 101,
-        "produto": "Livro um",
-        "quantidade": 202,
-        "fornecedor": "Editora Insitrica"
-    },
-    "erro": false
-}
-  ```
-
----
-
-- **DELETE /estoque**
-
-  _Removendo um produto do estoque_
-
-Esquema de requisição:
-
-  ```json
-  {
-    "produtos": [
+    "clientes": [
       {
         "idEstoque": 101,
         "produto": "Código  Limpo",
@@ -526,7 +293,150 @@ Esquema de resposta:
 
 ```json
 {
-  "produtos": [
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **DELETE /clientes/id/:id**
+
+  _Realiza uma deleção no banco de dados do cliente com o ID requerido_
+
+  Esquema de resposta:
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+---
+
+### Estoque
+
+- **GET /estoque**
+
+_Acessando os produtos cadastrados no estoque_
+
+Esquema de resposta:
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **POST /estoque**
+
+_Inserindo novos produtos em estoque_
+
+Esquema de inserção de um novo produto:
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
+
+Esquema de resposta de um produto inserido :
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **GET /estoque/id**
+
+  _Buscando um produto pelo ID no sistema_
+
+  Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
+
+  > http://localhost:3000/estoque/id/106
+
+  Como resposta, você receberá este esquema :
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **DELETE /estoque**
+
+  _Removendo um produto do estoque_
+
+  Adicione no corpo da mensagem o produto que deseja remover :
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+Como resposta, você receberá este esquema :
+
+```json
+{
+  "clientes": [
     {
       "idEstoque": 101,
       "produto": "Código  Limpo",
@@ -547,54 +457,18 @@ Esquema de resposta:
 
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          },
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          },
-          {
-              "idPagamentos": 2024,
-              "cliente": "marcos santos",
-              "formaDePagamento": "boleto",
-              "valor": 180,
-              "parcelamento": "1",
-              "status": "pago",
-              "data": "02-08-2022"
-          },
-          {
-              "idPagamentos": 2025,
-              "cliente": "amanda tainá Rosa",
-              "formaDePagamento": "pix",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          },
-          {
-              "idPagamentos": 2026,
-              "cliente": "ana Julia maria",
-              "formaDePagamento": "cartao",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -604,25 +478,20 @@ Esquema de resposta:
 
   _Busca pagamento no banco de dados pelo id_
 
-  Esquema de requisição:
-  > http://localhost:3000/pagamentos/idPagamentos/2023
-
-  Esquema de resposta:
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -632,62 +501,20 @@ Esquema de resposta:
 
   _Busca um pagamento no banco de dados pelo status_
 
-  Esquema de requisição:
-
-  > http://localhost:3000/pagamentos/status/pago
-
-  Esquema de resposta:
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          },
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          },
-          {
-              "idPagamentos": 2024,
-              "cliente": "marcos santos",
-              "formaDePagamento": "boleto",
-              "valor": 180,
-              "parcelamento": "1",
-              "status": "pago",
-              "data": "02-08-2022"
-          },
-          {
-              "idPagamentos": 2025,
-              "cliente": "amanda tainá Rosa",
-              "formaDePagamento": "pix",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          },
-          {
-              "idPagamentos": 2026,
-              "cliente": "ana Julia maria",
-              "formaDePagamento": "cartao",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -697,24 +524,20 @@ Esquema de resposta:
 
   _Busca o pagamento no banco de dados pela data_
 
-  Requisição:
-
-  > http://localhost:3000/pagamentos/data/20-08-2022/
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -723,10 +546,6 @@ Esquema de resposta:
 - **GET /pagamentos/valor/:valor**
 
   _Busca o pagamento no banco de dados pelo valor_
-
-  Esquema de requisição:
-
-  > http://localhost:3000/pagamentos/valor/180
 
   ```json
   {
@@ -751,11 +570,6 @@ Esquema de resposta:
 
   _Busca o pagamento no banco de dados pela quantidade de parcelas_
 
-  Esquema de requisição:
-  > http://localhost:3000/pagamentos/parcelamento/2
-
-  Esquema de resposta:
-
   ```json
   {
     "pagamentos": [
@@ -776,12 +590,6 @@ Esquema de resposta:
 - **GET /pagamentos/cliente/:cliente**
 
   _Busca o pagamento no banco de dados pelo nome do cliente_
-
-  Esquema de requisição:
-
-  > http://localhost:3000/pagamentos/parcelamento/2
-
-  Esquema de requisição:
 
   ```json
   {
@@ -806,35 +614,20 @@ Esquema de resposta:
 
   _Busca pagamento pelo meio de pagamento selecionado_
 
-  Esquema de requisição:
-
-  > http://localhost:3000/pagamentos/formaDePagamento/pix
-
-  Esquema de resposta:
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          },
-          {
-              "idPagamentos": 2025,
-              "cliente": "amanda tainá Rosa",
-              "formaDePagamento": "pix",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -845,8 +638,6 @@ Esquema de resposta:
 - **POST /pagamentos/**
 
   _Cria um novo pagamento e insere no banco de dados_
-
-  Esquema de requisição:
 
   ```json
   {
@@ -881,9 +672,7 @@ Esquema de resposta:
 
   _Realiza uma deleção no banco de dados do pagamento com o id requerido_
 
-  Esquema de requisição
-
-  > http://localhost:3000/pagamentos/id/2022
+  Busca um fornecedor no banco de dados pelo id: 2022
 
   Esquema de resposta:
 
@@ -928,85 +717,144 @@ Esquema de resposta:
     "erro": false
 }
 ```
-
----
+  
 ---
 
 ### Fornecedores
 
-- **GET /fornecedores**
+  - **GET / fornecedores**
 
   _Confere os fornecedores registrados no banco de dados_
 
   ```json
   {
     "fornecedores": [
-      {
-        "id": 1,
-        "nome": "PAPERSHIFT",
-        "cnpj": "03546726000111",
-        "produto": "Artigos de Papelaria",
-        "email": "compras@papershift.com.br",
-        "telefone": "55 19 23768254",
-        "endereco": "Avenida Barcelona, 1405 - Agua Branca, Campinas - SP",
-        "cep": "03945080"
-      }
-    ]
-  }
-  ```
-
----
-
-- **GET / fornecedores/id/:id**
+        {
+            "id": 1,
+            "nome": "PAPERSHIFT",
+            "cnpj": "03546726000111",
+            "produto": "Artigos de Papelaria",
+            "email": "compras@papershift.com.br",
+            "telefone": "55 19 23768254",
+            "endereco": "Avenida Barcelona, 1405 - Agua Branca, Campinas - SP",
+            "cep": "03945080"
+        },
+        {
+            "id": 2,
+            "nome": "A Página",
+            "cnpj": "01795809000110",
+            "produto": "Livros",
+            "email": "compras@apagina.com.br",
+            "telefone": "55 41 32135643",
+            "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
+            "cep": "01830260"
+        },
+        {
+            "id": 3,
+            "nome": "Trucks LTDA",
+            "cnpj": "05938204710110",
+            "produto": "Chaveiros",
+            "email": "compras@trucks.com.br",
+            "telefone": "55 32 77638271",
+            "endereco": "Rua Jão Pires de Lima, 405 - Santos, Belo Horizonte - MG",
+            "cep": "01632360"
+        },
+        {
+            "id": 4,
+            "nome": "Safe&Sound",
+            "cnpj": "082718275600110",
+            "produto": "Artigos Musicais",
+            "email": "compras@safeandsound.com.br",
+            "telefone": "55 65 55789452",
+            "endereco": "Rua Vicente Martins, 200 - Pereira, Cuiabá - MT",
+            "cep": "08354780"
+        },
+        {
+            "id": 5,
+            "nome": "Bookstan",
+            "cnpj": "01746378240110",
+            "produto": "Livros",
+            "email": "compras@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985570"
+        }
+      ],
+         "erro": false
+       }
+   ```
+  ---
+  - **GET / fornecedores / id /: id**
 
   _Busca um fornecedor no banco de dados pelo id_
 
+  Requisição:
+  
+  > http://localhost:3000/fornecedores/id/5
+
+  Esquema de resposta:
+ 
   ```json
   {
     "fornecedores": [
-      {
-        "id": 2,
-        "nome": "A Página",
-        "cnpj": "01795809000110",
-        "produto": "Livros",
-        "email": "compras@apagina.com.br",
-        "telefone": "55 41 32135643",
-        "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
-        "cep": "01830260"
-      }
-    ]
+        {
+            "id": 5,
+            "nome": "Bookstan",
+            "cnpj": "01746378240110",
+            "produto": "Livros",
+            "email": "compras@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985570"
+        }
+    ],
+     "erro": false
   }
   ```
-
----
-
-- **GET /fornecedores/cnpj/:cnpj**
+  
+  ---
+  
+  - **GET / fornecedores / cnpj /: cnpj**
 
   _Busca um fornecedor no banco de dados pelo cnpj_
 
-  ```json
-  {
+ 
+  Requisição: 
+  
+  > http://localhost:3000/fornecedores/cnpj/05938204710110
+  
+  Esquema de resposta:
+  
+```json
+ {
     "fornecedores": [
-      {
-        "id": 1,
-        "nome": "PAPERSHIFT",
-        "cnpj": "03546726000111",
-        "produto": "Artigos de Papelaria",
-        "email": "compras@papershift.com.br",
-        "telefone": "55 19 23768254",
-        "endereco": "Avenida Barcelona, 1405 - Agua Branca, Campinas - SP",
-        "cep": "03945080"
-      }
-    ]
-  }
-  ```
-
----
-
-- **GET /fornecedores/produto/:produto**
-
+        {
+            "id": 3,
+            "nome": "Trucks LTDA",
+            "cnpj": "05938204710110",
+            "produto": "Chaveiros",
+            "email": "compras@trucks.com.br",
+            "telefone": "55 32 77638271",
+            "endereco": "Rua Jão Pires de Lima, 405 - Santos, Belo Horizonte - MG",
+            "cep": "01632360"
+        }
+    ],
+      "erro": false
+   }
+   ```
+  
+  ---
+  
+  - **GET / fornecedores / produto /: produtos**
+  
   _Busca fornecedores pelo tipo de produto_
-
+  
+  Requisição: 
+  
+  > http://localhost:3000/fornecedores/produto/Livros
+  
+  Esquema de resposta:
+  
   ```json
   {
     "fornecedores": [
@@ -1020,130 +868,172 @@ Esquema de resposta:
             "endereco": "Rua Major Fabriciano do Rego Barros, 1050 - Hauer, Curitiba - PR",
             "cep": "01830260"
         },
-  ]
-  }
+        {
+            "id": 5,
+            "nome": "Bookstan",
+            "cnpj": "01746378240110",
+            "produto": "Livros",
+            "email": "compras@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985570"
+        }
+    ],
+      "erro": false
+    }
+  
   ```
+  
+  ---
+  
+  - **GET / fornecedores / endereco /: cep**
 
----
-
-- **GET /fornecedores/endereco/:cep**
-
-  _Busca fornecedores por cep_
-
-  ```json
+  _Busca fornecedores pelo cep selecionado_
+  
+  Requisição: 
+  
+  > http://localhost:3000/fornecedores/endereco/04985570
+  
+  Esquema de resposta:
+  
+  ```json 
+  
   {
     "fornecedores": [
-      {
-        "id": 5,
-        "nome": "Bookstan",
-        "cnpj": "01746378240110",
-        "produto": "Livros",
-        "email": "compras@bookstan.com.br",
-        "telefone": "55 98 88748278",
-        "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
-        "cep": "04985570"
-      }
-    ]
-  }
+        {
+            "id": 5,
+            "nome": "Bookstan",
+            "cnpj": "01746378240110",
+            "produto": "Livros",
+            "email": "compras@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua Graciliano Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985570"
+        }
+    ],
+      "erro": false
+    }
+  
   ```
-
----
-
-- **POST /fornecedores**
+  
+  ---
+  
+  - **POST / fornecedores**
 
   _Cria um novo fornecedor e insere no banco de dados_
-
+  
+  Esquema de requisição:
+  
   ```json
-  {
-    "id": 366,
-    "nome": "livroteca",
-    "cnpj": "01746378240133",
-    "produto": "Tudo",
-    "email": "tudo@bookstan.com.br",
-    "telefone": "55 98 88748278",
-    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
-    "cep": "04985519"
-  }
+          {
+            "id": 90,
+            "nome": "Seuzé",
+            "cnpj": "01746378240119",
+            "produto": "Carro",
+            "email": "ze@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua marco Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985599"
+        }
   ```
 
   Esquema de resposta:
-
+  
   ```json
+  
   {
     "msg": "Fornecedor inserido",
-    "id": 366,
-    "nome": "livroteca",
-    "cnpj": "01746378240133",
-    "produto": "Tudo",
-    "email": "tudo@bookstan.com.br",
-    "telefone": "55 98 88748278",
-    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
-    "cep": "04985519"
-  }
+    "cliente": {
+        "nome": "Seuzé",
+        "cnpj": "01746378240119",
+        "produto": "Carro",
+        "email": "ze@bookstan.com.br",
+        "telefone": "55 98 88748278",
+        "endereco": "Rua marco Ramos, 400 - Assis, São Luís - MA",
+        "cep": "04985599"
+    },
+     "erro": false
+   } 
+  
   ```
+  
+  ---
+  
+  - **DELETE / fornecedores / id /: id**
+  
+  _Realiza uma deleção no banco de dados do fornecedor com o id requerido_
 
----
-
-- **DELETE /fornecedores/id/:id**
-
-  _Realiza uma deleção no banco de dados do fornecedor com o id requeridop_
-
-  > id: 1
-
+  Esquema de requisição: 
+  > http://localhost:3000/fornecedores/id/1
+  
+  Esquema de resposta:
   ```json
   {
     "msg": "Fornecedor deletado",
     "erro": false
   }
+  
   ```
-
----
-
-- **PUT /fornecedores/id/:id**
-
-  _Atualização de dados do fornecedor por id_
-
- ```json
-    {
-    "id": 23,
-    "nome": "Vendotudo",
-    "cnpj": "01746378242222",
-    "produto": "Tudo",
-    "email": "tudo@bookstan.com.br",
-    "telefone": "55 98 88748278",
-    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
-    "cep": "04985579"
+  
+  ---
+  
+  - **PUT / fornecedores / id /: id**
+  
+  _Atualização de dados do fornecedor través do id_
+  
+  Esquema da requisição:
+  
+  ```json
+           {
+            "id": 4,
+            "nome": "Atualizafornecedor123",
+            "cnpj": "01746378240119",
+            "produto": "Carro",
+            "email": "ze@bookstan.com.br",
+            "telefone": "55 98 88748278",
+            "endereco": "Rua marco Ramos, 400 - Assis, São Luís - MA",
+            "cep": "04985599"
+  }
+  
+  ```
+  
+  Esquema de resposta:
+  
+  ```json
+  {
+    "msg": "Fornecedor atualizado",
+    "fornecedor": {
+        "nome": "Atualizafornecedor123",
+        "cnpj": "01746378240119",
+        "produto": "Carro",
+        "email": "ze@bookstan.com.br",
+        "telefone": "55 98 88748278",
+        "endereco": "Rua marco Ramos, 400 - Assis, São Luís - MA",
+        "cep": "04985599"
+    },
+      "erro": false
     }
-```
-
-Esquema de resposta:
-
-```json
-{
-  "msg": "Fornecedor atualizado",
-  "fornecedor": {
-      "nome": "Vendotudo",
-      "cnpj": "01746378242222",
-      "produto": "Tudo",
-      "email": "tudo@bookstan.com.br",
-      "telefone": "55 98 88748278",
-      "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
-      "cep": "04985579"
-  },
-}
-```
----
+  
+  ```
+  
+  ---
 
 ### Funcionários
 
 - **GET /funcionario**
-
+  
   _Confere os funcionários registrados no banco de dados_
+  
+  Requisição: 
+  
+  > http://localhost:3000/funcionario/
 
   Esquema de resposta:
-
+  
   ```json
   {
+    "funcionarios": [
+        {
             "id": 1,
             "nome": "Marcos Henrique",
             "email": "marquinho@gmail.com",
@@ -1151,163 +1041,249 @@ Esquema de resposta:
             "telefone": "3436954712",
             "senha": "zmarquinho100",
             "cargo": "CEO"
+        },
+        {
+            "id": 2,
+            "nome": "Maria Eduarda",
+            "email": "dudinha@yahoo.com",
+            "cpf": "15736428425",
+            "telefone": "34995142687",
+            "senha": "lovemylife",
+            "cargo": "gerente"
+        },
+        {
+            "id": 3,
+            "nome": "Taylor Swift",
+            "email": "folkloreaoty@gmail.com",
+            "cpf": "44727894181",
+            "telefone": "9928763448",
+            "senha": "amomeusgatinhos",
+            "cargo": "Vendedora"
+        },
+        {
+            "id": 4,
+            "nome": "Selena Gomez",
+            "email": "seleninha@yahoo.com",
+            "cpf": "01243297050",
+            "telefone": "3125412343",
+            "senha": "gomez321   ",
+            "cargo": "Chefe de Departamento"
+        },
+        {
+            "id": 5,
+            "nome": "Emma Watson",
+            "email": "EmmaW@gmail.com",
+            "cpf": "75238428425",
+            "telefone": "1237575524",
+            "senha": "hermione123",
+            "cargo": "Consultora"
+        }
+    ],
+    "erro": false     
+     }
+    ```
+
+---
+  - **GET /funcionario/nome/:nome**
+  _Procurando um funcionário pelo nome cadastrado no sistema_
+  
+  
+  Requisição: 
+  >http://localhost:3000/funcionario/nome/Selena Gomez
+
+  
+  Esquema de resposta:
+  ```json
+  {
+    "funcionario": {
+        "id": 4,
+        "nome": "Selena Gomez",
+        "email": "seleninha@yahoo.com",
+        "cpf": "01243297050",
+        "telefone": "3125412343",
+        "senha": "gomez321   ",
+        "cargo": "Chefe de Departamento"
+    },
+    "erro": false
+   }
+  ```
+  
+  ---
+  **GET /funcionario/cpf/:cpf**
+
+  _Procurando um funcionário pelo cpf cadastrado no sistema_
+  
+  
+  Requisição: 
+  >http://localhost:3000/funcionario/cpf/14458658405
+
+  
+  Esquema de resposta:
+  ```json
+  {
+    "funcionario": {
+        "dados": {
+            "id": 1,
+            "nome": "Marcos Henrique",
+            "email": "marquinho@gmail.com",
+            "cpf": "14458658405",
+            "telefone": "3436954712",
+            "senha": "zmarquinho100",
+            "cargo": "CEO"
+        },
+        "status": 200
+    },
+    "erro": false
   }
   ```
 
 ---
-- **GET /funcionario/nome/:nome**
-
-  _Procurando um funcionário pelo nome cadastrado no sistema_
-
-  Esquema de resposta:
-
-  ```json
-        {
-            "id": 1,
-            "nome": "Marcos Henrique",
-            "email": "marquinho@gmail.com",
-            "cpf": "14458658405",
-            "telefone": "3436954712",
-            "senha": "zmarquinho100",
-            "cargo": "CEO"
-        }
-  ```
-
----
-**GET /funcionario/cpf/:cpf**
-
-  _Procurando um funcionário pelo cpf cadastrado no sistema_
-
-  Esquema de resposta:
-
-  ```json
-        {
-            "id": 1,
-            "nome": "Marcos Henrique",
-            "email": "marquinho@gmail.com",
-            "cpf": "14458658405",
-            "telefone": "3436954712",
-            "senha": "zmarquinho100",
-            "cargo": "CEO"
-        }, 
-  ```
-
----
-**GET /funcionario/email/:email**
+  **GET /funcionario/email/:email**
 
   _Procurando um funcionário pelo email cadastrado no sistema_
+  
+  
+  Requisição: 
+  >http://localhost:3000/funcionario/email/dudinha@yahoo.com
 
+  
   Esquema de resposta:
-
   ```json
-        {
-            "id": 1,
-            "nome": "Marcos Henrique",
-            "email": "marquinho@gmail.com",
-            "cpf": "14458658405",
-            "telefone": "3436954712",
-            "senha": "zmarquinho100",
-            "cargo": "CEO"
-        }, 
-  ```
----
-**GET /funcionario/id/:id**
-
-  _Procurando um funcionário pelo id cadastrado no sistema_
-
-  Esquema de resposta:
-
-  ```json
-        {
-             "id": 1,
-            "nome": "Marcos Henrique",
-            "email": "marquinho@gmail.com",
-            "cpf": "14458658405",
-            "telefone": "3436954712",
-            "senha": "zmarquinho100"
-        }
-  ```
----
-**POST /funcionario**
-
-  _Adicionando funcionário sistema_
-
-  Esquema de edição de funcionário:
-
-  ```json
-        {
-    "Funcionario": {
-        "nome": "Junim",
-        "email": "juni.@gmail.com",
-        "cpf": "14454548405",
-        "telefone": "3736954712",
-        "senha": "zmaruinho100",
-        "cargo": "Desenvolvedor Junior"
+  {
+    "funcionario": {
+        "dados": {
+            "id": 2,
+            "nome": "Maria Eduarda",
+            "email": "dudinha@yahoo.com",
+            "cpf": "15736428425",
+            "telefone": "34995142687",
+            "senha": "lovemylife",
+            "cargo": "gerente"
+        },
+        "status": 200
     },
     "erro": false
-} 
+   }
   ```
-  Esquema de resposta:
-
-  ```json
-       {
-    "msg": "Funcionario inserido com sucesso",
-    "funcionario": {},
-    "erro": false
-       }
-  ```
+  
 ---
-**DELETE /funcionario/id/:id**
+  **GET /funcionario/id/:id**
+
+  _Procurando um funcionário pelo id cadastrado no sistema_
+  
+  
+  Requisição: 
+  >http://localhost:3000/funcionario/id/5
+
+  
+  Esquema de resposta:
+  ```json
+  {
+    "funcionario": {
+        "id": 5,
+        "nome": "Emma Watson",
+        "email": "EmmaW@gmail.com",
+        "cpf": "75238428425",
+        "telefone": "1237575524",
+        "senha": "hermione123",
+        "cargo": "Consultora"
+    },
+    "erro": false
+  }
+  ```
+  
+  ---
+  **POST /funcionario**
+
+  _Adiciona funcionário sistema_
+
+  
+  Esquema de requisição:
+  ```json
+  {
+  "nome": "Ana Banana",
+  "email": "marquinho@gmail.com",
+  "cpf": "14458658405",
+  "telefone": "3436954712",
+  "senha": "zmarquinho100",
+  "cargo": "CEO"
+   } 
+  ```
+  
+  
+  Esquema de resposta:
+  ```json
+  {
+    "msg": "Funcionario inserido com sucesso",
+    "funcionario": {
+        "nome": "Ana Banana",
+        "email": "marquinho@gmail.com",
+        "cpf": "14458658405",
+        "telefone": "3436954712",
+        "cargo": "CEO",
+        "senha": "zmarquinho100"
+    },
+    "erro": false
+  }
+  ```
+  
+  ---
+  **DELETE /funcionario/id/:id**
 
   _Deleta funcionário do sistema_
-
+  
+  
+  Esquema de requisição: 
+  >http://localhost:3000/funcionario/id/5
+  
+  
   Esquema de deleção:
-
   ```json
   {
     "msg": "Funcionario deletado com sucesso",
     "erro": false
   }
   ```
-
-- **PUT /funcionario**
+  
+  -**PUT /funcionario**
 
   _Atualiza um ou múltiplos dados de um funcionário desejado_
 
+  
   Esquema da requisição:
-
   ```json
   {
-      "id": 1,
-      "nome": "Marcos Henrique",
-      "email": "marquinho@gmail.com",
-      "cpf": "14458658405",
-      "telefone": "12345678",
-      "senha": "zmarquinho100",
-      "cargo": "CEO"
+    "id": 1,
+    "nome": "Marcos Henrique santos santos",
+    "email": "marquinho@gmail.com",
+    "cpf": "14458658405",
+    "telefone": "3436954712",
+    "senha": "zmarquinho100",
+    "cargo": "CEO"
   }
   ```
+  
+  
+  Esquema de resposta:
+  ```json
+  {
+    "msg": "Funcionario atualizado com sucesso",
+    "cliente": {
+        "nome": "Marcos Henrique santos santos",
+        "email": "marquinho@gmail.com",
+        "cpf": "14458658405",
+        "telefone": "3436954712",
+        "cargo": "CEO",
+        "senha": "zmarquinho100"
+    },
+    "erro": false
+  }
+  ```
+ 
+  ---
+  ### Livros
 
-Esquema de resposta:
-
-```json
-	{
-	    "msg": "Funcionario atualizado com sucesso",
-	    "cliente": {
-	    "nome": "Marcos Henrique",
-	    "email": "marquinho@gmail.com",
-	    "cpf": "14458658405",
-	    "telefone": "12345678",
-	    "cargo": "CEO",
-	    "senha": "zmarquinho100"
-	   }
-	    
- ```
-	
----
-### Livros
-
-- **GET /livros**
+  - **GET /livros**
 
 _Acessando os livros cadastrados no estoque_
 
