@@ -201,7 +201,7 @@ class Fornecedores {
   };
 
   criaFornecedor = (nome, cnpj, produto, email, telefone, endereco, cep) => {
-    Validacoes._validaCNPJ(cnpj);
+    Validacoes.validaCNPJ(cnpj);
     return {
       nome: nome,
       cnpj: cnpj,

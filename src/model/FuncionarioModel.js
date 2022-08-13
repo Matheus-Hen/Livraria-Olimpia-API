@@ -174,8 +174,8 @@ class Funcionario {
   };
 
   newFunc = (nome, email, cpf, telefone, cargo, senha) => {
-    Validacoes._validaCPF;
-    Validacoes._validaEmail;
+    Validacoes.validaCPF(cpf);
+    Validacoes.validaEmail(email);
     return {
       nome: nome,
       email: email,

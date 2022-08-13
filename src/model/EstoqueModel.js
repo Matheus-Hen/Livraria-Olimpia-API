@@ -1,5 +1,4 @@
 import dao from '../DAO/estoqueDAO.js';
-import Validacoes from '../services/filtroValidacao.js';
 
 class Estoque {
   buscarEstoque = async (produtos) => {
