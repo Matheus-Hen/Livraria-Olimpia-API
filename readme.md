@@ -175,7 +175,7 @@ npm run db
     },
     "erro": false
   }
-   },
+   }
   ```
 
 ---
@@ -196,7 +196,7 @@ npm run db
       "telefone": "8325412343",
       "senha": "pear123",
       "cep": "79002914"
-    },
+    }
   
   ```
 
@@ -217,7 +217,7 @@ npm run db
 			"telefone": "7937575524",
 			"senha": "thecollegedropout",
 			"cep": "65057807"
-    },
+    }
   ```
 
  
@@ -975,7 +975,7 @@ Esquema de resposta:
             "telefone": "3436954712",
             "senha": "zmarquinho100",
             "cargo": "CEO"
-        },
+        }
   ```
 
 ---
@@ -1030,7 +1030,7 @@ Esquema de resposta:
             "cpf": "14458658405",
             "telefone": "3436954712",
             "senha": "zmarquinho100"
-        }, 
+        }
   ```
 ---
 **POST /funcionario**
@@ -1096,18 +1096,19 @@ Esquema de resposta:
 Esquema de resposta:
 
 ```json
-{
-    "msg": "Funcionario atualizado com sucesso",
-    "cliente": {
-    "nome": "Marcos Henrique",
-    "email": "marquinho@gmail.com",
-    "cpf": "14458658405",
-    "telefone": "12345678",
-    "cargo": "CEO",
-    "senha": "zmarquinho100"
-    },
-    }
-```
+	{
+	    "msg": "Funcionario atualizado com sucesso",
+	    "cliente": {
+	    "nome": "Marcos Henrique",
+	    "email": "marquinho@gmail.com",
+	    "cpf": "14458658405",
+	    "telefone": "12345678",
+	    "cargo": "CEO",
+	    "senha": "zmarquinho100"
+	   }
+	    
+ ```
+	
 ---
 ### Livros
 
