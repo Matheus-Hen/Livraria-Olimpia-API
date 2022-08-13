@@ -133,59 +133,19 @@ npm start
 
   _Confere os clientes registrados no banco de dados_
 
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-    {
-        "clientes": [
-            {
-                "id": 1,
-                "nome": "Adriano Silva",
-                "email": "adrianosilva@gmail.com",
-                "cpf": "24456634405",
-                "telefone": "6435380744",
-                "senha": "adrianinho123",
-                "cep": "61948530"
-            },
-            {
-                "id": 2,
-                "nome": "Olivia Rogéria",
-                "email": "good4u@yahoo.com",
-                "cpf": "48576088207",
-                "telefone": "8721148532",
-                "senha": "traitor",
-                "cep": "59025100"
-            },
-            {
-                "id": 3,
-                "nome": "Taylor Swift",
-                "email": "folkloreaoty@gmail.com",
-                "cpf": "44727894181",
-                "telefone": "9928763448",
-                "senha": "amomeusgatinhos",
-                "cep": "69304410"
-            },
-            {
-                "id": 4,
-                "nome": "Pera Pereira",
-                "email": "perapereira@yahoo.com",
-                "cpf": "01243297050",
-                "telefone": "8325412343",
-                "senha": "pear123",
-                "cep": "79002914"
-            },
-            {
-                "id": 5,
-                "nome": "Kanye West",
-                "email": "uniaokanyetaylor@gmail.com",
-                "cpf": "99421990803",
-                "telefone": "7937575524",
-                "senha": "thecollegedropout",
-                "cep": "65057807"
-            }
-        ],
-        "erro": false
-    }
+   {
+    "clientes": [
+        {
+            "idEstoque": 101,
+            "produto": "Código  Limpo",
+            "quantidade": 457,
+            "fornecedor": "Editora Alta Books"
+        }
+        ]
+    },
   ```
 
 ---
@@ -194,25 +154,19 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo nome_
 
-Requisição
-  
-  > http://localhost:3000/clientes/nome/Taylor Swift
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-    {
-    "cliente": {
-      "id": 3,
-      "nome": "Taylor Swift",
-      "email": "taylorcontato@gmail.com",
-      "cpf": "44727894181",
-      "telefone": "9928763448",
-      "senha": "amomeusgatinhos",
-      "cep": "69304410"
-    },
-    "erro": false
-  }
+  {
+   "clientes": [
+       {
+           "idEstoque": 101,
+           "produto": "Código  Limpo",
+           "quantidade": 457,
+           "fornecedor": "Editora Alta Books"
+       }
+    ]
+   },
   ```
 
 ---
@@ -221,26 +175,15 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo CPF_
 
-Requisição:
-
-  > http://localhost:3000/clientes/cpf/44727894181
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
   {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
-  }
-  
+    "idEstoque": 101,
+    "produto": "Código Limpo",
+    "quantidade": 457,
+    "fornecedor": "Editora Alta Books"
+  },
   ```
 
 ---
@@ -249,25 +192,23 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo email_
 
-Requisição:
-
-> http://localhost:3000/clientes/email/folkloreaoty@gmail.com
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
-  {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
-  }
+   {
+    "clientes": [
+        {
+            "idEstoque": 101,
+            "produto": "Código  Limpo",
+            "quantidade": 457,
+            "fornecedor": "Editora Alta Books"
+        }
+    ]
+    },
+  ```
+
+  ```
+
   ```
 
 ---
@@ -276,23 +217,18 @@ Esquema de resposta:
 
   _Busca um cliente no banco de dados pelo ID_
 
-Requisição:
-> http://localhost:3000/clientes/id/3
-
-Esquema de resposta:
+  Esquema de resposta:
 
   ```json
   {
-      "cliente": {
-          "id": 3,
-          "nome": "Taylor Swift",
-          "email": "folkloreaoty@gmail.com",
-          "cpf": "44727894181",
-          "telefone": "9928763448",
-          "senha": "amomeusgatinhos",
-          "cep": "69304410"
-      },
-      "erro": false
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
   }
   ```
 
@@ -300,31 +236,35 @@ Esquema de resposta:
 
 - **POST /clientes**
 
-  _Criar um novo cliente e insere no banco de dados_
+  _Cria um novo cliente e insere no banco de dados_
 
-Esquema de requisição:
+  Esquema da requisição:
 
-```json
-     {
-      "cliente": {
-        "nome": "Junim",
-        "email": "devcontato@gmail.com",
-        "cpf": "50258909856",
-        "telefone": "9953578491",
-        "senha": "umasenhalegal",
-        "cep": "05890600"
-      },
-      "erro": false
-    }
-
- ```
- 
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
 
   Esquema de resposta:
 
   ```json
   {
-    "msg": "o cliente foi inserido com sucesso"
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
   }
   ```
 
@@ -337,176 +277,8 @@ Esquema de requisição:
   Esquema da requisição:
 
   ```json
-  
-    {
-			"id": 5,
-			"nome": "Kanye West da Silva",
-			"email": "uniaokanycontato@gmail.com",
-			"cpf": "99421990803",
-			"telefone": "7937575524",
-			"senha": "thecollegedropout",
-			"cep": "65057807"
-    }
-
-  ```
-
-Esquema de resposta:
-
-```json
-{  
-  "msg": "Cliente atualizado com sucesso",
-  "clientes": [
-    {
-			"id": 5,
-			"nome": "Kanye West da Silva",
-			"email": "uniaokanycontato@gmail.com",
-			"cpf": "99421990803",
-			"telefone": "7937575524",
-			"senha": "thecollegedropout",
-			"cep": "65057807"
-    }
-  ]
-}
-```
-
----
-
-- **DELETE /clientes/id/:id**
-
-  _Realiza uma deleção no banco de dados do cliente com o ID requerido_
-
-  Esquema de requisição: 
-
-> http://localhost:3000/clientes/id/3
-
-  Esquema de resposta:
-
-  ```json
-{
-    "msg": "Cliente deletado com sucesso",
-    "erro": false
-}
-  ```
-
----
-
-### Estoque
-
-- **GET /estoque**
-
-_Acessando os produtos cadastrados no estoque_
-
-Esquema de requisição:
-
-> http://localhost:3000/estoque
-
-Esquema de resposta:
-
-```json
-{
-    "produtos": [
-        {
-            "idEstoque": 101,
-            "produto": "Livro um",
-            "quantidade": 202,
-            "fornecedor": "Editora Insitrica"
-        },
-        {
-            "idEstoque": 102,
-            "produto": "Livro dois",
-            "quantidade": 502,
-            "fornecedor": "Catavento"
-        },
-        {
-            "idEstoque": 103,
-            "produto": "Livro tres",
-            "quantidade": 102,
-            "fornecedor": "Porta de Trás"
-        },
-        {
-            "idEstoque": 104,
-            "produto": "Livro quatro",
-            "quantidade": 303,
-            "fornecedor": "Editora Devinho"
-        },
-        {
-            "idEstoque": 105,
-            "produto": "Livro cincto",
-            "quantidade": 507,
-            "fornecedor": "Editora Perry"
-        }
-    ],
-    "erro": false
-}
-```
-
----
-
-- **POST /estoque**
-
-_Inserindo novos produtos em estoque_
-
-Esquema de requisição:
-
-```json
-{
-  "produtos": [
-    {
-      "produto": "Diário de Um Banana",
-      "quantidade": 457,
-      "fornecedor": "Florinda Livros LTDA"
-    }
-  ]
-}
-```
-
-Esquema de resposta:
-
-```json
   {
-      "msg": "Um novo produto foi inserido com sucesso",
-      "estoque": {},
-      "erro": false
-  }
-```
-
-Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
-
----
-
-- **GET /estoque/id**
-
-  _Buscando um produto pelo ID no sistema_
-
-  Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
-
-  > http://localhost:3000/estoque/id/106
-
-  Como resposta, você receberá este esquema :
-
-  ```json
-{
-    "produtos": {
-        "idEstoque": 101,
-        "produto": "Livro um",
-        "quantidade": 202,
-        "fornecedor": "Editora Insitrica"
-    },
-    "erro": false
-}
-  ```
-
----
-
-- **DELETE /estoque**
-
-  _Removendo um produto do estoque_
-
-Esquema de requisição:
-
-  ```json
-  {
-    "produtos": [
+    "clientes": [
       {
         "idEstoque": 101,
         "produto": "Código  Limpo",
@@ -521,7 +293,150 @@ Esquema de resposta:
 
 ```json
 {
-  "produtos": [
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **DELETE /clientes/id/:id**
+
+  _Realiza uma deleção no banco de dados do cliente com o ID requerido_
+
+  Esquema de resposta:
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+---
+
+### Estoque
+
+- **GET /estoque**
+
+_Acessando os produtos cadastrados no estoque_
+
+Esquema de resposta:
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **POST /estoque**
+
+_Inserindo novos produtos em estoque_
+
+Esquema de inserção de um novo produto:
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
+
+Esquema de resposta de um produto inserido :
+
+```json
+{
+  "clientes": [
+    {
+      "idEstoque": 101,
+      "produto": "Código  Limpo",
+      "quantidade": 457,
+      "fornecedor": "Editora Alta Books"
+    }
+  ]
+}
+```
+
+---
+
+- **GET /estoque/id**
+
+  _Buscando um produto pelo ID no sistema_
+
+  Adicione o número do id que está buscando. Neste exemplo, usaremos o id 106 que foi cadastrado no passo anterior :
+
+  > http://localhost:3000/estoque/id/106
+
+  Como resposta, você receberá este esquema :
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+---
+
+- **DELETE /estoque**
+
+  _Removendo um produto do estoque_
+
+  Adicione no corpo da mensagem o produto que deseja remover :
+
+  ```json
+  {
+    "clientes": [
+      {
+        "idEstoque": 101,
+        "produto": "Código  Limpo",
+        "quantidade": 457,
+        "fornecedor": "Editora Alta Books"
+      }
+    ]
+  }
+  ```
+
+Como resposta, você receberá este esquema :
+
+```json
+{
+  "clientes": [
     {
       "idEstoque": 101,
       "produto": "Código  Limpo",
@@ -542,54 +457,18 @@ Esquema de resposta:
 
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          },
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          },
-          {
-              "idPagamentos": 2024,
-              "cliente": "marcos santos",
-              "formaDePagamento": "boleto",
-              "valor": 180,
-              "parcelamento": "1",
-              "status": "pago",
-              "data": "02-08-2022"
-          },
-          {
-              "idPagamentos": 2025,
-              "cliente": "amanda tainá Rosa",
-              "formaDePagamento": "pix",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          },
-          {
-              "idPagamentos": 2026,
-              "cliente": "ana Julia maria",
-              "formaDePagamento": "cartao",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -599,25 +478,20 @@ Esquema de resposta:
 
   _Busca pagamento no banco de dados pelo id_
 
-  Esquema de requisição:
-  > http://localhost:3000/pagamentos/idPagamentos/2023
-
-  Esquema de resposta:
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -627,62 +501,20 @@ Esquema de resposta:
 
   _Busca um pagamento no banco de dados pelo status_
 
-  Esquema de requisição:
-
-  > http://localhost:3000/pagamentos/status/pago
-
-  Esquema de resposta:
-
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          },
-          {
-              "idPagamentos": 2023,
-              "cliente": "pedro josé Barros",
-              "formaDePagamento": "cartao",
-              "valor": 89,
-              "parcelamento": "2",
-              "status": "pago",
-              "data": "15-08-2022"
-          },
-          {
-              "idPagamentos": 2024,
-              "cliente": "marcos santos",
-              "formaDePagamento": "boleto",
-              "valor": 180,
-              "parcelamento": "1",
-              "status": "pago",
-              "data": "02-08-2022"
-          },
-          {
-              "idPagamentos": 2025,
-              "cliente": "amanda tainá Rosa",
-              "formaDePagamento": "pix",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          },
-          {
-              "idPagamentos": 2026,
-              "cliente": "ana Julia maria",
-              "formaDePagamento": "cartao",
-              "valor": 59,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "17-06-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2022,
+        "cliente": "luana silva de alencar",
+        "formaDePagamento": "pix",
+        "valor": 120,
+        "parcelamento": "0",
+        "status": "pago",
+        "data": "20-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
@@ -694,18 +526,18 @@ Esquema de resposta:
 
   ```json
   {
-      "pagamentos": [
-          {
-              "idPagamentos": 2022,
-              "cliente": "luana silva de alencar",
-              "formaDePagamento": "pix",
-              "valor": 120,
-              "parcelamento": "0",
-              "status": "pago",
-              "data": "20-08-2022"
-          }
-      ],
-      "erro": false
+    "pagamentos": [
+      {
+        "idPagamentos": 2023,
+        "cliente": "pedro josé Barros",
+        "formaDePagamento": "cartao",
+        "valor": 89,
+        "parcelamento": "2",
+        "status": "pago",
+        "data": "15-08-2022",
+        "idLivros": null
+      }
+    ]
   }
   ```
 
