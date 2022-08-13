@@ -306,7 +306,7 @@ Esquema de resposta:
 
 ---
 
-- **POST /clientes** (REVISANDO)
+- **POST /clientes**
 
   _Criar um novo cliente e insere no banco de dados_
 
