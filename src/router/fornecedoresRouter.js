@@ -1,17 +1,29 @@
-import fornecedoresController from '../Controller/fornecedoresController.js'
+import fornecedoresController from '../controller/fornecedoresController.js';
 
-const fornecedores = (app)=> {
-  app.get('/fornecedores', fornecedoresController.procurarFornecedores) //total
-  app.get('/fornecedores/id/:id', fornecedoresController.procurarIDfornecedores) //id
-  app.get('/fornecedores/cnpj/:cnpj', fornecedoresController.procurarCNPJfornecedores) //cnpj
-  app.get('/fornecedores/produto/:produtos', fornecedoresController.procurarProdutosFornecedores) //produtos
-  app.get('/fornecedores/endereco/:cep', fornecedoresController.procurarCEPfornecedores) //endereços
+const fornecedores = (app) => {
+  app.get('/fornecedores', fornecedoresController.procurarFornecedores);
+  app.get(
+    '/fornecedores/id/:id',
+    fornecedoresController.procurarIDfornecedores,
+  );
+  app.get(
+    '/fornecedores/cnpj/:cnpj',
+    fornecedoresController.procurarCNPJfornecedores,
+  );
+  app.get(
+    '/fornecedores/produto/:produtos',
+    fornecedoresController.procurarProdutosFornecedores,
+  );
+  app.get(
+    '/fornecedores/endereco/:cep',
+    fornecedoresController.procurarCEPfornecedores,
+  );
 
-  app.post('/fornecedores', fornecedoresController.criarNewFornecedor) //criar
+  app.post('/fornecedores', fornecedoresController.criarNewFornecedor);
 
-  app.delete('/fornecedores/id/:id', fornecedoresController.deletaFornecedor) //deleta
+  app.delete('/fornecedores/id/:id', fornecedoresController.deletaFornecedor);
 
-  app.put('/fornecedores/id/:id', fornecedoresController.atualizaFornecedor) //atualiza
-}
+  app.put('/fornecedores/id/:id', fornecedoresController.atualizaFornecedor);
+};
 
-export default fornecedores
+export default fornecedores;

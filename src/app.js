@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import routerCliente from "./router/routerCliente.js";
 import pagamentos from "./router/routerPagamentos.js";
 import fornecedores from "./router/fornecedoresRouter.js"
@@ -9,7 +8,6 @@ import routerLivros from "./router/routerLivros.js";
 
 const app = express()
 
-app.use(cors())
 app.use(express.json())
 
 
