@@ -306,7 +306,7 @@ Esquema de resposta:
 
 ---
 
-- **POST /clientes**
+- **POST /clientes** (REVISANDO)
 
   _Criar um novo cliente e insere no banco de dados_
 
@@ -457,25 +457,25 @@ _Inserindo novos produtos em estoque_
 Esquema de requisição:
 
 ```json
-{
-  "produtos": [
     {
       "produto": "Diário de Um Banana",
       "quantidade": 457,
       "fornecedor": "Florinda Livros LTDA"
     }
-  ]
-}
 ```
 
 Esquema de resposta:
 
 ```json
-  {
-      "msg": "Um novo produto foi inserido com sucesso",
-      "estoque": {},
-      "erro": false
-  }
+{
+    "msg": "Um novo produto foi inserido com sucesso",
+    "estoque": {
+        "produto": "Diário de Um Banana",
+        "quantidade": 457,
+        "fornecedor": "Florinda Livros LTDA"
+    },
+    "erro": false
+}
 ```
 
 Ao adicionar um produto ao estoque, o sistema colocará um id automáticamente.
@@ -515,30 +515,22 @@ Esquema de resposta:
 Esquema de requisição:
 
   ```json
-  {
-    "produtos": [
-      {
-        "idEstoque": 101,
-        "produto": "Código  Limpo",
-        "quantidade": 457,
-        "fornecedor": "Editora Alta Books"
-      }
-    ]
-  }
+
+{
+  "idEstoque": 101,
+  "produto": "Livro um",
+  "quantidade": 202,
+  "fornecedor": "Editora Insitrica"
+}
+
   ```
 
 Esquema de resposta:
 
 ```json
 {
-  "produtos": [
-    {
-      "idEstoque": 101,
-      "produto": "Código  Limpo",
-      "quantidade": 457,
-      "fornecedor": "Editora Alta Books"
-    }
-  ]
+    "msg": "O produto foi removido do estoque",
+    "erro": false
 }
 ```
 
@@ -549,6 +541,12 @@ Esquema de resposta:
 - **GET /pagamentos**
 
   _Confere os pagamentos registrados no banco de dados_
+
+  Esquema de requisição:
+
+  > http://localhost:3000/pagamentos/
+
+  Esquema de resposta:
 
   ```json
   {
@@ -610,6 +608,7 @@ Esquema de resposta:
   _Busca pagamento no banco de dados pelo id_
 
   Esquema de requisição:
+
   > http://localhost:3000/pagamentos/idPagamentos/2023
 
   Esquema de resposta:
@@ -851,6 +850,7 @@ Esquema de resposta:
 
   _Cria um novo pagamento e insere no banco de dados_
 
+
   Esquema de requisição:
 
   ```json
@@ -905,6 +905,8 @@ Esquema de resposta:
 
   Esquema da requisição:
 
+  > http://localhost:3000/pagamentos
+
   ```json
     {
             "idPagamentos": 2023,
@@ -943,6 +945,8 @@ Esquema de resposta:
 
   _Confere os fornecedores registrados no banco de dados_
 
+  > http://localhost:3000/fornecedores
+
   ```json
   {
     "fornecedores": [
@@ -965,6 +969,12 @@ Esquema de resposta:
 - **GET / fornecedores/id/:id**
 
   _Busca um fornecedor no banco de dados pelo id_
+
+  Esquema de requisição:
+
+  http://localhost:3000/pagamentos/id/2
+
+  Esquema de resposta:
 
   ```json
   {
@@ -989,6 +999,12 @@ Esquema de resposta:
 
   _Busca um fornecedor no banco de dados pelo cnpj_
 
+  Esquema de requisição:
+
+  http://localhost:3000/fornecedores/cnpj/03546726000111
+
+  Esquema de resposta:
+
   ```json
   {
     "fornecedores": [
@@ -1011,6 +1027,12 @@ Esquema de resposta:
 - **GET /fornecedores/produto/:produto**
 
   _Busca fornecedores pelo tipo de produto_
+
+  Esquema de requisição:
+
+  http://localhost:3000/fornecedores/produto/Livros
+
+  Esquema de resposta:
 
   ```json
   {
@@ -1035,6 +1057,12 @@ Esquema de resposta:
 
   _Busca fornecedores por cep_
 
+  Esquema de requisição:
+
+  http://localhost:3000/fornecedores/endereco/04985570
+
+  Esquema de Resposta:
+
   ```json
   {
     "fornecedores": [
@@ -1058,9 +1086,12 @@ Esquema de resposta:
 
   _Cria um novo fornecedor e insere no banco de dados_
 
+  Esquema  de requisição:
+
+  http://localhost:3000/fornecedores/
+
   ```json
   {
-    "id": 366,
     "nome": "livroteca",
     "cnpj": "01746378240133",
     "produto": "Tudo",
@@ -1091,9 +1122,13 @@ Esquema de resposta:
 
 - **DELETE /fornecedores/id/:id**
 
-  _Realiza uma deleção no banco de dados do fornecedor com o id requeridop_
+  _Realiza uma deleção no banco de dados do fornecedor com o id requerido_
 
-  > id: 1
+  Esquema de requisição:
+
+  > http://localhost:3000/fornecedores/id/1
+
+  Esquema de resposta:
 
   ```json
   {
@@ -1107,6 +1142,12 @@ Esquema de resposta:
 - **PUT /fornecedores/id/:id**
 
   _Atualização de dados do fornecedor por id_
+
+  Esquema de requisição:
+
+  > http://localhost:3000/fornecedores/id/23
+
+  Atualizando os dados:
 
  ```json
     {
@@ -1145,6 +1186,10 @@ Esquema de resposta:
 
   _Confere os funcionários registrados no banco de dados_
 
+  Esquema de requisição;
+
+    > http://localhost:3000/funcionario
+
   Esquema de resposta:
 
   ```json
@@ -1163,6 +1208,8 @@ Esquema de resposta:
 - **GET /funcionario/nome/:nome**
 
   _Procurando um funcionário pelo nome cadastrado no sistema_
+
+  > http://localhost:3000/funcionario/nome/Marcos Henrique
 
   Esquema de resposta:
 
@@ -1183,6 +1230,8 @@ Esquema de resposta:
 
   _Procurando um funcionário pelo cpf cadastrado no sistema_
 
+  > http://localhost:3000/funcionario/cpf/14458658405
+
   Esquema de resposta:
 
   ```json
@@ -1202,6 +1251,10 @@ Esquema de resposta:
 
   _Procurando um funcionário pelo email cadastrado no sistema_
 
+  Esquema de requisição:
+
+  > http://localhost:3000/funcionario/email/marquinho@gmail.com
+
   Esquema de resposta:
 
   ```json
@@ -1220,6 +1273,10 @@ Esquema de resposta:
 
   _Procurando um funcionário pelo id cadastrado no sistema_
 
+  Esquema de requisição:
+
+    > http://localhost:3000/funcionario/id/1
+
   Esquema de resposta:
 
   ```json
@@ -1237,43 +1294,55 @@ Esquema de resposta:
 
   _Adicionando funcionário sistema_
 
-  Esquema de edição de funcionário:
+  Esquema de adição de funcionário:
+
+    > http://localhost:3000/funcionario/
 
   ```json
-        {
-    "Funcionario": {
+  { 
         "nome": "Junim",
         "email": "juni.@gmail.com",
         "cpf": "14454548405",
         "telefone": "3736954712",
         "senha": "zmaruinho100",
         "cargo": "Desenvolvedor Junior"
-    },
-    "erro": false
-} 
+    }
   ```
   Esquema de resposta:
 
   ```json
-       {
+{
     "msg": "Funcionario inserido com sucesso",
-    "funcionario": {},
+    "funcionario": {
+        "nome": "Junim",
+        "email": "junim.@gmail.com",
+        "cpf": "14454548405",
+        "telefone": "3736954712",
+        "cargo": "Desenvolvedor Junior",
+        "senha": "zmaruinho100"
+    },
     "erro": false
-       }
+}
   ```
 ---
 **DELETE /funcionario/id/:id**
 
-  _Deleta funcionário do sistema_
+  _Deleta funcionário do sistema por id_
+
+  Esquema de requisição:
+
+  http://localhost:3000/funcionario/id/1
 
   Esquema de deleção:
 
   ```json
-  {
-    "msg": "Funcionario deletado com sucesso",
-    "erro": false
-  }
+    {
+        "msg": "Funcionario deletado com sucesso",
+        "erro": false
+    }
   ```
+
+---
 
 - **PUT /funcionario**
 
