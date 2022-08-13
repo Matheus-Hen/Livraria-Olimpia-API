@@ -518,15 +518,24 @@ Esquema de requisição:
 
   > http://localhost:3000/estoque/id/101
 
+  ```json
+{
+
+            "produto": "Livro um",
+            "quantidade": 202,
+            "fornecedor": "Editora Resilia"
+        }
+  ```
+
 Esquema de resposta:
 
   ```json
 {
-    "produtos": {
-        "idEstoque": 101,
+    "msg": "Produto atualizado com êxito",
+    "produto": {
         "produto": "Livro um",
         "quantidade": 202,
-        "fornecedor": "Editora Insitrica"
+        "fornecedor": "Editora Resilia"
     },
     "erro": false
 }
