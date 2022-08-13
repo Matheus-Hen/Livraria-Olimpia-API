@@ -338,13 +338,13 @@ Esquema de resposta:
 
 ---
 
-- **PUT /clientes**
+- **PUT /clientes/id/:id**
 
   _Atualiza um ou múltiplos dados de um cliente desejado_
 
   Esquema da requisição:
 
-  > http://localhost:3000/clientes/
+  > http://localhost:3000/clientes/id/5
 
   ```json
   
