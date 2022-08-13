@@ -1,4 +1,5 @@
-import Livro from "../model/livrosModels.js";
+import Livro from '../model/livrosModels.js';
+import LivrosValidacao from '../services/validacaoLivro.js';
 
 const modelLivros = new Livro();
 
@@ -7,24 +8,25 @@ const livroController = {
     const body = req.body;
 
     try {
-      const resposta = await modelLivros.cadastroLivro(body.titulo,
+      const resposta = await modelLivros.cadastroLivro(
+        body.titulo,
         body.autor,
         body.genero,
         body.formato,
         body.valor,
         body.idioma,
-        body.numeroPaginas);
+        body.numeroPaginas,
+      );
 
       res.status(resposta.status).json({
-        "msg": "Cadastro do livro realizado com sucesso",
-        "livro": resposta.dados,
-        "erro": false,
+        msg: 'Cadastro do livro realizado com sucesso',
+        livro: resposta.dados,
+        erro: false,
       });
-
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -32,15 +34,15 @@ const livroController = {
   listarLivros: async (req, res) => {
     try {
       const resposta = await modelLivros.listaDeLivros();
-  
+
       res.status(resposta.status).json({
-        "livros": resposta.dados,
-        "erro": false,
+        livros: resposta.dados,
+        erro: false,
       });
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -49,71 +51,67 @@ const livroController = {
     try {
       const titulo = req.params.titulo;
       const resposta = await modelLivros.buscaLivro(titulo);
-      
+
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resposta.dados,
-          "erro": false,
+          titulo: resposta.dados,
+          erro: false,
         });
       } else {
-        res.status(resposta.status).json(
-          {"mensagem": resposta.mensagem,
-          "erro": true}
-        )
+        res
+          .status(resposta.status)
+          .json({ mensagem: resposta.mensagem, erro: true });
       }
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
 
-  buscaLivroId: async (req, res) => { 
+  buscaLivroId: async (req, res) => {
     try {
       const idLivro = req.params.idLivro;
       const resposta = await modelLivros.buscaLivroId(idLivro);
-      
+
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resposta.dados,
-          "erro": false,
+          titulo: resposta.dados,
+          erro: false,
         });
       } else {
-        res.status(resposta.status).json(
-          {"mensagem": resposta.mensagem,
-          "erro": true}
-        )
+        res
+          .status(resposta.status)
+          .json({ mensagem: resposta.mensagem, erro: true });
       }
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
 
-
-  buscaGenero: async (req, res) => { 
+  buscaGenero: async (req, res) => {
     try {
       const genero = req.params.genero;
       const resposta = await modelLivros.buscaGenero(genero);
-      
+
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resposta.dados,
-          "erro": false,
+          titulo: resposta.dados,
+          erro: false,
         });
       } else {
-        res.status(resposta.status).json(
-          {"mensagem": resposta.mensagem,
-          "erro": true}
-        )
+        res
+          .status(resposta.status)
+          .json({ mensagem: resposta.mensagem, erro: true });
       }
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -122,22 +120,21 @@ const livroController = {
     try {
       const autor = req.params.autor;
       const resposta = await modelLivros.buscaAutor(autor);
-      
+
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resposta.dados,
-          "erro": false,
+          titulo: resposta.dados,
+          erro: false,
         });
       } else {
-        res.status(resposta.status).json(
-          {"mensagem": resposta.mensagem,
-          "erro": true}
-        )
+        res
+          .status(resposta.status)
+          .json({ mensagem: resposta.mensagem, erro: true });
       }
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -146,22 +143,21 @@ const livroController = {
     try {
       const idioma = req.params.idioma;
       const resposta = await modelLivros.buscaIdioma(idioma);
-      
+
       if (resposta.status === 200) {
         res.status(resposta.status).json({
-          "titulo": resposta.dados,
-          "erro": false,
+          titulo: resposta.dados,
+          erro: false,
         });
       } else {
-        res.status(resposta.status).json(
-          {"mensagem": resposta.mensagem,
-          "erro": true}
-        )
+        res
+          .status(resposta.status)
+          .json({ mensagem: resposta.mensagem, erro: true });
       }
     } catch (error) {
-      res.status(resposta.status).json({ 
-        "msg": error.message, 
-        "erro": true 
+      res.status(resposta.status).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -169,17 +165,19 @@ const livroController = {
   removeLivro: async (req, res) => {
     const idLivro = req.params.idLivro;
     try {
-      const resposta = await modelLivros.removeLivro(idLivro);
+      await LivrosValidacao._validaDeleteLivros(
+        idLivro,
+        modelLivros.removeLivro,
+      );
 
-      res.status(resposta.status).json({
-        "msg": "Livro deletado com sucesso",
-        "erro": false,
+      res.json({
+        msg: 'Livro deletado com sucesso',
+        erro: false,
       });
-
     } catch (error) {
-      res.status(resposta.status).json({
-        "msg": error.message,
-        "erro": true,
+      res.status(400).json({
+        msg: error.message,
+        erro: true,
       });
     }
   },
@@ -188,29 +186,30 @@ const livroController = {
     const idLivro = req.params.idLivro;
     const body = req.body;
     try {
-      const resposta = await modelLivros.atualizaLivro(idLivro, 
+      const resposta = await modelLivros.atualizaLivro(
+        idLivro,
         body.titulo,
         body.autor,
         body.genero,
         body.formato,
         body.valor,
         body.idioma,
-        body.numeroPaginas);
-        console.log(resposta.status);
-        if (resposta.status !== 200) throw resposta
+        body.numeroPaginas,
+      );
+      console.log(resposta.status);
+      if (resposta.status !== 200) throw resposta;
       res.status(resposta.status).json({
-        "msg": "O livro foi atualizado com sucesso",
-        "livro": resposta.dados,
-        "erro": false,
+        msg: 'O livro foi atualizado com sucesso',
+        livro: resposta.dados,
+        erro: false,
       });
     } catch (error) {
       res.status(400).json({
-        "msg": error.mensagem,
-        "erro": true,
+        msg: error.mensagem,
+        erro: true,
       });
     }
   },
-
 };
 
 export default livroController;
