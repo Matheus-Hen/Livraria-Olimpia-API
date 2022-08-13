@@ -103,7 +103,7 @@ class Fornecedores {
         };
       } else {
         return {
-          mensagem: `Produtos do fornecedor ${produto} não encontrados`,
+          mensagem: `Produtos do fornecedor ${produtos} não encontrados`,
           status: 404,
         };
       }
@@ -140,17 +140,10 @@ class Fornecedores {
   deletaFornecedor = async (id) => {
     try {
       const data = await dao.deletaFornecedores(id);
-      if (data) {
-        return {
-          dados: data,
-          status: 200,
-        };
-      } else {
-        return {
-          mensagem: `Fornecedor com ID ${id} não encontrado`,
-          status: 404,
-        };
-      }
+      return {
+        dados: data,
+        status: 200,
+      };
     } catch (error) {
       return {
         mensagem: error.message,
@@ -208,7 +201,7 @@ class Fornecedores {
   };
 
   criaFornecedor = (nome, cnpj, produto, email, telefone, endereco, cep) => {
-    validaCNPJ(cnpj);
+    Validacoes._validaCNPJ(cnpj);
     return {
       nome: nome,
       cnpj: cnpj,
