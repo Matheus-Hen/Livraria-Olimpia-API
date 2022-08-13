@@ -175,9 +175,9 @@ class Cliente {
   };
 
   criaCliente = (nome, email, cpf, telefone, senha, cep) => {
-    Validacoes._validaEmail(email);
-    Validacoes._validaSenha(senha);
-    Validacoes._validaCPF(cpf);
+    Validacoes.validaEmail(email);
+    Validacoes.validaSenha(senha);
+    Validacoes.validaCPF(cpf);
 
     return {
       nome: nome,

@@ -1,5 +1,5 @@
 const Validacoes = {
-  _validaCNPJ: (cnpj) => {
+  validaCNPJ: (cnpj) => {
     if (cnpj) {
       if (cnpj.length < 14) {
         throw new Error('O CNPJ precisa ter 14 caracteres');
@@ -10,7 +10,7 @@ const Validacoes = {
     return cnpj;
   },
 
-  _validaCPF: (cpf) => {
+  validaCPF: (cpf) => {
     var strCPF = String(cpf).replace(/[^\d]/g, '');
     if (cpf) {
       if (
@@ -35,7 +35,7 @@ const Validacoes = {
     return true;
   },
 
-  _validaSenha: (senha) => {
+  validaSenha: (senha) => {
     if (senha.length >= 7) {
       return senha;
     } else {
@@ -43,7 +43,7 @@ const Validacoes = {
     }
   },
 
-  _validaEmail: (email) => {
+  validaEmail: (email) => {
     const carac = '@';
     if (email.includes(carac)) {
       return email;
