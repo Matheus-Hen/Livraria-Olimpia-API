@@ -310,20 +310,20 @@ Esquema de resposta:
 
   _Criar um novo cliente e insere no banco de dados_
 
+
 Esquema de requisição:
 
+> http://localhost:3000/clientes/
+
 ```json
-     {
-      "cliente": {
+{
         "nome": "Junim",
         "email": "devcontato@gmail.com",
         "cpf": "50258909856",
         "telefone": "9953578491",
         "senha": "umasenhalegal",
         "cep": "05890600"
-      },
-      "erro": false
-    }
+      }
 
  ```
  
@@ -344,17 +344,19 @@ Esquema de resposta:
 
   Esquema da requisição:
 
+  > http://localhost:3000/clientes/
+
   ```json
   
-    {
-			"id": 5,
-			"nome": "Kanye West da Silva",
-			"email": "uniaokanycontato@gmail.com",
-			"cpf": "99421990803",
-			"telefone": "7937575524",
-			"senha": "thecollegedropout",
-			"cep": "65057807"
-    }
+  {
+      "nome": "Kanye West da Silva",
+      "email": "uniaokanycontato@gmail.com",
+      "cpf": "99421990803",
+      "telefone": "7937575524",
+      "senha": "thecollegedropout",
+      "cep": "65057807"
+  } 
+
 
   ```
 
@@ -505,22 +507,47 @@ Esquema de resposta:
     "erro": false
 }
   ```
+---
+
+- **PUT /estoque/id/:id**
+
+  _Atualizando o produto do estoque_
+
+
+Esquema de requisição:
+
+  > http://localhost:3000/estoque/id/101
+
+Esquema de resposta:
+
+  ```json
+{
+    "produtos": {
+        "idEstoque": 101,
+        "produto": "Livro um",
+        "quantidade": 202,
+        "fornecedor": "Editora Insitrica"
+    },
+    "erro": false
+}
+  ```
 
 ---
 
-- **DELETE /estoque**
+- **DELETE /estoque/id/:id**
 
   _Removendo um produto do estoque_
 
 Esquema de requisição:
 
+> http://localhost:3000/estoque/id/101
+
   ```json
 
 {
-  "idEstoque": 101,
-  "produto": "Livro um",
-  "quantidade": 202,
-  "fornecedor": "Editora Insitrica"
+"produto": "Livro um",
+"quantidade": 202,
+"fornecedor": "Editora Insitrica"
 }
 
   ```
@@ -846,17 +873,18 @@ Esquema de resposta:
 
   ***
 
-- **POST /pagamentos/**
+- **POST /pagamentos**
 
   _Cria um novo pagamento e insere no banco de dados_
 
 
   Esquema de requisição:
 
+  > http://localhost:3000/pagamentos**
+
   ```json
   {
-    "idPagamentos": 2089,
-    "cliente": "Ana Ana",
+  "cliente": "Ana Ana",
     "formaDePagamento": "dinheiro",
     "valor": 290,
     "parcelamento": "2",
@@ -899,24 +927,23 @@ Esquema de resposta:
   }
   ```
 ---
-- **PUT /pagamentos**
+- **PUT /pagamentos/idPagamentos/:idPagamentos**
 
   _Atualiza um ou múltiplos dados de um pagamento desejado_
 
   Esquema da requisição:
 
-  > http://localhost:3000/pagamentos
+  > http://localhost:3000/pagamentos/idPagamentos/2023
 
   ```json
     {
-            "idPagamentos": 2023,
-            "cliente": "pedro josé Barros",
-            "formaDePagamento": "cartao",
-            "valor": 150,
-            "parcelamento": "2",
-            "status": "pago",
-            "data": "15-08-2022"
-        }
+          "cliente": "pedro josé Barros",
+          "formaDePagamento": "cartao",
+          "valor": 150,
+          "parcelamento": "2",
+          "status": "pago",
+          "data": "15-08-2022"
+      }
   ```
 
 Esquema de resposta:
@@ -1150,16 +1177,15 @@ Esquema de resposta:
   Atualizando os dados:
 
  ```json
-    {
-    "id": 23,
-    "nome": "Vendotudo",
-    "cnpj": "01746378242222",
-    "produto": "Tudo",
-    "email": "tudo@bookstan.com.br",
-    "telefone": "55 98 88748278",
-    "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
-    "cep": "04985579"
-    }
+{
+   "nome": "Vendotudo",
+   "cnpj": "01746378242222",
+   "produto": "Tudo",
+   "email": "tudo@bookstan.com.br",
+   "telefone": "55 98 88748278",
+   "endereco": "Rua Graciliano Ramos, 1 - Assis, São Luís - MA",
+   "cep": "04985579"
+   }
 ```
 
 Esquema de resposta:
@@ -1344,11 +1370,13 @@ Esquema de resposta:
 
 ---
 
-- **PUT /funcionario**
+- **PUT /funcionario/id/:id**
 
   _Atualiza um ou múltiplos dados de um funcionário desejado_
 
   Esquema da requisição:
+
+  >http://localhost:3000/funcionario/id/1
 
   ```json
   {
@@ -1359,13 +1387,13 @@ Esquema de resposta:
       "telefone": "12345678",
       "senha": "zmarquinho100",
       "cargo": "CEO"
-  }
+  } 
   ```
 
 Esquema de resposta:
 
 ```json
-	{
+	  {
 	    "msg": "Funcionario atualizado com sucesso",
 	    "cliente": {
 	    "nome": "Marcos Henrique",
@@ -1374,8 +1402,9 @@ Esquema de resposta:
 	    "telefone": "12345678",
 	    "cargo": "CEO",
 	    "senha": "zmarquinho100"
-	   }
+	  }
 	    
+    }
  ```
 	
 ---
@@ -1383,7 +1412,11 @@ Esquema de resposta:
 
 - **GET /livros**
 
-_Acessando os livros cadastrados no estoque_
+_Acessando a lista de livros cadastrados no estoque_
+
+Exemplo de requisição:
+
+> http://localhost:3000/livros
 
 Esquema de resposta:
 
@@ -1409,6 +1442,11 @@ Esquema de resposta:
 
   _Busca livros no banco de dados pelo titulo_
 
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/titulo/O Pequeno Principe
+  
+
   Esquema de resposta:
 
 
@@ -1431,7 +1469,11 @@ Esquema de resposta:
 
 **GET /livros/idLivro/:idLivro**
 
-  _Busca livro no banco de dados pelo ID_
+  _Busca livro no banco de dados pelo ID (100001 a 100011)_
+
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/idLivro/100004
 
   Esquema de resposta:
 
@@ -1454,7 +1496,12 @@ Esquema de resposta:
 ---
 **GET /livros/genero/:genero**
 
-  _Busca livro no banco de dados pelo genero_
+  _Busca livro no banco de dados pelo genero (Romance, Ficção Científica, Literatura)_
+
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/genero/Romance
+  
 
   Esquema de resposta:
 
@@ -1479,6 +1526,10 @@ Esquema de resposta:
 
   _Busca livro no banco de dados pelo autor_
 
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/autor/Carl Sagan 
+
   Esquema de resposta:
 
 
@@ -1501,7 +1552,11 @@ Esquema de resposta:
 ---
 **GET /livros/idioma/:idioma**
 
-  _Busca livro no banco de dados pelo idioma_
+  _Busca livro no banco de dados pelo idioma (Alemão, Inglês, Português)_
+
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/idioma/Alemão
 
   Esquema de resposta:
 
@@ -1529,9 +1584,11 @@ Esquema de resposta:
 
   _Realiza uma deleção no banco de dados de livros com o id requerido_
 
-  Busca um livro no banco de dados pelo id:
-  id: 100013
   
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/idLivro/100009
+
   Esquema de resposta:
 
 ```json
@@ -1545,7 +1602,24 @@ Esquema de resposta:
 **PUT /livros/:idLivro**
 
   _Atualiza um ou múltiplos dados de um livro desejado_
-  
+
+  Exemplo de requisição:
+
+  > http://localhost:3000/livros/idLivro/100010
+
+```json
+
+  {
+          "titulo": "O Milagre do Amanhã",
+          "autor": "Hal Elrod",
+          "genero": "Autoajuda",
+          "formato": "Físico",
+          "valor": 80,
+          "idioma": "Português",
+          "numeroPaginas": 196
+      }
+  ```
+
   Esquema de resposta:
 
 ```json
@@ -1567,11 +1641,14 @@ Esquema de resposta:
 
   _Cria um novo livro e insere no banco de dados_
 
+  Esquema de requisição:
+
+  > http://localhost:3000/livros
+
   Esquema de requisição de livros:
 
   ```json
        {
-            "idLivro": 1000333,
             "titulo": "ciranda cirandinha vamos",
             "autor": "Antoine de Saint Exupéry",
             "genero": "Literatura Infanto juvenil",
