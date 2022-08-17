@@ -458,6 +458,8 @@ _Inserindo novos produtos em estoque_
 
 Esquema de requisição:
 
+> http://localhost:3000/estoque
+
 ```json
     {
       "produto": "Diário de Um Banana",
