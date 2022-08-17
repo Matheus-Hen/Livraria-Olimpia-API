@@ -821,7 +821,7 @@ Esquema de resposta:
 
   Esquema de requisição:
 
-  > http://localhost:3000/pagamentos/parcelamento/2
+  > http://localhost:3000/pagamentos/parcelamento/marcos santos
 
   Esquema de requisição:
 
@@ -891,7 +891,7 @@ Esquema de resposta:
 
   Esquema de requisição:
 
-  > http://localhost:3000/pagamentos**
+  > http://localhost:3000/pagamentos
 
   ```json
   {
@@ -927,7 +927,7 @@ Esquema de resposta:
 
   Esquema de requisição
 
-  > http://localhost:3000/pagamentos/id/2022
+  > http://localhost:3000/pagamentos/idPagamentos/2022
 
   Esquema de resposta:
 
