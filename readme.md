@@ -982,6 +982,8 @@ Esquema de resposta:
 - **GET /fornecedores**
 
   _Confere os fornecedores registrados no banco de dados_
+	
+Esquema de resposta:
 
   > http://localhost:3000/fornecedores
 
@@ -1010,7 +1012,7 @@ Esquema de resposta:
 
   Esquema de requisição:
 
-  http://localhost:3000/pagamentos/id/2
+  http://localhost:3000/fornecedores/id/2
 
   Esquema de resposta:
 
@@ -1183,7 +1185,7 @@ Esquema de resposta:
 
   Esquema de requisição:
 
-  > http://localhost:3000/fornecedores/id/23
+  > http://localhost:3000/fornecedores/id/2
 
   Atualizando os dados:
 
